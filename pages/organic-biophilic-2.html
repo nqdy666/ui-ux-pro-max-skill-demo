@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>仿生 / 有机2.0 - 可持续发展技术、生物技术、健康</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #2d5016;
+            --secondary: #4a7c29;
+            --accent: #8abf42;
+            --light: #f5f9f0;
+            --dark: #1a2e0d;
+            --surface: #e8f0e0;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .header {
+            padding: 2rem 0;
+            position: relative;
+            background: linear-gradient(135deg, var(--light), var(--surface));
+            border-bottom: 1px solid rgba(74, 124, 41, 0.2);
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light), var(--surface));
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M10,30 Q30,5 50,30 T90,30" stroke="%238abf42" stroke-width="0.5" fill="none" opacity="0.3"/></svg>');
+            background-size: 200px;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(138, 191, 66, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(138, 191, 66, 0.4);
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            padding: 2.5rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary));
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--surface), white);
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--accent);
+            box-shadow: 0 4px 12px rgba(138, 191, 66, 0.2);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .card-text {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .feature-section {
+            background: linear-gradient(135deg, var(--surface), var(--light));
+            padding: 6rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        
+        .feature-text {
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+        
+        .showcase {
+            padding: 6rem 0;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .showcase-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .showcase-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .showcase-item:hover .showcase-image img {
+            transform: scale(1.1);
+        }
+        
+        .showcase-content {
+            padding: 2rem;
+        }
+        
+        .showcase-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .showcase-text {
+            color: var(--secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            padding: 4rem 0;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <div class="logo">
+                <i class="fas fa-leaf logo-icon"></i>
+                <span>Organic 2.0</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link transition-colors duration-200">首页</a>
+                <a href="#" class="nav-link transition-colors duration-200">关于</a>
+                <a href="#" class="nav-link transition-colors duration-200">服务</a>
+                <a href="#" class="nav-link transition-colors duration-200">案例</a>
+                <a href="#" class="nav-link transition-colors duration-200">联系</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">仿生 / 有机2.0</h1>
+                <p class="hero-subtitle">融合自然灵感与现代技术，为可持续发展技术、生物技术和健康领域打造和谐共生的设计体验。</p>
+                <a href="#" class="cta-button transition-colors duration-200">
+                    <span>探索设计</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 核心原则 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">核心原则</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3 class="card-title">自然启发</h3>
+                    <p class="card-text">从自然界中汲取设计灵感，模仿有机形态和生长模式，创造与自然和谐共生的界面。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3 class="card-title">可持续性</h3>
+                    <p class="card-text">设计注重环保理念，使用可持续材料和技术，减少环境影响，促进生态平衡。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="card-title">健康导向</h3>
+                    <p class="card-text">设计考虑人体工程学和心理健康，创造有助于身心健康的空间和界面。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3 class="card-title">生物科技融合</h3>
+                    <p class="card-text">结合生物技术和现代科技，创造创新的产品和服务，提升人类生活质量。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3 class="card-title">流动感</h3>
+                    <p class="card-text">采用有机曲线和流动的设计元素，创造自然、流畅的视觉体验。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="card-title">和谐平衡</h3>
+                    <p class="card-text">在技术与自然之间寻求平衡，创造既现代又与自然和谐的设计。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 应用场景 -->
+    <section class="feature-section">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">可持续发展技术</h3>
+                    <p class="feature-text">为可再生能源、环保技术和绿色建筑设计提供视觉解决方案。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3 class="feature-title">生物技术</h3>
+                    <p class="feature-text">为生物研究、医疗技术和基因工程领域创造专业、直观的界面。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="feature-title">健康领域</h3>
+                    <p class="feature-text">为健康应用、医疗设备和 wellness 平台设计用户友好的界面。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3 class="feature-title">有机产品</h3>
+                    <p class="feature-text">为有机食品、天然护肤品和可持续产品设计品牌形象和包装。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-tree"></i>
+                    </div>
+                    <h3 class="feature-title">生态旅游</h3>
+                    <p class="feature-text">为生态旅游和可持续旅行平台设计沉浸式的用户体验。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="feature-title">绿色科技</h3>
+                    <p class="feature-text">为清洁能源和环保科技产品设计现代、自然的界面。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 设计展示 -->
+    <section class="showcase">
+        <div class="container">
+            <h2 class="section-title">设计展示</h2>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=organic%20biophilic%20design%20sustainable%20technology%20interface%20with%20natural%20elements&image_size=landscape_4_3" alt="可持续发展技术界面">
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">可持续发展技术界面</h3>
+                        <p class="showcase-text">融合自然元素和现代技术，为可再生能源监控系统设计直观、美观的界面。</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=biotechnology%20interface%20with%20organic%20design%20elements&image_size=landscape_4_3" alt="生物技术界面">
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">生物技术界面</h3>
+                        <p class="showcase-text">为基因研究平台设计专业、直观的界面，融合有机形态和科学精确性。</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=health%20wellness%20app%20with%20organic%20biophilic%20design&image_size=landscape_4_3" alt="健康应用界面">
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">健康应用界面</h3>
+                        <p class="showcase-text">为健康追踪应用设计自然、舒适的界面，促进用户的健康生活方式。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Organic 2.0</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 1.5rem;">专注于仿生/有机2.0设计，为可持续发展技术、生物技术和健康领域创造和谐共生的视觉体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>服务</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">品牌设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">界面设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">产品设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">可持续咨询</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">我们的故事</a>
+                        <a href="#" class="footer-link transition-colors duration-200">团队</a>
+                        <a href="#" class="footer-link transition-colors duration-200">案例</a>
+                        <a href="#" class="footer-link transition-colors duration-200">博客</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">contact@organic2.0.com</a>
+                        <a href="#" class="footer-link transition-colors duration-200">+86 123 4567 8910</a>
+                        <a href="#" class="footer-link transition-colors duration-200">北京市海淀区绿色科技园</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Organic 2.0 Design Studio. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

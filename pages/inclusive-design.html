@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>包容性设计 - 公共服务、教育、医疗</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#10B981',
+                        neutral: '#6B7280',
+                        light: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .focus-visible {
+                @apply outline-none ring-2 ring-primary ring-offset-2;
+            }
+            .high-contrast {
+                @apply bg-dark text-white;
+            }
+            .screen-reader {
+                @apply sr-only;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light text-dark font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 transition-colors duration-200">
+                <i class="fa fa-universal-access text-primary text-2xl"></i>
+                <span class="text-xl font-bold">包容性设计</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 focus:focus-visible" cursor-pointer>
+                    首页
+                </button>
+                <button class="px-4 py-2 border border-primary text-primary rounded-md hover:bg-primary/10 focus:focus-visible" cursor-pointer>
+                    <i class="fa fa-adjust mr-1"></i> 对比度
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="bg-gradient-to-r from-primary/10 to-secondary/10 py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">包容性设计</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">为所有人创造无障碍、平等的数字体验，无论年龄、能力或背景</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 focus:focus-visible" cursor-pointer>
+                    了解更多
+                </button>
+                <button class="px-6 py-3 border border-primary text-primary rounded-md hover:bg-primary/10 focus:focus-visible" cursor-pointer>
+                    查看示例
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">核心设计原则</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-eye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">视觉无障碍</h3>
+                    <p class="text-neutral">高对比度设计，支持屏幕阅读器，可调整字体大小和颜色模式</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-keyboard-o text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">键盘导航</h3>
+                    <p class="text-neutral">完全支持键盘操作，清晰的焦点状态，符合WCAG标准的交互设计</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-users text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">多样化需求</h3>
+                    <p class="text-neutral">考虑不同能力水平用户的需求，提供多种交互方式和内容呈现形式</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center">
+                        <i class="fa fa-building text-primary mr-2"></i> 公共服务
+                    </h3>
+                    <p class="text-neutral mb-4">政府网站和服务平台，确保所有公民都能便捷获取信息和服务</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>无障碍表单设计</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>多语言支持</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>简化流程</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center">
+                        <i class="fa fa-graduation-cap text-primary mr-2"></i> 教育
+                    </h3>
+                    <p class="text-neutral mb-4">在线学习平台，适应不同学习能力和风格的学生需求</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>多模态内容</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>自适应界面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>辅助技术集成</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3 flex items-center">
+                        <i class="fa fa-heartbeat text-primary mr-2"></i> 医疗
+                    </h3>
+                    <p class="text-neutral mb-4">医疗健康平台，确保患者和医疗专业人员都能轻松使用</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>清晰的医疗信息</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>简化的预约流程</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>紧急服务快速访问</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 交互示例 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">交互示例</h2>
+            <div class="bg-white p-8 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-6">无障碍表单</h3>
+                <form class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-1">姓名</label>
+                        <input 
+                            type="text" 
+                            id="name" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:focus-visible"
+                            aria-label="请输入您的姓名"
+                        >
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1">邮箱</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:focus-visible"
+                            aria-label="请输入您的邮箱地址"
+                        >
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-1">留言</label>
+                        <textarea 
+                            id="message" 
+                            rows="4" 
+                            class="w-full px-4 py-2 border border-gray-300 rounded-md focus:focus-visible"
+                            aria-label="请输入您的留言"
+                        ></textarea>
+                    </div>
+                    <div class="flex items-center">
+                        <input 
+                            type="checkbox" 
+                            id="terms" 
+                            class="h-4 w-4 text-primary focus:focus-visible"
+                        >
+                        <label for="terms" class="ml-2 block text-sm">我同意服务条款</label>
+                    </div>
+                    <button type="submit" 
+                        class="w-full px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 focus:focus-visible" cursor-pointer
+                    >
+                        提交
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">包容性设计</h3>
+                    <p class="text-gray-400">为所有人创造平等的数字体验</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white transition-colors duration-200">首页</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">设计指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">资源中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span>contact@inclusive.design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span>+86 123 4567 8910</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2024 包容性设计. 保留所有权利.</p>
+            </div>2026
+        </div>
+    </footer>
+
+    <script>
+        // 对比度切换功能
+        document.querySelector('button:has(.fa-adjust)').addEventListener('click', function() {
+            document.body.classList.toggle('high-contrast');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>以英雄为中心的设计 - 着陆页样式</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                        secondary: '#6366f1',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .hero-gradient {
+                background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            }
+            .hero-title {
+                font-size: clamp(2.5rem, 5vw, 4rem);
+                line-height: 1.2;
+            }
+            .btn-primary {
+                transition: all 0.3s ease;
+            }
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+            }
+            .btn-secondary {
+                transition: all 0.3s ease;
+            }
+            .btn-secondary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+            }
+            .feature-card {
+                transition: all 0.3s ease;
+            }
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="text-xl font-bold text-primary flex items-center transition-colors duration-200">
+                <i class="fa fa-star mr-2"></i>
+                <span>设计风格导航</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#general" class="hover:text-primary transition-colors transition-colors duration-200">通用风格</a>
+                <a href="index.html#landing" class="hover:text-primary transition-colors transition-colors duration-200">着陆页样式</a>
+                <a href="index.html#dashboard" class="hover:text-primary transition-colors transition-colors duration-200">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-dark" cursor-pointer>
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero-gradient text-white py-24 px-4 relative overflow-hidden">
+        <!-- 背景效果 -->
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-semibold mb-6">全新产品发布</span>
+                <h1 class="hero-title font-bold mb-6">革命性的设计工具<br>重新定义创意流程</h1>
+                <p class="text-xl mb-10 opacity-90">一款为设计师打造的智能工具，让创意流程更加高效、直观，释放无限创意潜能。</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg" cursor-pointer>
+                        立即体验
+                    </button>
+                    <button class="btn-secondary bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10" cursor-pointer>
+                        了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-6">产品特性</span>
+                    <h2 class="text-3xl font-bold mb-6">智能设计，轻松创作</h2>
+                    <p class="text-gray-600 mb-8">我们的设计工具集成了先进的AI技术，能够智能识别您的设计风格，提供个性化的设计建议，让您的创作过程更加流畅。</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-magic text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">AI 辅助设计</h3>
+                                <p class="text-gray-600">智能识别设计模式，提供个性化建议，加速创作过程。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-paint-brush text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">丰富的模板库</h3>
+                                <p class="text-gray-600">提供数千种专业设计模板，满足各种设计需求。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-users text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">实时协作</h3>
+                                <p class="text-gray-600">支持多人实时协作，提升团队工作效率。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/10 rounded-full blur-xl"></div>
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20design%20tool%20interface%20with%20clean%20UI&image_size=landscape_16_9" alt="设计工具界面" class="w-full rounded-xl shadow-2xl relative z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特性区域 -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4">核心优势</span>
+                <h2 class="text-3xl font-bold mb-6">为什么选择我们的设计工具</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的设计工具不仅功能强大，而且易于使用，能够满足从专业设计师到初学者的各种需求。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 特性1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">高效创作</h3>
+                    <p class="text-gray-600">智能工具和模板库让您的创作过程更加高效，节省时间和精力。</p>
+                </div>
+                <!-- 特性2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-paint-brush text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">专业效果</h3>
+                    <p class="text-gray-600">提供专业级的设计效果，让您的作品脱颖而出。</p>
+                </div>
+                <!-- 特性3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-mobile text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">响应式设计</h3>
+                    <p class="text-gray-600">支持响应式设计，确保您的作品在各种设备上都能完美显示。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4">客户评价</span>
+                <h2 class="text-3xl font-bold mb-6">用户怎么说</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">来自全球各地的设计师都在使用我们的工具，看看他们的反馈。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 评价1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20female%20designer&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">张设计师</h4>
+                            <p class="text-sm text-gray-500">UI/UX设计师</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">这款设计工具彻底改变了我的工作方式，AI辅助功能让我能够更快地实现创意，节省了大量时间。</p>
+                </div>
+                <!-- 评价2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20male%20designer&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">李创意总监</h4>
+                            <p class="text-sm text-gray-500">创意总监</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">团队协作功能非常出色，让我们的设计流程更加顺畅，沟通成本大大降低。</p>
+                </div>
+                <!-- 评价3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20young%20designer&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">王学生</h4>
+                            <p class="text-sm text-gray-500">设计专业学生</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star-half-o text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">作为一名学生，这款工具对我来说非常友好，丰富的模板和教程帮助我快速提升设计技能。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="hero-gradient text-white py-20 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">准备好开始您的创意之旅了吗？</h2>
+            <p class="text-xl mb-8 opacity-90">立即下载我们的设计工具，释放您的创意潜能，创造令人惊艳的设计作品。</p>
+            <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg" cursor-pointer>
+                立即下载
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="../index.html" class="text-xl font-bold flex items-center transition-colors duration-200">
+                        <i class="fa fa-star mr-2 text-primary"></i>
+                        <span>设计风格导航</span>
+                    </a>
+                    <p class="mt-2 text-gray-400">探索各种UI/UX设计风格</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#general" class="hover:text-primary transition-colors transition-colors duration-200">通用风格</a>
+                    <a href="index.html#landing" class="hover:text-primary transition-colors transition-colors duration-200">着陆页样式</a>
+                    <a href="index.html#dashboard" class="hover:text-primary transition-colors transition-colors duration-200">仪表盘样式</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 设计风格导航站. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

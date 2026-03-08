@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瑞士现代主义2.0 - 企业网站、建筑、编辑</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#ffffff',
+                        accent: '#ff0000',
+                        dark: '#121212',
+                        light: '#f8f8f8'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .swiss-grid {
+                @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+            }
+            .swiss-card {
+                @apply bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 transition-all duration-300 hover:shadow-lg;
+            }
+            .swiss-btn {
+                @apply border-2 border-primary px-6 py-3 transition-all duration-300 hover:bg-primary hover:text-white text-sm font-medium;
+            }
+            .swiss-title {
+                @apply text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight;
+            }
+            .swiss-subtitle {
+                @apply text-lg md:text-xl font-light mb-8 text-slate-600 dark:text-slate-400;
+            }
+            .swiss-divider {
+                @apply w-24 h-1 bg-accent mb-8;
+            }
+            .swiss-header {
+                @apply fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-inter min-h-screen">
+    <!-- Header -->
+    <header class="swiss-header">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <h1 class="text-xl font-bold tracking-wider">SWISS</h1>
+            </div>
+            <div class="flex items-center space-x-8">
+                <a href="#home" class="font-medium hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#about" class="font-medium hover:text-primary transition-colors transition-colors duration-200">关于</a>
+                <a href="#projects" class="font-medium hover:text-primary transition-colors transition-colors duration-200">项目</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors transition-colors duration-200">联系</a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" cursor-pointer>
+                    <i class="fa fa-moon-o dark:hidden text-slate-600"></i>
+                    <i class="fa fa-sun-o hidden dark:block text-slate-300"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center py-24 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="swiss-divider"></div>
+                    <h2 class="swiss-title">瑞士现代主义<br>2.0</h2>
+                    <p class="swiss-subtitle">融合传统瑞士设计的严谨与现代数字美学，创造出既经典又时尚的视觉体验</p>
+                    <a href="#projects" class="swiss-btn inline-block transition-colors duration-200">探索项目</a>
+                </div>
+                <div class="h-96 bg-slate-200 dark:bg-slate-700">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=swiss%20design%20minimal%20architecture%2C%20clean%20lines%2C%20geometric%20shapes%2C%20black%20and%20white&image_size=landscape_4_3" alt="瑞士设计" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-4 bg-slate-100 dark:bg-slate-800">
+        <div class="container mx-auto max-w-5xl">
+            <div class="text-center mb-16">
+                <div class="swiss-divider mx-auto"></div>
+                <h3 class="swiss-title">设计理念</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Concept 1 -->
+                <div class="swiss-card">
+                    <div class="text-4xl font-bold mb-4">01</div>
+                    <h4 class="text-xl font-bold mb-4">网格系统</h4>
+                    <p class="text-slate-600 dark:text-slate-400">基于严格的网格系统，确保布局的一致性和平衡性，体现瑞士设计的严谨性</p>
+                </div>
+
+                <!-- Concept 2 -->
+                <div class="swiss-card">
+                    <div class="text-4xl font-bold mb-4">02</div>
+                    <h4 class="text-xl font-bold mb-4">排版层次</h4>
+                    <p class="text-slate-600 dark:text-slate-400">清晰的排版层次结构，使用对比鲜明的字体大小和字重，提高内容的可读性</p>
+                </div>
+
+                <!-- Concept 3 -->
+                <div class="swiss-card">
+                    <div class="text-4xl font-bold mb-4">03</div>
+                    <h4 class="text-xl font-bold mb-4">简约美学</h4>
+                    <p class="text-slate-600 dark:text-slate-400">去除多余的装饰，专注于本质内容，创造出干净、现代的视觉效果</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <div class="swiss-divider mx-auto"></div>
+                <h3 class="swiss-title">精选项目</h3>
+                <p class="swiss-subtitle">展示我们的设计作品，体现瑞士现代主义2.0的设计理念</p>
+            </div>
+            <div class="swiss-grid">
+                <!-- Project 1 -->
+                <div class="swiss-card">
+                    <div class="h-64 bg-slate-200 dark:bg-slate-700 mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=corporate%20website%20design%2C%20minimal%20swiss%20style%2C%20clean%20layout&image_size=landscape_4_3" alt="企业网站" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">企业网站</h4>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">为国际企业设计的现代网站，体现品牌的专业形象和核心价值</p>
+                    <a href="#" class="text-sm font-medium hover:underline transition-colors duration-200">查看详情</a>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="swiss-card">
+                    <div class="h-64 bg-slate-200 dark:bg-slate-700 mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=architecture%20portfolio%2C%20swiss%20design%2C%20geometric%20composition&image_size=landscape_4_3" alt="建筑设计" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">建筑设计</h4>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">为建筑事务所设计的作品集，展示建筑项目的几何美感和空间关系</p>
+                    <a href="#" class="text-sm font-medium hover:underline transition-colors duration-200">查看详情</a>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="swiss-card">
+                    <div class="h-64 bg-slate-200 dark:bg-slate-700 mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=editorial%20design%2C%20magazine%20layout%2C%20swiss%20style%20typography&image_size=landscape_4_3" alt="编辑设计" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">编辑设计</h4>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">为杂志和出版物设计的版面，体现瑞士设计的排版美学和视觉层次</p>
+                    <a href="#" class="text-sm font-medium hover:underline transition-colors duration-200">查看详情</a>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="swiss-card">
+                    <div class="h-64 bg-slate-200 dark:bg-slate-700 mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=branding%20identity%2C%20swiss%20design%2C%20minimal%20logo&image_size=landscape_4_3" alt="品牌设计" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">品牌设计</h4>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">为 startups 设计的品牌标识和视觉系统，体现现代、简约的品牌形象</p>
+                    <a href="#" class="text-sm font-medium hover:underline transition-colors duration-200">查看详情</a>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="swiss-card">
+                    <div class="h-64 bg-slate-200 dark:bg-slate-700 mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=exhibition%20design%2C%20swiss%20style%2C%20spatial%20layout&image_size=landscape_4_3" alt="展览设计" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">展览设计</h4>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">为艺术展览设计的空间布局和视觉系统，创造沉浸式的观展体验</p>
+                    <a href="#" class="text-sm font-medium hover:underline transition-colors duration-200">查看详情</a>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="swiss-card">
+                    <div class="h-64 bg-slate-200 dark:bg-slate-700 mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=digital%20product%20design%2C%20swiss%20style%2C%20clean%20interface&image_size=landscape_4_3" alt="数字产品" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">数字产品</h4>
+                    <p class="text-slate-600 dark:text-slate-400 mb-6">为数字产品设计的用户界面，体现瑞士设计的简洁性和功能性</p>
+                    <a href="#" class="text-sm font-medium hover:underline transition-colors duration-200">查看详情</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4 bg-slate-100 dark:bg-slate-800">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <div class="swiss-divider mx-auto"></div>
+                <h3 class="swiss-title">联系我们</h3>
+            </div>
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">姓名</label>
+                        <input type="text" class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-700">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">邮箱</label>
+                        <input type="email" class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-700">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">消息</label>
+                    <textarea class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-700 h-32"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="swiss-btn inline-block" cursor-pointer>发送消息</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-xl font-bold tracking-wider">SWISS</h2>
+                    <p class="text-slate-400 mt-2">瑞士现代主义2.0</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-800 text-center">
+                <p class="text-slate-500 dark:text-slate-400">© 2026 瑞士现代主义2.0设计</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+</body>
+</html>

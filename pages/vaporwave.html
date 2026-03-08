@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒸汽波 - 音乐平台、游戏、作品集</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6AD5',
+                        secondary: '#8C52FF',
+                        accent: '#01CDFE',
+                        dark: '#292F36',
+                        light: '#F7FFF7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        },
+                        glow: {
+                            '0%': { textShadow: '0 0 5px #FF6AD5, 0 0 10px #FF6AD5, 0 0 15px #FF6AD5, 0 0 20px #FF6AD5' },
+                            '100%': { textShadow: '0 0 10px #8C52FF, 0 0 20px #8C52FF, 0 0 30px #8C52FF, 0 0 40px #8C52FF' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .vapor-card {
+                @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 border-2 border-primary/30;
+            }
+            .vapor-button {
+                @apply px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg;
+            }
+            .vapor-input {
+                @apply w-full px-4 py-3 bg-light border border-primary/30 text-dark focus:outline-none focus:ring-2 focus:ring-primary;
+            }
+            .vapor-pattern {
+                background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M50 50C55.5228 50 60 45.5228 60 40C60 34.4772 55.5228 30 50 30C44.4772 30 40 34.4772 40 40C40 45.5228 44.4772 50 50 50Z" fill="%23ff6ad5" fill-opacity="0.1"/%3E%3Cpath d="M25 25C30.5228 25 35 20.5228 35 15C35 9.47715 30.5228 5 25 5C19.4772 5 15 9.47715 15 15C15 20.5228 19.4772 25 25 25Z" fill="%238c52ff" fill-opacity="0.1"/%3E%3Cpath d="M75 75C80.5228 75 85 70.5228 85 65C85 59.4772 80.5228 55 75 55C69.4772 55 65 59.4772 65 65C65 70.5228 69.4772 75 75 75Z" fill="%2301cdfe" fill-opacity="0.1"/%3E%3C/svg%3E');
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans vapor-pattern">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 transition-colors duration-200">
+                <i class="fa fa-music text-primary text-2xl"></i>
+                <span class="text-xl font-bold">蒸汽波</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <button class="vapor-button" cursor-pointer>
+                    首页
+                </button>
+                <button class="px-4 py-2 border border-primary/30 text-primary rounded-lg hover:bg-primary/10 transition-colors" cursor-pointer>
+                    <i class="fa fa-cog mr-1"></i> 设置
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="py-20 bg-gradient-to-br from-primary/10 to-secondary/10">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-glow">蒸汽波</h1>
+                <p class="text-xl mb-8">为音乐平台、游戏和作品集打造的复古未来主义风格</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <button class="vapor-button" cursor-pointer>
+                        了解更多
+                    </button>
+                    <button class="px-6 py-3 border border-primary/30 text-primary rounded-lg hover:bg-primary/10 transition-colors" cursor-pointer>
+                        查看示例
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-glow">核心设计原则</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="vapor-card">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 animate-float">
+                        <i class="fa fa-paint-brush text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">霓虹色彩</h3>
+                    <p class="text-gray-600">使用粉色、紫色、蓝色等霓虹色彩，创造复古未来主义氛围</p>
+                </div>
+                <div class="vapor-card">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4 animate-float">
+                        <i class="fa fa-retweet text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">复古元素</h3>
+                    <p class="text-gray-600">融入80年代和90年代的复古元素，如网格、棕榈树和古典雕塑</p>
+                </div>
+                <div class="vapor-card">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4 animate-float">
+                        <i class="fa fa-magic text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">梦幻氛围</h3>
+                    <p class="text-gray-600">创造梦幻、超现实的视觉效果，营造独特的艺术氛围</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-glow">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="vapor-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-music text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">音乐平台</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">为音乐平台和音乐相关品牌打造独特的视觉形象</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>音乐流媒体平台</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>音乐专辑封面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>音乐活动宣传</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="vapor-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-gamepad text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">游戏</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">为游戏和游戏相关品牌打造复古未来主义的视觉形象</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>游戏界面设计</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>游戏宣传材料</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>游戏角色设计</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="vapor-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-briefcase text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">作品集</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">为创意人士和艺术家打造独特的作品集展示</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>艺术作品集</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>设计作品集</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>摄影师作品集</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 界面示例 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-glow">界面示例</h2>
+            <div class="vapor-card max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold mb-6">音乐平台界面</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-light p-6 rounded-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full -mr-10 -mt-10"></div>
+                        <div class="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-accent/20 to-secondary/20 rounded-full -ml-8 -mb-8"></div>
+                        <h4 class="font-bold mb-4">热门播放列表</h4>
+                        <ul class="space-y-3 relative z-10">
+                            <li class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-md flex items-center justify-center mr-3">
+                                        <i class="fa fa-music text-white"></i>
+                                    </div>
+                                    <span>蒸汽波精选</span>
+                                </div>
+                                <i class="fa fa-play text-primary"></i>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-secondary to-accent rounded-md flex items-center justify-center mr-3">
+                                        <i class="fa fa-music text-white"></i>
+                                    </div>
+                                    <span>80年代复古</span>
+                                </div>
+                                <i class="fa fa-play text-primary"></i>
+                            </li>
+                            <li class="flex items-center justify-between">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-gradient-to-br from-accent to-primary rounded-md flex items-center justify-center mr-3">
+                                        <i class="fa fa-music text-white"></i>
+                                    </div>
+                                    <span>电子音乐</span>
+                                </div>
+                                <i class="fa fa-play text-primary"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-light p-6 rounded-xl relative overflow-hidden">
+                            <div class="absolute top-0 left-0 w-12 h-12 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full -ml-6 -mt-6"></div>
+                            <h4 class="font-bold mb-4 relative z-10">当前播放</h4>
+                            <div class="flex items-center relative z-10">
+                                <div class="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-md flex items-center justify-center mr-4">
+                                    <i class="fa fa-music text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-medium">Nightcall</h5>
+                                    <p class="text-sm text-gray-600">Kavinsky</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 relative z-10">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-gradient-to-r from-primary to-secondary h-2 rounded-full" style="width: 35%"></div>
+                                </div>
+                                <div class="flex justify-between text-sm text-gray-600 mt-1">
+                                    <span>1:24</span>
+                                    <span>3:58</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-light p-6 rounded-xl relative overflow-hidden">
+                            <div class="absolute bottom-0 right-0 w-16 h-16 bg-gradient-to-tr from-accent/20 to-secondary/20 rounded-full -mr-8 -mb-8"></div>
+                            <h4 class="font-bold mb-4 relative z-10">搜索</h4>
+                            <div class="relative z-10">
+                                <input type="text" placeholder="搜索音乐..." class="vapor-input">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4 animate-glow">蒸汽波</h3>
+                    <p class="text-gray-400">为音乐平台、游戏和作品集打造的复古未来主义风格</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">首页</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">设计指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">资源中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span>contact@vaporwave.design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span>+86 123 4567 8910</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2026 蒸汽波. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

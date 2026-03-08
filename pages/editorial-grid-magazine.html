@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编辑网格 / 杂志 - 新闻网站、博客、杂志</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#666666',
+                        accent: '#e63946',
+                        light: '#f8f9fa',
+                        dark: '#0f0f0f'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .editorial-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+            }
+            .magazine-title {
+                font-family: 'Playfair Display', serif;
+                line-height: 1.2;
+            }
+            .article-card {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .article-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            .dropcap::first-letter {
+                float: left;
+                font-size: 4rem;
+                line-height: 0.8;
+                margin-right: 0.5rem;
+                margin-top: 0.2rem;
+                font-family: 'Playfair Display', serif;
+                font-weight: 700;
+                color: #e63946;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-primary min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3 transition-colors duration-200">
+                <span class="text-2xl font-bold magazine-title">The Editorial</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../index.html" class="text-secondary hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#features" class="text-secondary hover:text-primary transition-colors transition-colors duration-200">专题</a>
+                <a href="#articles" class="text-secondary hover:text-primary transition-colors transition-colors duration-200">文章</a>
+                <a href="#about" class="text-secondary hover:text-primary transition-colors transition-colors duration-200">关于</a>
+            </div>
+            <button class="bg-primary text-white px-6 py-2 rounded font-medium hover:bg-dark transition-colors" cursor-pointer>
+                订阅
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <header class="pt-24 pb-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <span class="text-accent text-sm font-semibold tracking-widest uppercase">Editorial Design</span>
+                <h1 class="text-5xl md:text-6xl font-bold magazine-title mt-4 mb-6">编辑网格 / 杂志风格</h1>
+                <p class="text-secondary text-lg max-w-2xl mx-auto">经典编辑排版与现代网格系统的完美融合，适用于新闻网站、博客和数字杂志。</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 特色文章 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="relative overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800" alt="特色文章" class="w-full h-96 object-cover">
+                    <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 text-sm font-medium rounded">精选</div>
+                </div>
+                <div>
+                    <span class="text-accent text-sm font-semibold tracking-widest uppercase">封面故事</span>
+                    <h2 class="text-3xl md:text-4xl font-bold magazine-title mt-3 mb-4">数字时代的编辑设计演变</h2>
+                    <p class="text-secondary mb-6 leading-relaxed dropcap">
+                        从传统的纸质杂志到现代的数字媒体，编辑设计经历了巨大的变革。网格系统、排版层次和视觉节奏仍然是设计的核心要素。
+                    </p>
+                    <div class="flex items-center space-x-4 text-sm text-secondary">
+                        <span><i class="fa fa-user mr-2"></i>张明</span>
+                        <span><i class="fa fa-calendar mr-2"></i>2026年1月15日</span>
+                        <span><i class="fa fa-clock-o mr-2"></i>8分钟阅读</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 文章网格 -->
+    <section id="articles" class="py-16 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold magazine-title">最新文章</h2>
+                <a href="#" class="text-accent hover:text-red-700 transition-colors font-medium transition-colors duration-200">查看全部 <i class="fa fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <div class="editorial-grid">
+                <!-- 文章卡片 1 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">设计</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">排版艺术：字体的力量</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">探索字体设计如何影响阅读体验和品牌认知，以及如何选择合适的字体组合。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>李婷</span>
+                            <span>2026-01-14</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 2 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">创意</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">色彩心理学在设计中的应用</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">了解不同颜色如何影响用户情绪和行为，以及如何运用色彩理论提升设计效果。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>王浩</span>
+                            <span>2026-01-13</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 3 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">趋势</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">2026年网页设计趋势预测</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">从极简主义到大胆排版，探索即将主导网页设计领域的最新趋势。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>陈雪</span>
+                            <span>2026-01-12</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 4 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">技术</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">响应式设计的最佳实践</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">学习如何创建在各种设备上都能完美展示的网站，提升用户体验。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>刘强</span>
+                            <span>2026-01-11</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 5 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">案例</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">品牌重塑的成功案例分析</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">深入分析知名品牌如何通过设计重塑提升市场竞争力和用户认知。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>赵敏</span>
+                            <span>2026-01-10</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 6 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">工具</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">设计师必备的工具清单</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">从原型设计到协作工具，盘点2026年最值得设计师使用的工具。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>孙伟</span>
+                            <span>2026-01-09</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计原则展示 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold magazine-title mb-4">编辑设计原则</h2>
+                <p class="text-secondary">构建专业杂志风格网站的核心要素</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-th-large text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">网格系统</h3>
+                    <p class="text-secondary">使用12列网格创建一致的布局和视觉层次</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-font text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">字体层次</h3>
+                    <p class="text-secondary">衬线体与无衬线体的搭配创造视觉对比</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-image text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">视觉节奏</h3>
+                    <p class="text-secondary">图片与文字的平衡创造舒适的阅读体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold magazine-title mb-4">订阅我们的周刊</h2>
+            <p class="text-gray-300 mb-8 max-w-xl mx-auto">获取最新的设计趋势、技巧和灵感，直接发送到您的邮箱。</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <input type="email" placeholder="输入您的邮箱" class="flex-1 px-4 py-3 rounded text-primary">
+                <button class="bg-accent hover:bg-red-700 text-white px-6 py-3 rounded font-medium transition-colors" cursor-pointer>
+                    订阅
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-2xl font-bold magazine-title">The Editorial</span>
+                    <p class="text-gray-400 mt-2">专业编辑设计系统</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../index.html" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">返回导航站</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">关于</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">联系</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                &copy; 2026 The Editorial. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

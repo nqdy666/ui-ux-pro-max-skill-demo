@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时监控 - 运营，DevOps</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#059669',
+                        secondary: '#10B981',
+                        accent: '#34D399',
+                        dark: '#064E3B',
+                        light: '#ECFDF5'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-green-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3 transition-colors duration-200">
+                <div class="w-8 h-8 bg-gradient-to-br from-green-700 to-green-500 rounded flex items-center justify-center">
+                    <i class="fa fa-heartbeat text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">RealTime Monitor</span>
+            </a>
+            <div class="flex items-center space-x-2">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span class="text-sm text-green-600">系统正常</span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-dark">实时监控仪表盘</h1>
+                <p class="text-gray-600 text-sm mt-1">系统状态与性能监控</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-green-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">CPU使用率</p>
+                    <p class="text-2xl font-bold text-primary">42%</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div class="bg-primary h-2 rounded-full" style="width: 42%"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-green-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">内存使用</p>
+                    <p class="text-2xl font-bold text-secondary">68%</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div class="bg-secondary h-2 rounded-full" style="width: 68%"></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-green-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">网络流量</p>
+                    <p class="text-2xl font-bold text-accent">856 MB/s</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +23%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-green-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">活跃服务</p>
+                    <p class="text-2xl font-bold text-dark">24/24</p>
+                    <p class="text-xs text-green-600">全部正常</p>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-green-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">系统负载趋势</h3>
+                    <div class="h-48 flex items-end space-x-1">
+                        <div class="flex-1 bg-green-200 rounded-t" style="height: 35%"></div>
+                        <div class="flex-1 bg-green-300 rounded-t" style="height: 45%"></div>
+                        <div class="flex-1 bg-green-400 rounded-t" style="height: 40%"></div>
+                        <div class="flex-1 bg-green-500 rounded-t" style="height: 55%"></div>
+                        <div class="flex-1 bg-primary rounded-t" style="height: 48%"></div>
+                        <div class="flex-1 bg-green-500 rounded-t" style="height: 62%"></div>
+                        <div class="flex-1 bg-green-400 rounded-t" style="height: 58%"></div>
+                        <div class="flex-1 bg-green-300 rounded-t" style="height: 42%"></div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-green-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">服务状态</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span class="text-sm">Web服务器</span>
+                            </div>
+                            <span class="text-xs text-green-600">运行中</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span class="text-sm">数据库</span>
+                            </div>
+                            <span class="text-xs text-green-600">运行中</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-green-50 rounded">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span class="text-sm">缓存服务</span>
+                            </div>
+                            <span class="text-xs text-green-600">运行中</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-yellow-50 rounded">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                                <span class="text-sm">消息队列</span>
+                            </div>
+                            <span class="text-xs text-yellow-600">高负载</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-green-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-green-100">
+                    <h3 class="font-semibold text-dark">最近告警</h3>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-green-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">时间</th>
+                            <th class="px-4 py-2 text-left">级别</th>
+                            <th class="px-4 py-2 text-left">服务</th>
+                            <th class="px-4 py-2 text-left">消息</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-green-50">
+                            <td class="px-4 py-3">10:23:45</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">警告</span></td>
+                            <td class="px-4 py-3">消息队列</td>
+                            <td class="px-4 py-3">队列积压超过阈值</td>
+                        </tr>
+                        <tr class="border-b border-green-50">
+                            <td class="px-4 py-3">09:15:22</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">信息</span></td>
+                            <td class="px-4 py-3">自动扩容</td>
+                            <td class="px-4 py-3">成功扩容2个实例</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-green-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2026 RealTime Monitor. <a href="../index.html" class="text-primary hover:underline transition-colors duration-200">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>

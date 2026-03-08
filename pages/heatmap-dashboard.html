@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>热力图风格仪表盘 - 地理/行为数据</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#DC2626',
+                        secondary: '#F97316',
+                        accent: '#EF4444',
+                        dark: '#7F1D1D',
+                        light: '#FEF2F2'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .heatmap-cell { transition: all 0.3s ease; }
+        .heatmap-cell:hover { transform: scale(1.1); z-index: 10; }
+    </style>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-red-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3 transition-colors duration-200">
+                <div class="w-8 h-8 bg-gradient-to-br from-red-600 to-orange-500 rounded flex items-center justify-center">
+                    <i class="fa fa-map text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">HeatMap Analytics</span>
+            </a>
+            <div class="flex items-center space-x-3">
+                <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium" cursor-pointer>导出报告</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-center mb-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-dark">热力图分析仪表盘</h1>
+                    <p class="text-gray-600 text-sm mt-1">地理分布与行为热力数据</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="px-3 py-1 text-xs bg-primary text-white rounded" cursor-pointer>实时</button>
+                    <button class="px-3 py-1 text-xs border border-gray-300 rounded" cursor-pointer>24小时</button>
+                    <button class="px-3 py-1 text-xs border border-gray-300 rounded" cursor-pointer>7天</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-red-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">热点区域</p>
+                    <p class="text-2xl font-bold text-primary">47</p>
+                    <p class="text-xs text-green-600">+5 新增</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-red-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">活跃用户</p>
+                    <p class="text-2xl font-bold text-secondary">12.5K</p>
+                    <p class="text-xs text-green-600">+18.2%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-red-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">平均热度</p>
+                    <p class="text-2xl font-bold text-accent">78.5</p>
+                    <p class="text-xs text-red-600">-2.3%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-red-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">覆盖区域</p>
+                    <p class="text-2xl font-bold text-dark">156</p>
+                    <p class="text-xs text-green-600">+12</p>
+                </div>
+            </div>
+
+            <!-- Heatmap Visualization -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-red-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">地理热力分布</h3>
+                    <div class="grid grid-cols-10 gap-1 h-64">
+                        <!-- Simulated heatmap grid -->
+                        <script>
+                            document.write(Array(100).fill(0).map((_, i) => {
+                                const intensity = Math.random();
+                                let color;
+                                if (intensity > 0.8) color = 'bg-red-600';
+                                else if (intensity > 0.6) color = 'bg-red-500';
+                                else if (intensity > 0.4) color = 'bg-orange-400';
+                                else if (intensity > 0.2) color = 'bg-orange-300';
+                                else color = 'bg-red-100';
+                                return `<div class="heatmap-cell ${color} rounded-sm cursor-pointer" title="热度: ${(intensity * 100).toFixed(0)}%"></div>`;
+                            }).join(''));
+                        </script>
+                    </div>
+                    <div class="flex justify-between items-center mt-4 text-sm">
+                        <span class="text-gray-500">低</span>
+                        <div class="flex space-x-1">
+                            <div class="w-4 h-4 bg-red-100 rounded"></div>
+                            <div class="w-4 h-4 bg-orange-300 rounded"></div>
+                            <div class="w-4 h-4 bg-orange-400 rounded"></div>
+                            <div class="w-4 h-4 bg-red-500 rounded"></div>
+                            <div class="w-4 h-4 bg-red-600 rounded"></div>
+                        </div>
+                        <span class="text-gray-500">高</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-red-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">行为热力图</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-red-50 rounded">
+                            <span class="text-sm">首页访问</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-full h-full bg-red-600 rounded-full"></div>
+                                </div>
+                                <span class="text-sm font-semibold">100%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-orange-50 rounded">
+                            <span class="text-sm">产品页</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-4/5 h-full bg-orange-500 rounded-full"></div>
+                                </div>
+                                <span class="text-sm font-semibold">78%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-orange-50 rounded">
+                            <span class="text-sm">购物车</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-3/5 h-full bg-orange-400 rounded-full"></div>
+                                </div>
+                                <span class="text-sm font-semibold">45%</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-red-50 rounded">
+                            <span class="text-sm">结算页</span>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-32 h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="w-2/5 h-full bg-red-400 rounded-full"></div>
+                                </div>
+                                <span class="text-sm font-semibold">32%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-red-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-red-100">
+                    <h3 class="font-semibold text-dark">热点区域详情</h3>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-red-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">区域</th>
+                            <th class="px-4 py-2 text-left">热度指数</th>
+                            <th class="px-4 py-2 text-left">访问量</th>
+                            <th class="px-4 py-2 text-left">趋势</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-red-50">
+                            <td class="px-4 py-3">北京市朝阳区</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-red-600 text-white rounded text-xs">98.5</span></td>
+                            <td class="px-4 py-3">45,231</td>
+                            <td class="px-4 py-3 text-green-600"><i class="fa fa-arrow-up"></i> +12%</td>
+                        </tr>
+                        <tr class="border-b border-red-50">
+                            <td class="px-4 py-3">上海市浦东新区</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-red-500 text-white rounded text-xs">87.3</span></td>
+                            <td class="px-4 py-3">38,945</td>
+                            <td class="px-4 py-3 text-green-600"><i class="fa fa-arrow-up"></i> +8%</td>
+                        </tr>
+                        <tr class="border-b border-red-50">
+                            <td class="px-4 py-3">深圳市南山区</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-orange-500 text-white rounded text-xs">76.8</span></td>
+                            <td class="px-4 py-3">32,156</td>
+                            <td class="px-4 py-3 text-red-600"><i class="fa fa-arrow-down"></i> -3%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-red-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2026 HeatMap Analytics. <a href="../index.html" class="text-primary hover:underline transition-colors duration-200">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>

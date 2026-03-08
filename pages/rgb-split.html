@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色差 / RGB 分裂 - 音乐平台、游戏、科技</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff00ff',
+                        secondary: '#00ffff',
+                        accent: '#ffff00',
+                        dark: '#0a0a0a',
+                        light: '#f8f9fa'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .rgb-split {
+                position: relative;
+                display: inline-block;
+            }
+            .rgb-split::before {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: #ff00ff;
+                z-index: -1;
+                transform: translate(-3px, 0);
+                animation: splitAnimation 3s ease-in-out infinite;
+            }
+            .rgb-split::after {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: #00ffff;
+                z-index: -2;
+                transform: translate(3px, 0);
+                animation: splitAnimation 3s ease-in-out infinite reverse;
+            }
+            @keyframes splitAnimation {
+                0%, 100% { transform: translate(-2px, 0); }
+                50% { transform: translate(-4px, 0); }
+            }
+            .glitch-effect {
+                position: relative;
+            }
+            .glitch-effect:hover {
+                animation: glitch 0.3s ease-in-out;
+            }
+            @keyframes glitch {
+                0% { transform: translate(0); }
+                20% { transform: translate(-2px, 2px); }
+                40% { transform: translate(-2px, -2px); }
+                60% { transform: translate(2px, 2px); }
+                80% { transform: translate(2px, -2px); }
+                100% { transform: translate(0); }
+            }
+            .neon-border {
+                box-shadow: 
+                    0 0 5px #ff00ff,
+                    0 0 10px #ff00ff,
+                    0 0 20px #ff00ff,
+                    inset 0 0 5px rgba(255, 0, 255, 0.1);
+            }
+            .cyber-grid {
+                background-image: 
+                    linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+                background-size: 50px 50px;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-dark text-light min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/90 backdrop-blur-md border-b border-primary/30">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3 transition-colors duration-200">
+                <span class="text-2xl font-bold rgb-split" data-text="RGB-SPLIT">RGB-SPLIT</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../index.html" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#features" class="text-gray-400 hover:text-secondary transition-colors transition-colors duration-200">特性</a>
+                <a href="#gallery" class="text-gray-400 hover:text-accent transition-colors transition-colors duration-200">画廊</a>
+                <a href="#about" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">关于</a>
+            </div>
+            <button class="bg-primary/20 border border-primary text-primary px-6 py-2 rounded font-medium hover:bg-primary/30 transition-colors neon-border" cursor-pointer>
+                开始体验
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="relative min-h-screen flex items-center justify-center cyber-grid overflow-hidden">
+        <!-- 背景效果 -->
+        <div class="absolute inset-0 bg-gradient-to-b from-dark via-dark to-primary/10"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="mb-8">
+                <span class="inline-block px-4 py-2 bg-primary/20 border border-primary/50 rounded text-primary text-sm font-medium">
+                    <i class="fa fa-bolt mr-2"></i>赛博朋克美学
+                </span>
+            </div>
+            <h1 class="text-6xl md:text-8xl font-bold mb-6">
+                <span class="rgb-split" data-text="色差">色差</span>
+                <br>
+                <span class="text-white">RGB 分裂</span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                受赛博朋克和故障艺术启发，RGB分裂效果为音乐平台、游戏和科技产品带来独特的视觉冲击。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="bg-primary text-white px-8 py-4 rounded font-semibold text-lg hover:bg-primary/80 transition-colors neon-border glitch-effect" cursor-pointer>
+                    <i class="fa fa-play mr-2"></i>立即体验
+                </button>
+                <button class="bg-secondary/20 border border-secondary text-secondary px-8 py-4 rounded font-semibold text-lg hover:bg-secondary/30 transition-colors" cursor-pointer>
+                    <i class="fa fa-code mr-2"></i>查看代码
+                </button>
+            </div>
+        </div>
+
+        <!-- 装饰元素 -->
+        <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dark to-transparent"></div>
+    </section>
+
+    <!-- 特性展示 -->
+    <section id="features" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">
+                    <span class="rgb-split" data-text="视觉效果">视觉效果</span>
+                </h2>
+                <p class="text-gray-400">探索RGB分裂设计的独特魅力</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-dark/50 border border-primary/30 rounded-xl p-8 hover:border-primary transition-colors glitch-effect">
+                    <div class="w-16 h-16 bg-primary/20 rounded-lg flex items-center justify-center mb-6 neon-border">
+                        <i class="fa fa-eye text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">色差效果</h3>
+                    <p class="text-gray-400">模拟RGB通道分离，创造独特的视觉错位效果</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-secondary/30 rounded-xl p-8 hover:border-secondary transition-colors glitch-effect">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-lg flex items-center justify-center mb-6" style="box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);">
+                        <i class="fa fa-bolt text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">故障动画</h3>
+                    <p class="text-gray-400">动态故障效果，增强科技感和未来感</p>
+                </div>
+                
+                <div class="bg-dark/50 border border-accent/30 rounded-xl p-8 hover:border-accent transition-colors glitch-effect">
+                    <div class="w-16 h-16 bg-accent/20 rounded-lg flex items-center justify-center mb-6" style="box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);">
+                        <i class="fa fa-lightbulb-o text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-3">霓虹光效</h3>
+                    <p class="text-gray-400">霓虹边框和发光效果，营造赛博朋克氛围</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 画廊展示 -->
+    <section id="gallery" class="py-20 cyber-grid">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-white">应用展示</h2>
+                <p class="text-gray-400">RGB分裂效果在不同场景中的应用</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="relative group overflow-hidden rounded-xl border border-primary/30">
+                    <div class="h-64 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                        <i class="fa fa-music text-6xl text-primary opacity-50"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-dark/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="rgb-split text-2xl font-bold" data-text="音乐平台">音乐平台</span>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-xl border border-secondary/30">
+                    <div class="h-64 bg-gradient-to-br from-secondary/20 to-accent/20 flex items-center justify-center">
+                        <i class="fa fa-gamepad text-6xl text-secondary opacity-50"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-dark/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="rgb-split text-2xl font-bold" data-text="游戏界面">游戏界面</span>
+                    </div>
+                </div>
+                
+                <div class="relative group overflow-hidden rounded-xl border border-accent/30">
+                    <div class="h-64 bg-gradient-to-br from-accent/20 to-primary/20 flex items-center justify-center">
+                        <i class="fa fa-microchip text-6xl text-accent opacity-50"></i>
+                    </div>
+                    <div class="absolute inset-0 bg-dark/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span class="rgb-split text-2xl font-bold" data-text="科技产品">科技产品</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术说明 -->
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-center">
+                    <span class="rgb-split" data-text="实现原理">实现原理</span>
+                </h2>
+                <div class="space-y-6">
+                    <div class="bg-dark/50 border border-gray-700 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-primary mb-2">1. CSS伪元素</h3>
+                        <p class="text-gray-400">使用 ::before 和 ::after 伪元素创建RGB通道分离效果</p>
+                    </div>
+                    <div class="bg-dark/50 border border-gray-700 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-secondary mb-2">2. 动画关键帧</h3>
+                        <p class="text-gray-400">通过CSS动画实现动态的色差偏移效果</p>
+                    </div>
+                    <div class="bg-dark/50 border border-gray-700 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-accent mb-2">3. 混合模式</h3>
+                        <p class="text-gray-400">利用mix-blend-mode增强颜色叠加效果</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="py-20 cyber-grid">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">
+                <span class="rgb-split" data-text="开始使用">开始使用</span>
+            </h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">将RGB分裂效果应用到您的项目中，创造独特的视觉体验</p>
+            <button class="bg-primary text-white px-10 py-4 rounded font-semibold text-lg hover:bg-primary/80 transition-colors neon-border glitch-effect" cursor-pointer>
+                获取代码
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark border-t border-gray-800 py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-2xl font-bold rgb-split" data-text="RGB-SPLIT">RGB-SPLIT</span>
+                    <p class="text-gray-500 mt-2">赛博朋克设计风格系统</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../index.html" class="text-gray-500 hover:text-primary transition-colors transition-colors duration-200">返回导航站</a>
+                    <a href="#" class="text-gray-500 hover:text-secondary transition-colors transition-colors duration-200">文档</a>
+                    <a href="#" class="text-gray-500 hover:text-accent transition-colors transition-colors duration-200">GitHub</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-600 text-sm">
+                &copy; 2026 RGB-SPLIT. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

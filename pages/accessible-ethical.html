@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessHub - 无障碍与道德设计平台</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0066cc',
+                        secondary: '#339933',
+                        accent: '#ff9900',
+                        dark: '#333333',
+                        light: '#ffffff',
+                        gray: {
+                            100: '#f5f5f5',
+                            200: '#e0e0e0',
+                            300: '#cccccc',
+                            400: '#999999',
+                            500: '#666666'
+                        }
+                    },
+                    fontFamily: {
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f5f5f5;
+            color: #333333;
+        }
+        .accessible-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        .accessible-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+        }
+        .btn-secondary {
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(51, 153, 51, 0.3);
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #0066cc;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #0066cc;
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            transition: top 0.3s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 跳过导航链接（无障碍功能） -->
+    <a href="#main-content" class="skip-link transition-colors duration-200">跳转到主要内容</a>
+
+    <!-- 导航栏 -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold text-primary">AccessHub</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link text-primary font-medium transition-colors duration-200">首页</a>
+                    <a href="#services" class="nav-link text-gray-500 font-medium transition-colors duration-200">服务</a>
+                    <a href="#resources" class="nav-link text-gray-500 font-medium transition-colors duration-200">资源</a>
+                    <a href="#about" class="nav-link text-gray-500 font-medium transition-colors duration-200">关于</a>
+                    <a href="#contact" class="nav-link text-gray-500 font-medium transition-colors duration-200">联系</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-500 hover:text-primary transition-colors" cursor-pointer aria-label="搜索">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <button class="btn-primary px-4 py-2 bg-primary text-white font-bold rounded-lg" cursor-pointer>
+                        登录
+                    </button>
+                    <div class="md:hidden">
+                        <button class="text-gray-500 hover:text-primary transition-colors" cursor-pointer aria-label="菜单">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main id="main-content" class="pt-8">
+        <!-- 英雄区域 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8 bg-primary text-white">
+            <div class="max-w-7xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">无障碍设计，道德先行</h2>
+                <p class="text-xl mb-8 max-w-3xl mx-auto">我们致力于创建包容、无障碍的数字体验，确保所有人都能平等访问信息和服务</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary px-8 py-3 bg-white text-primary font-bold rounded-lg" cursor-pointer>
+                        了解更多
+                    </button>
+                    <button class="btn-secondary px-8 py-3 bg-transparent text-white font-bold rounded-lg border border-white" cursor-pointer>
+                        联系我们
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心价值 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">我们的核心价值</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="accessible-card p-6 text-center">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-universal-access text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">无障碍设计</h3>
+                        <p class="text-gray-500">确保所有用户，包括残障人士，都能平等访问和使用我们的服务</p>
+                    </div>
+                    <div class="accessible-card p-6 text-center">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-balance-scale text-2xl text-secondary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">道德实践</h3>
+                        <p class="text-gray-500">遵循最高的道德标准，保护用户隐私，尊重用户权利</p>
+                    </div>
+                    <div class="accessible-card p-6 text-center">
+                        <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-users text-2xl text-accent"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">包容性</h3>
+                        <p class="text-gray-500">拥抱多样性，为不同背景和需求的用户创造友好的体验</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务 -->
+        <section id="services" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">我们的服务</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">无障碍评估</h3>
+                        <p class="text-gray-500 mb-4">对网站和应用进行全面的无障碍评估，确保符合WCAG标准</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>WCAG 2.1 合规性检查</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>屏幕阅读器兼容性测试</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>键盘导航测试</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary font-medium hover:underline transition-colors duration-200">了解更多 →</a>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">无障碍设计</h3>
+                        <p class="text-gray-500 mb-4">创建既美观又无障碍的用户界面，满足所有用户的需求</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>包容性设计原则</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>色彩对比度优化</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>响应式设计</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary font-medium hover:underline transition-colors duration-200">了解更多 →</a>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">培训与咨询</h3>
+                        <p class="text-gray-500 mb-4">为组织提供无障碍设计和道德实践的培训和咨询服务</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>无障碍设计培训</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>道德设计工作坊</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>政策制定咨询</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary font-medium hover:underline transition-colors duration-200">了解更多 →</a>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">政府服务</h3>
+                        <p class="text-gray-500 mb-4">帮助政府机构创建无障碍、透明的数字服务</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>政务网站无障碍改造</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>电子政务系统优化</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>公众服务可访问性</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary font-medium hover:underline transition-colors duration-200">了解更多 →</a>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">医疗保健</h3>
+                        <p class="text-gray-500 mb-4">为医疗机构提供无障碍的数字解决方案</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>医疗网站无障碍设计</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>患者门户优化</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>医疗信息可访问性</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary font-medium hover:underline transition-colors duration-200">了解更多 →</a>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-3 text-primary">教育服务</h3>
+                        <p class="text-gray-500 mb-4">为教育机构创建包容、无障碍的学习环境</p>
+                        <ul class="space-y-2 mb-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>教育平台无障碍设计</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>在线课程可访问性</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-check text-secondary mt-1 mr-3"></i>
+                                <span>教育资源优化</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="text-primary font-medium hover:underline transition-colors duration-200">了解更多 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 资源 -->
+        <section id="resources" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">资源中心</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-primary">无障碍指南</h3>
+                        <p class="text-gray-500 mb-6">了解如何创建符合WCAG标准的无障碍网站和应用</p>
+                        <div class="space-y-4">
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors transition-colors duration-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">WCAG 2.1 快速指南</span>
+                                    <i class="fa fa-download text-primary"></i>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2">了解WCAG 2.1的核心原则和要求</p>
+                            </a>
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors transition-colors duration-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">屏幕阅读器兼容性测试</span>
+                                    <i class="fa fa-download text-primary"></i>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2">如何测试网站在屏幕阅读器中的表现</p>
+                            </a>
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors transition-colors duration-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">色彩对比度指南</span>
+                                    <i class="fa fa-download text-primary"></i>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2">确保您的设计对视力障碍用户友好</p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-4 text-primary">道德设计资源</h3>
+                        <p class="text-gray-500 mb-6">学习如何在数字产品设计中遵循道德原则</p>
+                        <div class="space-y-4">
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors transition-colors duration-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">数字伦理设计指南</span>
+                                    <i class="fa fa-download text-primary"></i>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2">如何在设计中考虑伦理因素</p>
+                            </a>
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors transition-colors duration-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">用户隐私保护最佳实践</span>
+                                    <i class="fa fa-download text-primary"></i>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2">如何在设计中保护用户隐私</p>
+                            </a>
+                            <a href="#" class="block p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors transition-colors duration-200">
+                                <div class="flex justify-between items-center">
+                                    <span class="font-medium">包容性设计案例研究</span>
+                                    <i class="fa fa-download text-primary"></i>
+                                </div>
+                                <p class="text-sm text-gray-500 mt-2">成功的包容性设计案例分析</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">关于我们</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">我们的使命</h3>
+                        <p class="text-gray-500 mb-6">AccessHub 致力于通过无障碍设计和道德实践，创造一个更加包容、公平的数字世界。我们相信，技术应该服务于所有人，无论其能力如何。</p>
+                        <p class="text-gray-500 mb-8">我们的团队由无障碍专家、设计师、开发者和伦理学家组成，共同致力于推动数字包容性的发展。我们与政府机构、医疗机构和教育机构合作，帮助他们创建更加无障碍、道德的数字服务。</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">50+</div>
+                                <div class="text-gray-500 text-sm">完成项目</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-secondary mb-2">20+</div>
+                                <div class="text-gray-500 text-sm">合作伙伴</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-accent mb-2">10+</div>
+                                <div class="text-gray-500 text-sm">行业奖项</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accessible-card p-6">
+                        <h3 class="text-xl font-bold mb-4">我们的团队</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-user text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">张明</h4>
+                                    <p class="text-sm text-gray-500">创始人 & 无障碍专家</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-user text-secondary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">李华</h4>
+                                    <p class="text-sm text-gray-500">设计总监</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-user text-accent"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">王芳</h4>
+                                    <p class="text-sm text-gray-500">伦理顾问</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fa fa-user text-primary"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">赵强</h4>
+                                    <p class="text-sm text-gray-500">技术总监</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">联系我们</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="accessible-card p-6">
+                        <h3 class="text-2xl font-bold mb-6">发送消息</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">姓名</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">邮箱</label>
+                                <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">主题</label>
+                                <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                    <option>咨询服务</option>
+                                    <option>无障碍评估</option>
+                                    <option>培训需求</option>
+                                    <option>其他</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block font-medium mb-2">消息</label>
+                                <textarea rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-3 bg-primary text-white font-bold rounded-lg" cursor-pointer>
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <div class="accessible-card p-6 mb-8">
+                            <h3 class="text-xl font-bold mb-4">联系方式</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fa fa-map-marker text-primary mt-1 mr-4"></i>
+                                    <span>北京市朝阳区建国路88号</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-phone text-primary mr-4"></i>
+                                    <span>+86 10 8888 8888</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-envelope text-primary mr-4"></i>
+                                    <span>contact@accesshub.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="accessible-card p-6">
+                            <h3 class="text-xl font-bold mb-4">工作时间</h3>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between">
+                                    <span>周一至周五</span>
+                                    <span>9:00 - 18:00</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>周六</span>
+                                    <span>10:00 - 16:00</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>周日</span>
+                                    <span>休息</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold text-primary mb-4">AccessHub</h4>
+                    <p class="text-gray-400 mb-4">致力于无障碍设计和道德实践的先驱</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">服务</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">无障碍评估</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">无障碍设计</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">培训与咨询</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">政府服务</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">资源</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">无障碍指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">道德设计资源</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">案例研究</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">博客</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">公司</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">关于我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">团队</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">联系我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2026 AccessHub. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简主义与瑞士风格 - 企业应用、仪表盘、文档</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #000000;
+            --secondary: #666666;
+            --accent: #ff3b30;
+            --background: #ffffff;
+            --surface: #f5f5f5;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--primary);
+            background-color: var(--background);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .header {
+            padding: 3rem 0;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--secondary);
+            transition: color 0.2s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 8rem 0;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 500;
+            border-radius: 2px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 6rem 0;
+        }
+        
+        .card {
+            padding: 2rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 2px;
+            transition: all 0.2s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .card-text {
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+        
+        .section {
+            padding: 6rem 0;
+            border-top: 1px solid #e5e5e5;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            letter-spacing: -0.03em;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .text-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .text-content p {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .image-container {
+            aspect-ratio: 16/9;
+            background-color: var(--surface);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .footer {
+            padding: 4rem 0;
+            border-top: 1px solid #e5e5e5;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <div class="logo">MINIMAL</div>
+            <nav class="nav">
+                <a href="#" class="nav-link transition-colors duration-200">首页</a>
+                <a href="#" class="nav-link transition-colors duration-200">产品</a>
+                <a href="#" class="nav-link transition-colors duration-200">服务</a>
+                <a href="#" class="nav-link transition-colors duration-200">关于</a>
+                <a href="#" class="nav-link transition-colors duration-200">联系</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">极简主义设计</h1>
+            <p class="hero-subtitle">以简洁、清晰和功能性为核心的瑞士设计理念，为企业应用、仪表盘和文档带来专业与优雅。</p>
+            <a href="#" class="cta-button transition-colors duration-200">
+                <span>了解更多</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- 特性区域 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">核心原则</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-ruler-combined"></i>
+                    </div>
+                    <h3 class="card-title">网格系统</h3>
+                    <p class="card-text">基于数学比例的网格布局，确保视觉上的和谐与平衡，使内容组织更加清晰。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3 class="card-title">排版层次</h3>
+                    <p class="card-text">清晰的字体层次结构，通过字重、大小和间距创建视觉引导，提升内容可读性。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">色彩克制</h3>
+                    <p class="card-text">有限的色彩 palette，通常以黑白为主，辅以少量强调色，营造专业而现代的视觉效果。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3 class="card-title">功能优先</h3>
+                    <p class="card-text">设计服务于功能，去除不必要的装饰元素，确保用户体验的简洁与高效。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="card-title">视觉平衡</h3>
+                    <p class="card-text">通过留白、对齐和比例创造视觉平衡，使界面既简洁又富有层次感。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="card-title">响应式设计</h3>
+                    <p class="card-text">在不同设备上保持一致的设计语言和用户体验，确保界面的适应性。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 应用场景 -->
+    <section class="section" style="background-color: var(--surface);">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="grid-2">
+                <div class="text-content">
+                    <h3>企业应用</h3>
+                    <p>极简主义设计为企业应用提供了清晰、专业的界面，减少认知负担，提高工作效率。通过合理的信息架构和视觉层次，使复杂的企业系统变得易于使用。</p>
+                    <p>适用于CRM、ERP、项目管理等企业级应用，帮助员工快速掌握系统操作，提升工作 productivity。</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimalist%20enterprise%20dashboard%20with%20clean%20layout%20and%20swiss%20design%20principles&image_size=landscape_16_9" alt="企业应用仪表盘">
+                </div>
+            </div>
+            
+            <div class="grid-2" style="margin-top: 4rem;">
+                <div class="image-container">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimalist%20data%20dashboard%20with%20charts%20and%20graphs%20in%20swiss%20design%20style&image_size=landscape_16_9" alt="数据仪表盘">
+                </div>
+                <div class="text-content">
+                    <h3>数据仪表盘</h3>
+                    <p>瑞士风格的仪表盘设计注重数据的清晰呈现，通过简洁的图表和布局，使数据洞察一目了然。去除视觉噪音，让用户专注于数据本身。</p>
+                    <p>适用于业务智能、数据分析等场景，帮助决策者快速理解数据趋势，做出 informed decisions。</p>
+                </div>
+            </div>
+            
+            <div class="grid-2" style="margin-top: 4rem;">
+                <div class="text-content">
+                    <h3>文档系统</h3>
+                    <p>极简主义设计的文档系统提供了干净、 distraction-free 的阅读体验，通过合理的排版和层次结构，提高文档的可读性和信息传递效率。</p>
+                    <p>适用于知识库、帮助中心、技术文档等场景，使用户能够快速找到并理解所需信息。</p>
+                </div>
+                <div class="image-container">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimalist%20documentation%20system%20with%20clean%20typography%20and%20layout&image_size=landscape_16_9" alt="文档系统">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 设计示例 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">设计示例</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="image-container" style="margin-bottom: 1.5rem;">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimalist%20login%20page%20with%20swiss%20design%20principles&image_size=square" alt="登录页面">
+                    </div>
+                    <h3 class="card-title">登录页面</h3>
+                    <p class="card-text">简洁的登录界面，注重功能性和用户体验，减少不必要的视觉元素。</p>
+                </div>
+                <div class="card">
+                    <div class="image-container" style="margin-bottom: 1.5rem;">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimalist%20settings%20page%20with%20clean%20layout&image_size=square" alt="设置页面">
+                    </div>
+                    <h3 class="card-title">设置页面</h3>
+                    <p class="card-text">有序的设置选项排列，通过视觉层次和分组提高用户操作效率。</p>
+                </div>
+                <div class="card">
+                    <div class="image-container" style="margin-bottom: 1.5rem;">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=minimalist%20user%20profile%20page%20with%20swiss%20design&image_size=square" alt="用户资料页面">
+                    </div>
+                    <h3 class="card-title">用户资料</h3>
+                    <p class="card-text">清晰的个人信息展示，注重数据的有条理呈现和视觉平衡。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 极简主义设计工作室. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>

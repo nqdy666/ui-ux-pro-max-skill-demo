@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动力排版 - 英雄版块，营销网站</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff3e3e',
+                        secondary: '#3e3eff',
+                        accent: '#ff3eff',
+                        dark: '#121212',
+                        light: '#ffffff'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .hero-section {
+                @apply min-h-screen flex items-center justify-center relative overflow-hidden;
+            }
+            .hero-title {
+                @apply text-5xl md:text-7xl lg:text-9xl font-black mb-6 leading-none tracking-tighter;
+            }
+            .hero-subtitle {
+                @apply text-xl md:text-2xl font-light mb-8 max-w-2xl;
+            }
+            .btn-primary {
+                @apply bg-primary text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg transform hover:-translate-y-1;
+            }
+            .btn-secondary {
+                @apply border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-lg transform hover:-translate-y-1;
+            }
+            .typography-card {
+                @apply bg-white dark:bg-slate-800 rounded-xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl;
+            }
+            .text-gradient {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+            }
+            .animated-text {
+                @apply relative inline-block;
+            }
+            .animated-text::after {
+                content: '';
+                @apply absolute bottom-0 left-0 w-0 h-1 bg-primary transition-all duration-500;
+            }
+            .animated-text:hover::after {
+                @apply w-full;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100 font-inter min-h-screen">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <h1 class="text-xl font-bold">TYPO</h1>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#home" class="font-medium hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#features" class="font-medium hover:text-primary transition-colors transition-colors duration-200">特性</a>
+                <a href="#examples" class="font-medium hover:text-primary transition-colors transition-colors duration-200">示例</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors transition-colors duration-200">联系</a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" cursor-pointer>
+                    <i class="fa fa-moon-o dark:hidden text-slate-600"></i>
+                    <i class="fa fa-sun-o hidden dark:block text-slate-300"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="hero-title text-gradient">
+                <span class="block">动力</span>
+                <span class="block">排版</span>
+            </h2>
+            <p class="hero-subtitle text-slate-600 dark:text-slate-400">通过动态的排版设计，创造出强烈的视觉冲击力和情感共鸣</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#examples" class="btn-primary transition-colors duration-200">查看示例</a>
+                <a href="#features" class="btn-secondary transition-colors duration-200">了解特性</a>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fa fa-chevron-down text-slate-400"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-4">
+        <div class="container mx-auto">
+            <h3 class="text-4xl font-bold mb-16 text-center">排版特性</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="typography-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-type"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">动态字体大小</h4>
+                    <p class="text-slate-600 dark:text-slate-400">根据屏幕尺寸和内容重要性自动调整字体大小，确保最佳的阅读体验</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="typography-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-paint-brush"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">渐变文字</h4>
+                    <p class="text-slate-600 dark:text-slate-400">使用渐变色文字创造出独特的视觉效果，增强品牌识别度</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="typography-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-play-circle"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">文字动画</h4>
+                    <p class="text-slate-600 dark:text-slate-400">添加微妙的文字动画效果，提升用户体验和页面互动性</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="typography-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-align-left"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">响应式排版</h4>
+                    <p class="text-slate-600 dark:text-slate-400">在不同设备上保持一致的排版体验，确保内容的可读性</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="typography-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-pencil"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">自定义字体</h4>
+                    <p class="text-slate-600 dark:text-slate-400">支持多种字体和字重，满足不同设计风格的需求</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="typography-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">创意排版</h4>
+                    <p class="text-slate-600 dark:text-slate-400">突破传统排版限制，创造出独特的视觉效果和品牌识别</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="py-24 px-4 bg-slate-100 dark:bg-slate-800">
+        <div class="container mx-auto">
+            <h3 class="text-4xl font-bold mb-16 text-center">排版示例</h3>
+            <div class="space-y-24">
+                <!-- Example 1 -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h4 class="text-3xl font-bold mb-6 animated-text">英雄版块排版</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">使用大字体和粗体字重，创造出强烈的视觉冲击力，吸引用户注意力</p>
+                        <p class="text-slate-600 dark:text-slate-400">适合用于网站首页、产品落地页等需要突出核心信息的场景</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg">
+                        <h5 class="text-4xl font-black mb-4">欢迎来到<br>动力排版</h5>
+                        <p class="text-xl font-light text-slate-600 dark:text-slate-400">创造令人难忘的视觉体验</p>
+                    </div>
+                </div>
+
+                <!-- Example 2 -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg order-2 lg:order-1">
+                        <h5 class="text-2xl font-bold mb-4">产品特性</h5>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <span class="text-primary mr-3 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>响应式设计，适配各种设备</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-3 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>动态文字效果，提升用户体验</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-primary mr-3 mt-1"><i class="fa fa-check-circle"></i></span>
+                                <span>自定义字体和字重，满足不同需求</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="order-1 lg:order-2">
+                        <h4 class="text-3xl font-bold mb-6 animated-text">列表排版</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">使用清晰的层次结构和适当的间距，提高内容的可读性</p>
+                        <p class="text-slate-600 dark:text-slate-400">适合用于产品特性、服务介绍等需要列出多项内容的场景</p>
+                    </div>
+                </div>
+
+                <!-- Example 3 -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h4 class="text-3xl font-bold mb-6 animated-text">引用排版</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">使用特殊的排版样式，突出重要的引用内容，增强说服力</p>
+                        <p class="text-slate-600 dark:text-slate-400">适合用于客户 testimonial、名人名言等需要强调的内容</p>
+                    </div>
+                    <div class="bg-white dark:bg-slate-700 p-8 rounded-xl shadow-lg">
+                        <div class="text-6xl text-primary/30 mb-4">"</div>
+                        <p class="text-xl font-light italic mb-6">动力排版不仅是一种设计技术，更是一种艺术表达，能够创造出令人难忘的视觉体验。</p>
+                        <p class="font-semibold">— 设计专家</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h3 class="text-4xl font-bold mb-12 text-center">联系我们</h3>
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">姓名</label>
+                        <input type="text" class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-800">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">邮箱</label>
+                        <input type="email" class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-800">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">消息</label>
+                    <textarea class="w-full px-4 py-3 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-800 h-32"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn-primary" cursor-pointer>发送消息</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 bg-slate-900 text-white">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-xl font-bold">TYPO</h2>
+                    <p class="text-slate-400 mt-2">动力排版设计</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors transition-colors duration-200">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors transition-colors duration-200">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors transition-colors duration-200">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-slate-400 hover:text-white transition-colors transition-colors duration-200">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-800 text-center">
+                <p class="text-slate-400">© 2026 动力排版设计</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // Animate hero title on load
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero-title');
+            heroTitle.classList.add('opacity-100');
+            heroTitle.classList.remove('opacity-0');
+        });
+    </script>
+</body>
+</html>

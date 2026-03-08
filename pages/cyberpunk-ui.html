@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>赛博朋克用户界面 - 游戏、科技产品、加密应用</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00FFFF',
+                        secondary: '#FF00FF',
+                        accent: '#FF0080',
+                        dark: '#0A0A0A',
+                        light: '#1A1A1A'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'scan': 'scan 3s linear infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { textShadow: '0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 15px #00FFFF, 0 0 20px #00FFFF' },
+                            '100%': { textShadow: '0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 30px #00FFFF, 0 0 40px #00FFFF' }
+                        },
+                        scan: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .cyber-card {
+                @apply bg-light rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-6 border border-primary/30;
+            }
+            .cyber-button {
+                @apply px-6 py-3 bg-primary/20 text-primary rounded-lg hover:bg-primary/30 transition-colors border border-primary/50;
+            }
+            .cyber-input {
+                @apply w-full px-4 py-3 bg-dark border border-primary/30 text-primary focus:outline-none focus:ring-2 focus:ring-primary;
+            }
+            .scan-line {
+                @apply absolute top-0 left-0 right-0 h-1 bg-primary/50 animate-scan;
+            }
+        }
+    </style>
+</head>
+<body class="bg-dark text-white font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-dark shadow-md border-b border-primary/30">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 transition-colors duration-200">
+                <i class="fa fa-bolt text-primary text-2xl"></i>
+                <span class="text-xl font-bold animate-glow">赛博朋克UI</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <button class="cyber-button" cursor-pointer>
+                    首页
+                </button>
+                <button class="px-4 py-2 border border-secondary/50 text-secondary rounded-lg hover:bg-secondary/10 transition-colors" cursor-pointer>
+                    <i class="fa fa-cog mr-1"></i> 设置
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="scan-line"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-glow">
+                    赛博朋克用户界面
+                </h1>
+                <p class="text-xl mb-8 text-primary">为游戏、科技产品和加密应用打造的未来感界面</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <button class="cyber-button" cursor-pointer>
+                        了解更多
+                    </button>
+                    <button class="px-6 py-3 border border-secondary/50 text-secondary rounded-lg hover:bg-secondary/10 transition-colors" cursor-pointer>
+                        查看示例
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-glow">核心设计原则</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="cyber-card">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-code text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-primary">霓虹色彩</h3>
+                    <p class="text-gray-400">使用明亮的霓虹色彩，创造未来感和科技感</p>
+                </div>
+                <div class="cyber-card">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-terminal text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-secondary">科技感元素</h3>
+                    <p class="text-gray-400">添加代码、数据流动和数字效果，增强科技感</p>
+                </div>
+                <div class="cyber-card">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-microchip text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-accent">未来主义布局</h3>
+                    <p class="text-gray-400">使用非传统布局和几何形状，创造未来感</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-glow">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-gamepad text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-primary">游戏</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">为赛博朋克风格的游戏打造沉浸式用户界面</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>游戏菜单</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>HUD界面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>游戏内UI元素</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-microchip text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-secondary">科技产品</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">为科技产品和未来设备打造前卫的用户界面</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>智能设备界面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>科技产品官网</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>未来感应用</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cyber-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-btc text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-accent">加密应用</h3>
+                    </div>
+                    <p class="text-gray-400 mb-4">为加密货币和区块链应用打造安全、现代的界面</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>加密钱包界面</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>区块链浏览器</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>加密交易平台</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 界面示例 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 animate-glow">界面示例</h2>
+            <div class="cyber-card max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold mb-6 text-primary">加密钱包界面</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-dark p-6 rounded-lg border border-primary/30">
+                        <h4 class="font-bold mb-4 text-primary">资产概览</h4>
+                        <div class="mb-4">
+                            <div class="text-gray-400 text-sm mb-1">总资产</div>
+                            <div class="text-2xl font-bold text-white">12.345 ETH</div>
+                            <div class="text-green-400 text-sm flex items-center mt-1">
+                                <i class="fa fa-arrow-up mr-1"></i> 2.5%
+                            </div>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">BTC</span>
+                                <span class="text-white">0.567</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">ETH</span>
+                                <span class="text-white">12.345</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-400">USDT</span>
+                                <span class="text-white">1,234.56</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-dark p-6 rounded-lg border border-secondary/30">
+                            <h4 class="font-bold mb-4 text-secondary">最近交易</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full mt-2 mr-2"></div>
+                                    <div>
+                                        <div class="font-medium text-white">接收 ETH</div>
+                                        <div class="text-sm text-gray-400">0.5 ETH • 10分钟前</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-2 h-2 bg-red-400 rounded-full mt-2 mr-2"></div>
+                                    <div>
+                                        <div class="font-medium text-white">发送 BTC</div>
+                                        <div class="text-sm text-gray-400">0.1 BTC • 1小时前</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-2 h-2 bg-green-400 rounded-full mt-2 mr-2"></div>
+                                    <div>
+                                        <div class="font-medium text-white">接收 USDT</div>
+                                        <div class="text-sm text-gray-400">100 USDT • 2小时前</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-dark p-6 rounded-lg border border-accent/30">
+                            <h4 class="font-bold mb-4 text-accent">快速操作</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button class="cyber-button" cursor-pointer>
+                                    <i class="fa fa-arrow-down mr-2"></i> 接收
+                                </button>
+                                <button class="cyber-button" cursor-pointer>
+                                    <i class="fa fa-arrow-up mr-2"></i> 发送
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-light py-12 border-t border-primary/30">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 animate-glow">赛博朋克UI</h3>
+                    <p class="text-gray-400">为游戏、科技产品和加密应用打造的未来感界面</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-primary">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">首页</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">设计指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">资源中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 text-secondary">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2 text-primary"></i>
+                            <span class="text-gray-400">contact@cyberpunkui.design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2 text-primary"></i>
+                            <span class="text-gray-400">+86 123 4567 8910</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-primary/30 text-center text-gray-400">
+                <p>&copy; 2026 赛博朋克UI. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

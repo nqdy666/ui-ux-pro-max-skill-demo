@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>触觉数字/可变形界面 - 现代移动应用，趣味品牌</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --light: #f9fafb;
+            --dark: #1f2937;
+            --surface: #f3f4f6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .header {
+            padding: 2rem 0;
+            background: linear-gradient(135deg, var(--light), var(--surface));
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--light), var(--surface));
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="20" fill="none" stroke="%236366f1" stroke-width="0.5" opacity="0.2"/></svg>');
+            background-size: 200px;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+        }
+        
+        .section {
+            padding: 6rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            padding: 2.5rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--surface), white);
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .card-text {
+            color: var(--dark);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .feature-section {
+            background: linear-gradient(135deg, var(--surface), var(--light));
+            padding: 6rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+        
+        .feature-text {
+            color: var(--dark);
+            font-size: 0.875rem;
+        }
+        
+        .haptic-demo {
+            padding: 6rem 0;
+        }
+        
+        .demo-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .haptic-button {
+            display: inline-block;
+            padding: 1.5rem 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+            cursor: pointer;
+        }
+        
+        .haptic-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+        }
+        
+        .haptic-button:active {
+            transform: scale(0.95);
+        }
+        
+        .showcase {
+            padding: 6rem 0;
+        }
+        
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .showcase-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .showcase-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+        
+        .showcase-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .showcase-item:hover .showcase-image img {
+            transform: scale(1.1);
+        }
+        
+        .showcase-content {
+            padding: 2rem;
+        }
+        
+        .showcase-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .showcase-text {
+            color: var(--dark);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            padding: 4rem 0;
+            background: var(--dark);
+            color: white;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <div class="logo">
+                <i class="fas fa-hand-sparkles logo-icon"></i>
+                <span>Haptic UI</span>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link transition-colors duration-200">首页</a>
+                <a href="#" class="nav-link transition-colors duration-200">关于</a>
+                <a href="#" class="nav-link transition-colors duration-200">服务</a>
+                <a href="#" class="nav-link transition-colors duration-200">案例</a>
+                <a href="#" class="nav-link transition-colors duration-200">联系</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">触觉数字<br>可变形界面</h1>
+                <p class="hero-subtitle">融合触觉反馈和可变形元素，为现代移动应用和趣味品牌创造沉浸式、互动性强的用户体验。</p>
+                <a href="#" class="cta-button transition-colors duration-200">
+                    <span>体验演示</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 核心特性 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">核心特性</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-hand-pointer"></i>
+                    </div>
+                    <h3 class="card-title">触觉反馈</h3>
+                    <p class="card-text">通过振动、压力感应等技术，为用户提供真实的触觉反馈，增强交互体验的沉浸感。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="card-title">可变形元素</h3>
+                    <p class="card-text">界面元素可以根据用户交互发生形状变化，创造动态、有趣的视觉体验。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="card-title">移动优化</h3>
+                    <p class="card-text">专为移动设备设计，充分利用触摸屏的交互特性，提供直观、自然的操作体验。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="card-title">游戏化元素</h3>
+                    <p class="card-text">融入游戏化设计元素，增加用户参与度和趣味性，提升品牌互动体验。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="card-title">视觉反馈</h3>
+                    <p class="card-text">结合动画和视觉效果，为用户提供即时、清晰的操作反馈。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="card-title">直觉交互</h3>
+                    <p class="card-text">设计符合用户直觉的交互方式，减少学习成本，提高操作效率。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 应用场景 -->
+    <section class="feature-section">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="feature-title">移动应用</h3>
+                    <p class="feature-text">为现代移动应用设计触觉反馈和可变形界面，提升用户体验和参与度。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">游戏应用</h3>
+                    <p class="feature-text">为游戏应用设计沉浸式的触觉反馈和动态界面元素，增强游戏体验。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3 class="feature-title">趣味品牌</h3>
+                    <p class="feature-text">为年轻、时尚的品牌设计互动性强的界面，提升品牌形象和用户粘性。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="feature-title">音乐应用</h3>
+                    <p class="feature-text">为音乐应用设计与音乐节奏同步的触觉反馈和动态界面元素。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-fitness-center"></i>
+                    </div>
+                    <h3 class="feature-title">健康应用</h3>
+                    <p class="feature-text">为健康和健身应用设计直观的触觉反馈，增强用户的运动体验。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="feature-title">AR/VR应用</h3>
+                    <p class="feature-text">为增强现实和虚拟现实应用设计沉浸式的触觉反馈系统。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 触觉演示 -->
+    <section class="haptic-demo">
+        <div class="container">
+            <div class="demo-container">
+                <h2 class="demo-title">触觉反馈演示</h2>
+                <p style="margin-bottom: 2rem; color: var(--dark);">点击下方按钮体验触觉反馈效果</p>
+                <div class="haptic-button" onclick="this.style.transform = 'scale(0.95)'; setTimeout(() => this.style.transform = 'scale(1)', 150);">
+                    点击我体验触觉反馈
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 设计展示 -->
+    <section class="showcase">
+        <div class="container">
+            <h2 class="section-title">设计展示</h2>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=haptic%20deformable%20interface%20mobile%20app%20design%20with%20dynamic%20elements&image_size=landscape_4_3" alt="移动应用界面">
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">移动应用界面</h3>
+                        <p class="showcase-text">为现代移动应用设计的触觉反馈和可变形界面，提供直观、自然的用户体验。</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=haptic%20gaming%20interface%20with%20dynamic%20elements&image_size=landscape_4_3" alt="游戏应用界面">
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">游戏应用界面</h3>
+                        <p class="showcase-text">为游戏应用设计的沉浸式触觉反馈系统，增强游戏体验的真实感。</p>
+                    </div>
+                </div>
+                <div class="showcase-item">
+                    <div class="showcase-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=fun%20brand%20haptic%20interface%20with%20deformable%20elements&image_size=landscape_4_3" alt="趣味品牌界面">
+                    </div>
+                    <div class="showcase-content">
+                        <h3 class="showcase-title">趣味品牌界面</h3>
+                        <p class="showcase-text">为年轻、时尚品牌设计的互动性强的界面，提升品牌形象和用户粘性。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Haptic UI</h3>
+                    <p style="color: rgba(255, 255, 255, 0.8); font-size: 0.875rem; margin-bottom: 1.5rem;">专注于触觉数字/可变形界面设计，为现代移动应用和趣味品牌创造沉浸式、互动性强的用户体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>服务</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">界面设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">移动应用设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">游戏界面设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">品牌互动设计</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">我们的故事</a>
+                        <a href="#" class="footer-link transition-colors duration-200">团队</a>
+                        <a href="#" class="footer-link transition-colors duration-200">案例</a>
+                        <a href="#" class="footer-link transition-colors duration-200">博客</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">contact@hapticui.com</a>
+                        <a href="#" class="footer-link transition-colors duration-200">+86 123 4567 8910</a>
+                        <a href="#" class="footer-link transition-colors duration-200">北京市朝阳区创意园区</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Haptic UI Design Studio. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Realms - 3D超现实游戏展示</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ffff',
+                        secondary: '#ff00ff',
+                        accent: '#ffff00',
+                        dark: '#0a0a0a',
+                        neon: '#00ff88',
+                        void: '#1a1a2e'
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        rajdhani: ['Rajdhani', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .neon-text {
+            text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor;
+        }
+        .neon-border {
+            box-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+        }
+        .surreal-card {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(26, 26, 46, 0.8) 100%);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .surreal-card:hover {
+            transform: translateY(-10px) rotateY(5deg);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        .gradient-bg {
+            background: radial-gradient(circle at 50% 50%, #1a1a2e 0%, #0a0a0a 100%);
+        }
+        .grid-pattern {
+            background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        .glow-btn {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .glow-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            animation: glow 3s ease-in-out infinite;
+        }
+        @keyframes glow {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-sm border-b border-primary/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold font-orbitron text-primary neon-text">NEON REALMS</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-primary hover:text-neon transition-colors font-medium transition-colors duration-200">首页</a>
+                    <a href="#games" class="text-gray-400 hover:text-primary transition-colors font-medium transition-colors duration-200">游戏</a>
+                    <a href="#experiences" class="text-gray-400 hover:text-primary transition-colors font-medium transition-colors duration-200">体验</a>
+                    <a href="#about" class="text-gray-400 hover:text-primary transition-colors font-medium transition-colors duration-200">关于</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-primary text-2xl" cursor-pointer>
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="pt-24">
+        <!-- 英雄区域 -->
+        <section class="relative min-h-screen flex items-center justify-center grid-pattern">
+            <div class="absolute inset-0 overflow-hidden">
+                <div class="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute bottom-1/4 right-1/4 w-48 h-48 bg-secondary/20 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute top-1/2 right-1/3 w-24 h-24 bg-accent/20 rounded-full blur-3xl animate-pulse"></div>
+            </div>
+            <div class="relative z-10 text-center max-w-4xl mx-auto px-4">
+                <h2 class="text-5xl md:text-7xl font-bold font-orbitron mb-6 text-white">
+                    <span class="text-primary neon-text">超越</span>现实
+                </h2>
+                <p class="text-xl md:text-2xl mb-8 text-gray-300">探索沉浸式游戏世界，体验前所未有的视觉盛宴</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <button class="glow-btn px-8 py-4 bg-primary text-dark font-bold rounded-lg border border-primary neon-border" cursor-pointer>
+                        探索游戏
+                    </button>
+                    <button class="px-8 py-4 bg-transparent text-primary font-bold rounded-lg border border-primary hover:bg-primary/10 transition-colors" cursor-pointer>
+                        观看预告片
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 游戏展示 -->
+        <section id="games" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold font-orbitron mb-16 text-center">
+                    <span class="text-secondary neon-text">特色</span>游戏
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="surreal-card rounded-xl p-6">
+                        <div class="w-full h-48 bg-void rounded-lg mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa fa-gamepad text-5xl text-primary"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold font-orbitron mb-2 text-primary">星际穿越</h3>
+                        <p class="text-gray-300 mb-4">探索未知的宇宙空间，与外星文明接触，解开宇宙的奥秘</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-neon">开放世界</span>
+                            <button class="text-primary hover:text-neon transition-colors" cursor-pointer>
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="surreal-card rounded-xl p-6 float-animation">
+                        <div class="w-full h-48 bg-void rounded-lg mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa fa-rocket text-5xl text-secondary"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold font-orbitron mb-2 text-secondary">量子迷宫</h3>
+                        <p class="text-gray-300 mb-4">在量子维度中穿梭，解决复杂的谜题，挑战你的思维极限</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-neon">解谜冒险</span>
+                            <button class="text-secondary hover:text-neon transition-colors" cursor-pointer>
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="surreal-card rounded-xl p-6">
+                        <div class="w-full h-48 bg-void rounded-lg mb-4 overflow-hidden relative">
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <i class="fa fa-diamond text-5xl text-accent"></i>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold font-orbitron mb-2 text-accent">霓虹都市</h3>
+                        <p class="text-gray-300 mb-4">在未来主义的都市中生活，体验高科技与超现实的完美结合</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-neon">模拟人生</span>
+                            <button class="text-accent hover:text-neon transition-colors" cursor-pointer>
+                                <i class="fa fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 体验区 -->
+        <section id="experiences" class="py-20 grid-pattern">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold font-orbitron mb-16 text-center">
+                    <span class="text-neon neon-text">沉浸式</span>体验
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="surreal-card rounded-xl p-8">
+                        <h3 class="text-3xl font-bold font-orbitron mb-4 text-primary">VR 体验</h3>
+                        <p class="text-gray-300 mb-6">通过最新的虚拟现实技术，完全沉浸在游戏世界中，感受前所未有的真实感</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-neon mr-3"></i>
+                                <span>360°全景视角</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-neon mr-3"></i>
+                                <span>触觉反馈系统</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-neon mr-3"></i>
+                                <span>空间音频技术</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check text-neon mr-3"></i>
+                                <span>实时动作捕捉</span>
+                            </li>
+                        </ul>
+                        <button class="glow-btn w-full py-4 bg-primary text-dark font-bold rounded-lg border border-primary neon-border" cursor-pointer>
+                            预约体验
+                        </button>
+                    </div>
+                    <div class="relative">
+                        <div class="surreal-card rounded-xl p-6 float-animation">
+                            <div class="w-full h-80 bg-void rounded-lg overflow-hidden relative">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fa fa-vr-cardboard text-8xl text-secondary neon-text"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+                        <div class="absolute -top-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full blur-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold font-orbitron mb-16 text-center">
+                    <span class="text-primary neon-text">关于</span>我们
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div class="relative">
+                        <div class="surreal-card rounded-xl p-6">
+                            <div class="w-full h-64 bg-void rounded-lg overflow-hidden relative">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <i class="fa fa-cube text-6xl text-accent neon-text"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold font-orbitron mb-4 text-secondary">我们的愿景</h3>
+                        <p class="text-gray-300 mb-6">我们致力于打造超越现实的游戏体验，通过融合最先进的技术和创新的设计理念，为玩家创造一个全新的数字世界。</p>
+                        <p class="text-gray-300 mb-8">我们的团队由来自全球各地的游戏开发者、艺术家和技术专家组成，共同追求游戏艺术的极致表现。</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-12 h-12 rounded-full bg-void border border-primary flex items-center justify-center text-primary hover:bg-primary/10 transition-colors transition-colors duration-200">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-void border border-secondary flex items-center justify-center text-secondary hover:bg-secondary/10 transition-colors transition-colors duration-200">
+                                <i class="fa fa-discord"></i>
+                            </a>
+                            <a href="#" class="w-12 h-12 rounded-full bg-void border border-accent flex items-center justify-center text-accent hover:bg-accent/10 transition-colors transition-colors duration-200">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 订阅区域 -->
+        <section class="py-20 grid-pattern">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="surreal-card rounded-xl p-8 text-center">
+                    <h3 class="text-3xl font-bold font-orbitron mb-4 text-neon neon-text">加入我们的社区</h3>
+                    <p class="text-gray-300 mb-6">订阅我们的新闻通讯，获取最新游戏资讯和独家优惠</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <input type="email" placeholder="输入您的邮箱" class="px-6 py-3 bg-void border border-primary rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-white">
+                        <button class="glow-btn px-8 py-3 bg-primary text-dark font-bold rounded-lg border border-primary neon-border" cursor-pointer>
+                            订阅
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark border-t border-primary/30 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold font-orbitron mb-4 text-primary">NEON REALMS</h4>
+                    <p class="text-gray-400">超越现实的游戏世界</p>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4 text-white">游戏</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">星际穿越</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">量子迷宫</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">霓虹都市</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4 text-white">公司</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">关于我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">联系我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">加入我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4 text-white">支持</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">常见问题</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">技术支持</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">社区论坛</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-primary/30 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2026 Neon Realms. 保留所有权利.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                        <i class="fa fa-youtube-play"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

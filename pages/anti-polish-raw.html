@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反波兰/原始美学 - 创意作品集，艺术家网站</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Roboto+Mono:wght@300;400;500;700&display=swap');
+        
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #333333;
+            --accent: #ff6b35;
+            --light: #f5f5f5;
+            --dark: #0d0d0d;
+            --surface: #2a2a2a;
+        }
+        
+        body {
+            font-family: 'Roboto Mono', monospace;
+            background-color: var(--primary);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        
+        .header {
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--accent);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Permanent Marker', cursive;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="%23ff6b35" stroke-width="1" opacity="0.1"/></svg>');
+            background-size: 100px;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--light);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            border-left: 3px solid var(--accent);
+            padding-left: 1.5rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 2px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--surface);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 3rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            padding: 2.5rem;
+            background: var(--surface);
+            border: 1px solid var(--secondary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .card-text {
+            color: rgba(245, 245, 245, 0.8);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .feature-section {
+            background: var(--dark);
+            padding: 6rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid var(--secondary);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .feature-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .feature-text {
+            color: rgba(245, 245, 245, 0.8);
+            font-size: 0.875rem;
+        }
+        
+        .portfolio {
+            padding: 6rem 0;
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: var(--surface);
+            border: 1px solid var(--secondary);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+        
+        .portfolio-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-image img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-content {
+            padding: 2rem;
+        }
+        
+        .portfolio-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .portfolio-text {
+            color: rgba(245, 245, 245, 0.8);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            padding: 4rem 0;
+            background: var(--dark);
+            border-top: 2px solid var(--accent);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link {
+            color: rgba(245, 245, 245, 0.8);
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--secondary);
+            text-align: center;
+            font-size: 0.875rem;
+            color: rgba(245, 245, 245, 0.6);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <div class="logo">RAW</div>
+            <nav class="nav">
+                <a href="#" class="nav-link transition-colors duration-200">首页</a>
+                <a href="#" class="nav-link transition-colors duration-200">作品</a>
+                <a href="#" class="nav-link transition-colors duration-200">关于</a>
+                <a href="#" class="nav-link transition-colors duration-200">服务</a>
+                <a href="#" class="nav-link transition-colors duration-200">联系</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">反波兰<br>原始美学</h1>
+                <p class="hero-subtitle">突破传统设计边界，拥抱原始、粗犷的美学风格，为创意作品集和艺术家网站注入独特的视觉冲击力。</p>
+                <a href="#" class="cta-button transition-colors duration-200">
+                    <span>探索作品</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 核心特性 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">核心特性</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-brush"></i>
+                    </div>
+                    <h3 class="card-title">原始质感</h3>
+                    <p class="card-text">拥抱粗糙的纹理和未经修饰的视觉元素，创造真实、未经雕琢的艺术感。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-ruler"></i>
+                    </div>
+                    <h3 class="card-title">非传统布局</h3>
+                    <p class="card-text">打破网格限制，采用不规则、不对称的布局，创造动态的视觉体验。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">大胆色彩</h3>
+                    <p class="card-text">使用高对比度的色彩组合，创造强烈的视觉冲击力和情感表达。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-font"></i>
+                    </div>
+                    <h3 class="card-title">粗犷排版</h3>
+                    <p class="card-text">采用大胆、不规则的排版，突出文字的视觉表现力和艺术感。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="card-title">叠加效果</h3>
+                    <p class="card-text">通过图层叠加和混合，创造深度和层次感，增强视觉复杂度。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="card-title">情感表达</h3>
+                    <p class="card-text">通过设计元素传达强烈的情感和个人表达，突破传统美学界限。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 应用场景 -->
+    <section class="feature-section">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="feature-title">创意作品集</h3>
+                    <p class="feature-text">为艺术家、设计师和创意人士展示作品，突出个性和艺术表达。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="feature-title">音乐艺术家</h3>
+                    <p class="feature-text">为音乐人、乐队和音乐制作人打造独特的视觉形象和宣传材料。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-theater-masks"></i>
+                    </div>
+                    <h3 class="feature-title">表演艺术</h3>
+                    <p class="feature-text">为戏剧、舞蹈和表演艺术团体设计宣传材料和网站。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="feature-title">摄影作品</h3>
+                    <p class="feature-text">为摄影师展示作品，创造与摄影风格相匹配的视觉体验。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="feature-title">电影与视频</h3>
+                    <p class="feature-text">为电影制作人和视频创作者打造独特的宣传和展示平台。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3 class="feature-title">文学与诗歌</h3>
+                    <p class="feature-text">为作家、诗人和文学爱好者创造表达个人风格的平台。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 作品展示 -->
+    <section class="portfolio">
+        <div class="container">
+            <h2 class="section-title">作品展示</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=raw%20anti-polish%20aesthetic%20art%20portfolio%20with%20rough%20textures%20and%20bold%20colors&image_size=landscape_4_3" alt="艺术作品集">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">艺术作品集</h3>
+                        <p class="portfolio-text">为当代艺术家设计的原始美学风格作品集，突出作品的情感表达和视觉冲击力。</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=raw%20anti-polish%20music%20artist%20website%20with%20grungy%20elements&image_size=landscape_4_3" alt="音乐艺术家网站">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">音乐艺术家网站</h3>
+                        <p class="portfolio-text">为独立音乐人设计的原始美学风格网站，反映音乐的原始能量和情感表达。</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=raw%20anti-polish%20photography%20portfolio%20with%20bold%20layout&image_size=landscape_4_3" alt="摄影作品集">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">摄影作品集</h3>
+                        <p class="portfolio-text">为摄影师设计的原始美学风格作品集，突出摄影作品的原始质感和情感表达。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>RAW</h3>
+                    <p style="color: rgba(245, 245, 245, 0.8); font-size: 0.875rem; margin-bottom: 1.5rem;">专注于反波兰/原始美学设计，为创意作品集和艺术家网站创造独特的视觉体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>服务</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">品牌设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">网站设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">作品集设计</a>
+                        <a href="#" class="footer-link transition-colors duration-200">视觉识别</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>关于我们</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">我们的故事</a>
+                        <a href="#" class="footer-link transition-colors duration-200">团队</a>
+                        <a href="#" class="footer-link transition-colors duration-200">作品</a>
+                        <a href="#" class="footer-link transition-colors duration-200">博客</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link transition-colors duration-200">contact@rawdesign.com</a>
+                        <a href="#" class="footer-link transition-colors duration-200">+86 123 4567 8910</a>
+                        <a href="#" class="footer-link transition-colors duration-200">北京市朝阳区艺术区</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 RAW Design Studio. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

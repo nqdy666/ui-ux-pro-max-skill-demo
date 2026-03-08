@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平面设计 - 现代应用界面</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <style>
+        :root {
+            --flat-primary: #3b82f6;
+            --flat-secondary: #10b981;
+            --flat-accent: #f59e0b;
+            --flat-danger: #ef4444;
+            --flat-dark: #1f2937;
+            --flat-light: #f3f4f6;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--flat-light);
+            min-height: 100vh;
+            color: var(--flat-dark);
+        }
+        
+        .flat-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .flat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .flat-btn {
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+        }
+        
+        .flat-btn-primary {
+            background-color: var(--flat-primary);
+            color: white;
+        }
+        
+        .flat-btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        
+        .flat-btn-secondary {
+            background-color: white;
+            color: var(--flat-primary);
+            border: 2px solid var(--flat-primary);
+        }
+        
+        .flat-btn-secondary:hover {
+            background-color: var(--flat-primary);
+            color: white;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--flat-dark);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--flat-primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--flat-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .icon-primary {
+            color: var(--flat-primary);
+        }
+        
+        .icon-secondary {
+            color: var(--flat-secondary);
+        }
+        
+        .icon-accent {
+            color: var(--flat-accent);
+        }
+        
+        .icon-danger {
+            color: var(--flat-danger);
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--flat-dark);
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+        }
+        
+        .app-preview {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .pricing-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            border-color: var(--flat-primary);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--flat-primary);
+            box-shadow: 0 10px 15px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                    <i class="fa fa-paint-brush text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold">FlatDesign</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link transition-colors duration-200">首页</a>
+                <a href="#" class="nav-link transition-colors duration-200">产品</a>
+                <a href="#" class="nav-link transition-colors duration-200">功能</a>
+                <a href="#" class="nav-link transition-colors duration-200">价格</a>
+                <a href="#" class="nav-link transition-colors duration-200">联系我们</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition" cursor-pointer>登录</button>
+                <button class="flat-btn flat-btn-primary" cursor-pointer>注册</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="section-title">
+                    平面设计<br>现代应用界面
+                </h1>
+                <p class="section-subtitle">
+                    为网页应用、移动应用和初创MVP打造的简洁、现代的平面设计界面，提供卓越的用户体验。
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="flat-btn flat-btn-primary text-center" cursor-pointer>开始免费试用</button>
+                    <button class="flat-btn flat-btn-secondary text-center" cursor-pointer>观看演示</button>
+                </div>
+                <div class="mt-10 flex items-center space-x-6">
+                    <div class="flex -space-x-2">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20user%20avatar%201&image_size=square" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20user%20avatar%202&image_size=square" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20user%20avatar%203&image_size=square" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-white">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <i class="fa fa-star text-yellow-400"></i>
+                            <i class="fa fa-star text-yellow-400"></i>
+                            <i class="fa fa-star text-yellow-400"></i>
+                            <i class="fa fa-star text-yellow-400"></i>
+                            <i class="fa fa-star text-yellow-400"></i>
+                        </div>
+                        <p class="text-sm text-gray-600">来自500+企业的信任</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="app-preview">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=flat%20design%20dashboard%20interface&image_size=landscape_16_9" alt="应用界面预览" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title">强大的功能</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">为现代应用提供全方位的功能支持</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flat-card p-6">
+                    <div class="feature-icon icon-primary">
+                        <i class="fa fa-mobile"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">响应式设计</h3>
+                    <p class="text-gray-600">在任何设备上都能获得最佳体验，从手机到桌面电脑</p>
+                </div>
+                <div class="flat-card p-6">
+                    <div class="feature-icon icon-secondary">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">易于定制</h3>
+                    <p class="text-gray-600">简单易用的定制工具，让您轻松调整界面风格</p>
+                </div>
+                <div class="flat-card p-6">
+                    <div class="feature-icon icon-accent">
+                        <i class="fa fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">高性能</h3>
+                    <p class="text-gray-600">优化的代码结构，确保应用运行流畅</p>
+                </div>
+                <div class="flat-card p-6">
+                    <div class="feature-icon icon-danger">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">安全可靠</h3>
+                    <p class="text-gray-600">内置安全措施，保护用户数据和隐私</p>
+                </div>
+                <div class="flat-card p-6">
+                    <div class="feature-icon icon-primary">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">团队协作</h3>
+                    <p class="text-gray-600">支持多人同时协作，提高团队效率</p>
+                </div>
+                <div class="flat-card p-6">
+                    <div class="feature-icon icon-secondary">
+                        <i class="fa fa-plug"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">第三方集成</h3>
+                    <p class="text-gray-600">无缝集成常用工具和服务，扩展应用功能</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-20">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="section-title">网页应用界面</h2>
+                <p class="section-subtitle">现代化的网页应用界面，提供直观的用户体验</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>简洁明了的导航结构</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>响应式布局，适配各种屏幕</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>清晰的视觉层次和信息架构</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>流畅的交互体验</span>
+                    </li>
+                </ul>
+                <button class="flat-btn flat-btn-primary mt-8" cursor-pointer>了解更多</button>
+            </div>
+            <div class="md:w-1/2">
+                <div class="app-preview">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=flat%20design%20web%20application%20interface&image_size=landscape_16_9" alt="网页应用界面" class="w-full">
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row-reverse items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="section-title">移动应用界面</h2>
+                <p class="section-subtitle">为移动设备优化的界面设计，提供卓越的用户体验</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>触控友好的界面元素</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>简洁明了的导航系统</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>优化的加载速度和性能</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-500 mr-3"></i>
+                        <span>符合平台设计规范</span>
+                    </li>
+                </ul>
+                <button class="flat-btn flat-btn-primary mt-8" cursor-pointer>了解更多</button>
+            </div>
+            <div class="md:w-1/2">
+                <div class="app-preview">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=flat%20design%20mobile%20app%20interface&image_size=portrait_4_3" alt="移动应用界面" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价格区域 -->
+    <section class="bg-white py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title">灵活的价格方案</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">选择最适合您业务需求的方案</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="pricing-card p-6">
+                    <h3 class="text-xl font-semibold mb-2">基础版</h3>
+                    <div class="text-4xl font-bold mb-4">¥99<span class="text-sm text-gray-600">/月</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>最多5个用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>10GB存储空间</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>基础分析工具</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fa fa-times mr-2"></i>
+                            <span>高级集成</span>
+                        </li>
+                    </ul>
+                    <button class="flat-btn flat-btn-secondary w-full" cursor-pointer>开始使用</button>
+                </div>
+                <div class="pricing-card featured p-6 relative">
+                    <div class="absolute top-0 right-0 bg-blue-500 text-white text-xs px-3 py-1 rounded-bl-lg">推荐</div>
+                    <h3 class="text-xl font-semibold mb-2">专业版</h3>
+                    <div class="text-4xl font-bold mb-4">¥299<span class="text-sm text-gray-600">/月</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>最多20个用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>100GB存储空间</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>高级分析工具</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>高级集成</span>
+                        </li>
+                    </ul>
+                    <button class="flat-btn flat-btn-primary w-full" cursor-pointer>开始使用</button>
+                </div>
+                <div class="pricing-card p-6">
+                    <h3 class="text-xl font-semibold mb-2">企业版</h3>
+                    <div class="text-4xl font-bold mb-4">¥999<span class="text-sm text-gray-600">/月</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>无限用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>1TB存储空间</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>企业级分析</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>专属支持</span>
+                        </li>
+                    </ul>
+                    <button class="flat-btn flat-btn-secondary w-full" cursor-pointer>联系销售</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="text-center mb-16">
+            <h2 class="section-title">客户评价</h2>
+            <p class="section-subtitle max-w-2xl mx-auto">听听我们的客户怎么说</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="flat-card p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20person%201&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">张明</h4>
+                        <p class="text-sm text-gray-600">产品经理</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                </div>
+                <p class="text-gray-600">FlatDesign为我们的初创公司提供了完美的界面解决方案，简洁明了的设计风格非常适合我们的MVP产品。</p>
+            </div>
+            <div class="flat-card p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20person%202&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">李华</h4>
+                        <p class="text-sm text-gray-600">UI设计师</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                </div>
+                <p class="text-gray-600">作为设计师，我非常喜欢FlatDesign的简洁风格，它为我们的移动应用提供了现代化的外观和出色的用户体验。</p>
+            </div>
+            <div class="flat-card p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20person%203&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">王芳</h4>
+                        <p class="text-sm text-gray-600">技术总监</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star-half-o text-yellow-400"></i>
+                </div>
+                <p class="text-gray-600">FlatDesign不仅外观漂亮，而且性能出色，我们的网页应用加载速度快，用户反馈非常积极。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="bg-blue-50 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h2 class="section-title">准备好开始了吗？</h2>
+                <p class="section-subtitle max-w-2xl mx-auto mb-8">加入 thousands of satisfied customers who are already using FlatDesign to build modern applications.</p>
+                <button class="flat-btn flat-btn-primary text-lg px-8 py-4" cursor-pointer>开始免费试用</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-center">
+                            <i class="fa fa-paint-brush text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold">FlatDesign</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">为现代应用提供简洁、美观的平面设计界面</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">产品</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">功能</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">定价</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">更新</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">集成</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">资源</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">文档</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">教程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">博客</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">支持</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">公司</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">关于我们</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">联系我们</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">招聘</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition transition-colors duration-200">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-500 text-sm">
+                © 2026 FlatDesign. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

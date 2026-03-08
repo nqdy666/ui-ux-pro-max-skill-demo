@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClayLearn - 粘土型态教育应用</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff6b6b',
+                        secondary: '#4ecdc4',
+                        accent: '#ffe66d',
+                        dark: '#292f36',
+                        light: '#f7fff7'
+                    },
+                    fontFamily: {
+                        nunito: ['Nunito', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #f7fff7;
+            color: #292f36;
+        }
+        .clay-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 4px solid #ffffff;
+        }
+        .clay-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+        }
+        .clay-button {
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .clay-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .clay-icon {
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f7fff7 0%, #e8f5e8 100%);
+        }
+    </style>
+</head>
+<body class="gradient-bg">
+    <!-- 导航栏 -->
+    <header class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="clay-icon w-10 h-10 bg-primary text-white mr-3">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold">ClayLearn</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-primary font-medium hover:text-secondary transition-colors transition-colors duration-200">首页</a>
+                    <a href="#courses" class="text-gray-600 font-medium hover:text-primary transition-colors transition-colors duration-200">课程</a>
+                    <a href="#features" class="text-gray-600 font-medium hover:text-primary transition-colors transition-colors duration-200">特色</a>
+                    <a href="#about" class="text-gray-600 font-medium hover:text-primary transition-colors transition-colors duration-200">关于</a>
+                    <a href="#contact" class="text-gray-600 font-medium hover:text-primary transition-colors transition-colors duration-200">联系</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button class="clay-button px-4 py-2 bg-primary text-white font-bold" cursor-pointer>
+                        登录
+                    </button>
+                    <div class="md:hidden">
+                        <button class="text-gray-600 hover:text-primary transition-colors" cursor-pointer>
+                            <i class="fa fa-bars text-xl"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">让学习变得有趣而生动</h2>
+                        <p class="text-xl text-gray-600 mb-8">通过粘土型态的互动学习体验，激发孩子的创造力和学习兴趣</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="clay-button px-8 py-3 bg-primary text-white font-bold" cursor-pointer>
+                                开始探索
+                            </button>
+                            <button class="clay-button px-8 py-3 bg-white text-primary font-bold border-2 border-primary" cursor-pointer>
+                                了解更多
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="clay-card p-8 text-center">
+                            <div class="clay-icon w-16 h-16 bg-secondary text-white mx-auto mb-4">
+                                <i class="fa fa-lightbulb-o text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">互动学习</h3>
+                            <p>通过有趣的互动方式，让学习变得更加生动</p>
+                        </div>
+                        <div class="clay-card p-8 text-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <div class="clay-icon w-16 h-16 bg-accent text-dark mx-auto mb-4">
+                                <i class="fa fa-paint-brush text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">创造力培养</h3>
+                            <p>激发孩子的想象力和创造力</p>
+                        </div>
+                        <div class="clay-card p-8 text-center absolute bottom-0 right-0">
+                            <div class="clay-icon w-16 h-16 bg-primary text-white mx-auto mb-4">
+                                <i class="fa fa-users text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2">合作学习</h3>
+                            <p>培养团队合作精神和社交能力</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 课程 -->
+        <section id="courses" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">热门课程</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="clay-card p-6">
+                        <div class="clay-icon w-12 h-12 bg-primary/10 text-primary mb-4">
+                            <i class="fa fa-magic"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">创意艺术</h3>
+                        <p class="text-gray-600 mb-4">通过粘土创作，培养孩子的艺术天赋和创造力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">适合年龄: 6-12岁</span>
+                            <button class="text-primary font-medium hover:underline" cursor-pointer>查看详情</button>
+                        </div>
+                    </div>
+                    <div class="clay-card p-6">
+                        <div class="clay-icon w-12 h-12 bg-secondary/10 text-secondary mb-4">
+                            <i class="fa fa-flask"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">科学探索</h3>
+                        <p class="text-gray-600 mb-4">通过有趣的实验，培养孩子的科学思维和探索精神</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">适合年龄: 8-14岁</span>
+                            <button class="text-secondary font-medium hover:underline" cursor-pointer>查看详情</button>
+                        </div>
+                    </div>
+                    <div class="clay-card p-6">
+                        <div class="clay-icon w-12 h-12 bg-accent/10 text-dark mb-4">
+                            <i class="fa fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">编程启蒙</h3>
+                        <p class="text-gray-600 mb-4">通过可视化编程，培养孩子的逻辑思维和问题解决能力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">适合年龄: 10-16岁</span>
+                            <button class="text-dark font-medium hover:underline" cursor-pointer>查看详情</button>
+                        </div>
+                    </div>
+                    <div class="clay-card p-6">
+                        <div class="clay-icon w-12 h-12 bg-primary/10 text-primary mb-4">
+                            <i class="fa fa-book"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">阅读与写作</h3>
+                        <p class="text-gray-600 mb-4">通过互动故事，培养孩子的阅读理解和写作能力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">适合年龄: 7-13岁</span>
+                            <button class="text-primary font-medium hover:underline" cursor-pointer>查看详情</button>
+                        </div>
+                    </div>
+                    <div class="clay-card p-6">
+                        <div class="clay-icon w-12 h-12 bg-secondary/10 text-secondary mb-4">
+                            <i class="fa fa-calculator"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">趣味数学</h3>
+                        <p class="text-gray-600 mb-4">通过游戏化学习，培养孩子的数学思维和计算能力</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">适合年龄: 8-14岁</span>
+                            <button class="text-secondary font-medium hover:underline" cursor-pointer>查看详情</button>
+                        </div>
+                    </div>
+                    <div class="clay-card p-6">
+                        <div class="clay-icon w-12 h-12 bg-accent/10 text-dark mb-4">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">世界探索</h3>
+                        <p class="text-gray-600 mb-4">通过互动地图，了解世界文化和地理知识</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">适合年龄: 9-15岁</span>
+                            <button class="text-dark font-medium hover:underline" cursor-pointer>查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 特色 -->
+        <section id="features" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">平台特色</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="clay-card p-6 text-center">
+                        <div class="clay-icon w-16 h-16 bg-primary/10 text-primary mx-auto mb-4">
+                            <i class="fa fa-smile-o text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">趣味性</h3>
+                        <p class="text-gray-600">通过游戏化和互动元素，让学习变得有趣</p>
+                    </div>
+                    <div class="clay-card p-6 text-center">
+                        <div class="clay-icon w-16 h-16 bg-secondary/10 text-secondary mx-auto mb-4">
+                            <i class="fa fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">教育性</h3>
+                        <p class="text-gray-600">符合教育标准，提供有价值的学习内容</p>
+                    </div>
+                    <div class="clay-card p-6 text-center">
+                        <div class="clay-icon w-16 h-16 bg-accent/10 text-dark mx-auto mb-4">
+                            <i class="fa fa-child text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">适合儿童</h3>
+                        <p class="text-gray-600">界面友好，内容适合不同年龄段的孩子</p>
+                    </div>
+                    <div class="clay-card p-6 text-center">
+                        <div class="clay-icon w-16 h-16 bg-primary/10 text-primary mx-auto mb-4">
+                            <i class="fa fa-line-chart text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">进度跟踪</h3>
+                        <p class="text-gray-600">记录学习进度，提供个性化学习建议</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">关于我们</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">我们的使命</h3>
+                        <p class="text-gray-600 mb-6">ClayLearn 致力于通过创新的粘土型态界面，为孩子们创造一个有趣、互动的学习环境。我们相信，当学习变得有趣时，孩子们会更加主动地探索和学习。</p>
+                        <p class="text-gray-600 mb-8">我们的团队由教育专家、设计师和开发者组成，共同致力于打造最适合儿童的教育应用。我们注重每个细节，确保平台既有趣又有教育价值。</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">100+</div>
+                                <div class="text-gray-600 text-sm">课程</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-secondary mb-2">50K+</div>
+                                <div class="text-gray-600 text-sm">用户</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-accent mb-2">98%</div>
+                                <div class="text-gray-600 text-sm">满意度</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clay-card p-8">
+                        <h3 class="text-xl font-bold mb-4">我们的团队</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="clay-icon w-12 h-12 bg-primary/10 text-primary mr-4">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">张明</h4>
+                                    <p class="text-sm text-gray-500">教育专家</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="clay-icon w-12 h-12 bg-secondary/10 text-secondary mr-4">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">李华</h4>
+                                    <p class="text-sm text-gray-500">设计师</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="clay-icon w-12 h-12 bg-accent/10 text-dark mr-4">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium">王芳</h4>
+                                    <p class="text-sm text-gray-500">开发者</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-16 text-center">联系我们</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="clay-card p-8">
+                        <h3 class="text-2xl font-bold mb-6">发送消息</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">姓名</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">邮箱</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block font-medium mb-2">消息</label>
+                                <textarea rows="5" class="w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <button type="submit" class="clay-button w-full py-3 bg-primary text-white font-bold" cursor-pointer>
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <div class="clay-card p-8 mb-8">
+                            <h3 class="text-xl font-bold mb-4">联系方式</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fa fa-map-marker text-primary mt-1 mr-4"></i>
+                                    <span>北京市海淀区中关村科技园</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-phone text-primary mr-4"></i>
+                                    <span>+86 10 8888 8888</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-envelope text-primary mr-4"></i>
+                                    <span>contact@claylearn.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="clay-card p-8">
+                            <h3 class="text-xl font-bold mb-4">关注我们</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="clay-icon w-10 h-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors transition-colors duration-200">
+                                    <i class="fa fa-weixin"></i>
+                                </a>
+                                <a href="#" class="clay-icon w-10 h-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors transition-colors duration-200">
+                                    <i class="fa fa-weibo"></i>
+                                </a>
+                                <a href="#" class="clay-icon w-10 h-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors transition-colors duration-200">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" class="clay-icon w-10 h-10 bg-primary/10 text-primary hover:bg-primary hover:text-white transition-colors transition-colors duration-200">
+                                    <i class="fa fa-youtube-play"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="clay-icon w-8 h-8 bg-primary text-white mr-2">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <h4 class="text-xl font-bold">ClayLearn</h4>
+                    </div>
+                    <p class="text-gray-400 mb-4">让学习变得有趣而生动</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors transition-colors duration-200">
+                            <i class="fa fa-youtube-play"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">平台</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">首页</a></li>
+                        <li><a href="#courses" class="hover:text-primary transition-colors transition-colors duration-200">课程</a></li>
+                        <li><a href="#features" class="hover:text-primary transition-colors transition-colors duration-200">特色</a></li>
+                        <li><a href="#about" class="hover:text-primary transition-colors transition-colors duration-200">关于我们</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">资源</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">家长指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">教师资源</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">常见问题</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">博客</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">联系我们</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>北京市海淀区中关村科技园</li>
+                        <li>+86 10 8888 8888</li>
+                        <li>contact@claylearn.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2026 ClayLearn. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

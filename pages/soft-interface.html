@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软界面演进 - 现代企业应用，SaaS</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        neutral: '#6B7280',
+                        light: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'soft-hover': '0 8px 30px rgba(0, 0, 0, 0.1)'
+                    },
+                    borderRadius: {
+                        'xl': '12px',
+                        '2xl': '16px'
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .soft-card {
+                @apply bg-white rounded-2xl shadow-soft hover:shadow-soft-hover transition-all duration-300 p-6;
+            }
+            .soft-button {
+                @apply px-6 py-3 rounded-xl bg-primary text-white hover:bg-primary/90 transition-all duration-300 shadow-sm hover:shadow-md;
+            }
+            .soft-input {
+                @apply w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all duration-300;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="../index.html" class="flex items-center space-x-2 transition-colors duration-200">
+                <i class="fa fa-cube text-primary text-2xl"></i>
+                <span class="text-xl font-bold">软界面演进</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <button class="soft-button" cursor-pointer>
+                    首页
+                </button>
+                <button class="px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors" cursor-pointer>
+                    <i class="fa fa-cog mr-1"></i> 设置
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">软界面演进</h1>
+                <p class="text-xl text-neutral mb-8">为现代企业应用和SaaS平台打造的柔和、直观的用户界面</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button class="soft-button" cursor-pointer>
+                        了解更多
+                    </button>
+                    <button class="px-6 py-3 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors" cursor-pointer>
+                        查看演示
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">核心设计原则</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="soft-card">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fa fa-feather text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">柔和的视觉元素</h3>
+                    <p class="text-neutral">圆角设计、柔和阴影和渐变色彩，创造现代感和亲和力</p>
+                </div>
+                <div class="soft-card">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fa fa-hand-pointer-o text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">直观的交互</h3>
+                    <p class="text-neutral">流畅的动画过渡和清晰的反馈，提升用户体验</p>
+                </div>
+                <div class="soft-card">
+                    <div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-4">
+                        <i class="fa fa-mobile text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">响应式设计</h3>
+                    <p class="text-neutral">完美适配各种设备尺寸，确保一致的用户体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="soft-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fa fa-building text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">现代企业应用</h3>
+                    </div>
+                    <p class="text-neutral mb-4">为企业内部系统和工具打造直观、高效的用户界面</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>项目管理系统</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>人力资源管理</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>客户关系管理</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="soft-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mr-4">
+                            <i class="fa fa-cloud text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">SaaS平台</h3>
+                    </div>
+                    <p class="text-neutral mb-4">为软件即服务产品打造现代化、用户友好的界面</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>数据分析工具</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>营销自动化</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>协作工具</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 界面示例 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">界面示例</h2>
+            <div class="soft-card max-w-4xl mx-auto">
+                <h3 class="text-xl font-semibold mb-6">仪表盘界面</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <div class="text-neutral text-sm mb-1">总用户</div>
+                        <div class="text-2xl font-bold">12,345</div>
+                        <div class="text-secondary text-sm flex items-center mt-2">
+                            <i class="fa fa-arrow-up mr-1"></i> 12.5%
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <div class="text-neutral text-sm mb-1">活跃用户</div>
+                        <div class="text-2xl font-bold">8,765</div>
+                        <div class="text-secondary text-sm flex items-center mt-2">
+                            <i class="fa fa-arrow-up mr-1"></i> 8.3%
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <div class="text-neutral text-sm mb-1">转化率</div>
+                        <div class="text-2xl font-bold">24.5%</div>
+                        <div class="text-secondary text-sm flex items-center mt-2">
+                            <i class="fa fa-arrow-up mr-1"></i> 2.1%
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                    <div class="text-lg font-medium mb-4">销售趋势</div>
+                    <div class="h-48 bg-white rounded-lg flex items-center justify-center">
+                        <div class="text-neutral">图表区域</div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <div class="text-lg font-medium mb-4">最近活动</div>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-2 mr-2"></div>
+                                <div>
+                                    <div class="font-medium">用户注册</div>
+                                    <div class="text-sm text-neutral">10分钟前</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-secondary rounded-full mt-2 mr-2"></div>
+                                <div>
+                                    <div class="font-medium">订单完成</div>
+                                    <div class="text-sm text-neutral">25分钟前</div>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="w-2 h-2 bg-primary rounded-full mt-2 mr-2"></div>
+                                <div>
+                                    <div class="font-medium">订阅续费</div>
+                                    <div class="text-sm text-neutral">1小时前</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-xl p-4">
+                        <div class="text-lg font-medium mb-4">任务管理</div>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-2">
+                                <span>完成项目规划</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-2" checked>
+                                <span class="line-through text-neutral">更新用户文档</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-2">
+                                <span>准备季度报告</span>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" class="mr-2">
+                                <span>团队会议</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">软界面演进</h3>
+                    <p class="text-gray-400">为现代企业应用和SaaS平台打造的直观界面</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-400 hover:text-white transition-colors duration-200">首页</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">设计指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors duration-200">资源中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span>contact@softinterface.design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span>+86 123 4567 8910</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2026 软界面演进. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

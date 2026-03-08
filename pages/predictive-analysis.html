@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预测分析 - 预测，机器学习洞察</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0891B2',
+                        secondary: '#06B6D4',
+                        accent: '#22D3EE',
+                        dark: '#164E63',
+                        light: '#ECFEFF'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-cyan-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3 transition-colors duration-200">
+                <div class="w-8 h-8 bg-gradient-to-br from-cyan-700 to-cyan-500 rounded flex items-center justify-center">
+                    <i class="fa fa-line-chart text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">Predictive AI</span>
+            </a>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium" cursor-pointer>运行预测</button>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-dark">预测分析仪表盘</h1>
+                <p class="text-gray-600 text-sm mt-1">机器学习驱动的预测与洞察</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">预测准确率</p>
+                    <p class="text-2xl font-bold text-primary">94.2%</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +2.1%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">模型数量</p>
+                    <p class="text-2xl font-bold text-secondary">18</p>
+                    <p class="text-xs text-green-600">+3 新增</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">预测置信度</p>
+                    <p class="text-2xl font-bold text-accent">87.5%</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +5.2%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">训练数据</p>
+                    <p class="text-2xl font-bold text-dark">2.4M</p>
+                    <p class="text-xs text-green-600">+450K</p>
+                </div>
+            </div>
+
+            <!-- Prediction Chart -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">收入预测趋势</h3>
+                    <div class="h-48 relative">
+                        <svg viewBox="0 0 400 200" class="w-full h-full">
+                            <!-- Historical data -->
+                            <polyline fill="none" stroke="#0891B2" stroke-width="3" points="0,150 50,140 100,130 150,120 200,100"/>
+                            <!-- Prediction -->
+                            <polyline fill="none" stroke="#22D3EE" stroke-width="3" stroke-dasharray="5,5" points="200,100 250,85 300,70 350,55 400,40"/>
+                            <circle cx="200" cy="100" r="4" fill="#0891B2"/>
+                        </svg>
+                    </div>
+                    <div class="flex justify-center space-x-4 mt-2 text-sm">
+                        <div class="flex items-center space-x-1">
+                            <div class="w-3 h-3 bg-primary rounded"></div>
+                            <span>历史数据</span>
+                        </div>
+                        <div class="flex items-center space-x-1">
+                            <div class="w-3 h-3 bg-accent rounded"></div>
+                            <span>预测趋势</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">模型性能</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>随机森林</span>
+                                <span class="font-semibold">94.2%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 94%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>神经网络</span>
+                                <span class="font-semibold">92.8%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 93%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>梯度提升</span>
+                                <span class="font-semibold">91.5%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Predictions Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-cyan-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-cyan-100">
+                    <h3 class="font-semibold text-dark">预测结果</h3>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-cyan-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">指标</th>
+                            <th class="px-4 py-2 text-left">当前值</th>
+                            <th class="px-4 py-2 text-left">预测值</th>
+                            <th class="px-4 py-2 text-left">置信度</th>
+                            <th class="px-4 py-2 text-left">趋势</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-cyan-50">
+                            <td class="px-4 py-3">月收入</td>
+                            <td class="px-4 py-3">¥2.4M</td>
+                            <td class="px-4 py-3 text-primary font-semibold">¥2.8M</td>
+                            <td class="px-4 py-3">87%</td>
+                            <td class="px-4 py-3 text-green-600"><i class="fa fa-arrow-up"></i> +16.7%</td>
+                        </tr>
+                        <tr class="border-b border-cyan-50">
+                            <td class="px-4 py-3">活跃用户</td>
+                            <td class="px-4 py-3">45,230</td>
+                            <td class="px-4 py-3 text-primary font-semibold">52,100</td>
+                            <td class="px-4 py-3">82%</td>
+                            <td class="px-4 py-3 text-green-600"><i class="fa fa-arrow-up"></i> +15.2%</td>
+                        </tr>
+                        <tr class="border-b border-cyan-50">
+                            <td class="px-4 py-3">客户流失率</td>
+                            <td class="px-4 py-3">5.2%</td>
+                            <td class="px-4 py-3 text-primary font-semibold">4.1%</td>
+                            <td class="px-4 py-3">79%</td>
+                            <td class="px-4 py-3 text-green-600"><i class="fa fa-arrow-down"></i> -21.2%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-cyan-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2026 Predictive AI. <a href="../index.html" class="text-primary hover:underline transition-colors duration-200">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>

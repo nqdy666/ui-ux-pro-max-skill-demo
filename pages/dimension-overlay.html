@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>维度叠加 - 仪表盘、卡片布局、模态</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .dimension-card {
+                @apply bg-white dark:bg-slate-800 rounded-xl shadow-lg p-6 transition-all duration-300 hover:shadow-xl relative overflow-hidden;
+            }
+            .dimension-card::before {
+                content: '';
+                @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary;
+            }
+            .dimension-overlay {
+                @apply absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 backdrop-blur-sm opacity-0 transition-opacity duration-300;
+            }
+            .dimension-card:hover .dimension-overlay {
+                @apply opacity-100;
+            }
+            .modal-overlay {
+                @apply fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 pointer-events-none transition-opacity duration-300;
+            }
+            .modal-overlay.active {
+                @apply opacity-100 pointer-events-auto;
+            }
+            .modal-content {
+                @apply bg-white dark:bg-slate-800 rounded-xl shadow-2xl p-6 max-w-md w-full transform scale-95 transition-transform duration-300;
+            }
+            .modal-overlay.active .modal-content {
+                @apply scale-100;
+            }
+            .grid-dimension {
+                @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200 font-inter min-h-screen">
+    <!-- Header -->
+    <header class="bg-white dark:bg-slate-800 shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-cubes text-primary text-2xl"></i>
+                <h1 class="text-xl font-bold">维度叠加</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" cursor-pointer>
+                    <i class="fa fa-moon-o dark:hidden text-slate-600"></i>
+                    <i class="fa fa-sun-o hidden dark:block text-slate-300"></i>
+                </button>
+                <a href="../index.html" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors transition-colors duration-200">
+                    返回导航
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">维度叠加设计</h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-8">通过叠加不同维度的界面元素，创造层次感和深度，适用于仪表盘、卡片布局和模态框</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <button id="open-modal" class="px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all transform hover:scale-105" cursor-pointer>
+                    打开模态框
+                </button>
+                <button id="toggle-grid" class="px-6 py-3 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-all" cursor-pointer>
+                    切换网格
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grid Section -->
+    <section class="py-12 px-4">
+        <div class="container mx-auto">
+            <h3 class="text-2xl font-bold mb-8 text-center">卡片布局示例</h3>
+            <div id="card-grid" class="grid-dimension">
+                <!-- Card 1 -->
+                <div class="dimension-card">
+                    <div class="dimension-overlay"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold">仪表盘数据</h4>
+                            <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm font-medium">实时</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">展示关键业务指标和实时数据，帮助决策者快速获取信息。</p>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fa fa-line-chart text-4xl text-primary/70"></i>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">更新于 2分钟前</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors" cursor-pointer>
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="dimension-card">
+                    <div class="dimension-overlay"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold">用户统计</h4>
+                            <span class="bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400 px-3 py-1 rounded-full text-sm font-medium">增长</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">分析用户行为和增长趋势，优化产品体验。</p>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fa fa-users text-4xl text-primary/70"></i>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">更新于 5分钟前</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors" cursor-pointer>
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="dimension-card">
+                    <div class="dimension-overlay"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold">系统状态</h4>
+                            <span class="bg-yellow-100 text-yellow-600 dark:bg-yellow-900/30 dark:text-yellow-400 px-3 py-1 rounded-full text-sm font-medium">注意</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">监控系统运行状态，及时发现并解决问题。</p>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fa fa-server text-4xl text-primary/70"></i>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">更新于 1分钟前</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors" cursor-pointer>
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="dimension-card">
+                    <div class="dimension-overlay"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold">销售数据</h4>
+                            <span class="bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 px-3 py-1 rounded-full text-sm font-medium">目标</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">跟踪销售业绩，分析市场趋势，制定销售策略。</p>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fa fa-shopping-cart text-4xl text-primary/70"></i>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">更新于 3分钟前</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors" cursor-pointer>
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="dimension-card">
+                    <div class="dimension-overlay"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold">库存管理</h4>
+                            <span class="bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400 px-3 py-1 rounded-full text-sm font-medium">库存</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">实时监控库存水平，优化供应链管理。</p>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fa fa-archive text-4xl text-primary/70"></i>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">更新于 10分钟前</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors" cursor-pointer>
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="dimension-card">
+                    <div class="dimension-overlay"></div>
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="text-lg font-semibold">客户反馈</h4>
+                            <span class="bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400 px-3 py-1 rounded-full text-sm font-medium">待处理</span>
+                        </div>
+                        <p class="text-slate-600 dark:text-slate-400 mb-4">收集和分析客户反馈，改进产品和服务。</p>
+                        <div class="h-40 bg-slate-100 dark:bg-slate-700 rounded-lg mb-4 flex items-center justify-center">
+                            <i class="fa fa-comments text-4xl text-primary/70"></i>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">更新于 15分钟前</span>
+                            <button class="text-primary hover:text-primary/80 transition-colors" cursor-pointer>
+                                <i class="fa fa-refresh"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div id="modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">维度叠加模态框</h3>
+                <button id="close-modal" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" cursor-pointer>
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">这是一个使用维度叠加设计的模态框示例，通过模糊背景和层次感创造深度。</p>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">输入框</label>
+                    <input type="text" placeholder="请输入内容" class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-700">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">选择框</label>
+                    <select class="w-full px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50 dark:bg-slate-700">
+                        <option>选项 1</option>
+                        <option>选项 2</option>
+                        <option>选项 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex justify-end gap-3 mt-6">
+                <button class="px-4 py-2 border border-slate-300 dark:border-slate-600 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" cursor-pointer>
+                    取消
+                </button>
+                <button class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors" cursor-pointer>
+                    确认
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-800 shadow-inner py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-600 dark:text-slate-400">© 2026 维度叠加设计示例</p>
+            <p class="text-sm text-slate-500 dark:text-slate-500 mt-2">适用于仪表盘、卡片布局、模态</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // Modal functionality
+        const openModal = document.getElementById('open-modal');
+        const closeModal = document.getElementById('close-modal');
+        const modal = document.getElementById('modal');
+
+        openModal.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Grid toggle functionality
+        const toggleGrid = document.getElementById('toggle-grid');
+        const cardGrid = document.getElementById('card-grid');
+        let gridMode = 1;
+
+        toggleGrid.addEventListener('click', () => {
+            gridMode = (gridMode % 3) + 1;
+            switch (gridMode) {
+                case 1:
+                    cardGrid.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6';
+                    break;
+                case 2:
+                    cardGrid.className = 'grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4';
+                    break;
+                case 3:
+                    cardGrid.className = 'grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>

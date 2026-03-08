@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>野兽派设计 - 艺术作品集</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff3c00',
+                        secondary: '#000000',
+                        accent1: '#00ff00',
+                        accent2: '#0000ff',
+                        accent3: '#ffff00',
+                        light: '#ffffff',
+                        dark: '#000000'
+                    },
+                    fontFamily: {
+                        mono: ['Space Mono', 'monospace'],
+                        sans: ['Work Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            overflow-x: hidden;
+        }
+        .brutalist-card {
+            transition: all 0.3s ease;
+            border: 3px solid #000000;
+        }
+        .brutalist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 10px 10px 0 #000000;
+        }
+        .brutalist-btn {
+            transition: all 0.2s ease;
+            border: 3px solid #000000;
+        }
+        .brutalist-btn:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 5px 5px 0 #000000;
+        }
+        .brutalist-btn:active {
+            transform: translate(0, 0);
+            box-shadow: none;
+        }
+        .grid-masonry {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+            grid-auto-rows: 10px;
+        }
+        .section-divider {
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000000,
+                #000000 20px,
+                transparent 20px,
+                transparent 40px
+            );
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b-4 border-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <h1 class="text-3xl font-black tracking-tighter">BRUTAL</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-xl font-bold hover:text-primary transition-colors transition-colors duration-200">作品</a>
+                    <a href="#" class="text-xl font-bold hover:text-primary transition-colors transition-colors duration-200">关于</a>
+                    <a href="#" class="text-xl font-bold hover:text-primary transition-colors transition-colors duration-200">联系</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-2xl font-bold" cursor-pointer>
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="pt-24">
+        <!-- 英雄区域 -->
+        <section class="relative h-screen flex items-center justify-center bg-accent3">
+            <div class="absolute inset-0">
+                <div class="absolute top-10 left-10 w-20 h-20 bg-primary"></div>
+                <div class="absolute bottom-20 right-20 w-32 h-32 bg-accent2"></div>
+                <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-accent1"></div>
+            </div>
+            <div class="relative z-10 text-center">
+                <h2 class="text-6xl md:text-8xl font-black mb-6 tracking-tighter">设计无界</h2>
+                <p class="text-2xl md:text-3xl font-bold mb-8">BEYOND DESIGN</p>
+                <a href="#portfolio" class="brutalist-btn inline-block px-8 py-4 bg-black text-white font-bold text-xl transition-colors duration-200">
+                    查看作品
+                </a>
+            </div>
+        </section>
+
+        <!-- 作品展示 -->
+        <section id="portfolio" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-5xl font-black mb-16 tracking-tighter">精选作品</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="brutalist-card bg-light p-6">
+                        <div class="w-full h-64 bg-accent1 mb-4"></div>
+                        <h3 class="text-2xl font-bold mb-2">城市重构</h3>
+                        <p class="text-lg mb-4">建筑概念设计</p>
+                        <a href="#" class="inline-block font-bold border-b-4 border-black pb-1 hover:border-primary transition-colors transition-colors duration-200">
+                            查看详情
+                        </a>
+                    </div>
+                    <div class="brutalist-card bg-accent2 p-6 text-white">
+                        <div class="w-full h-64 bg-light mb-4"></div>
+                        <h3 class="text-2xl font-bold mb-2">数字噪音</h3>
+                        <p class="text-lg mb-4">交互艺术装置</p>
+                        <a href="#" class="inline-block font-bold border-b-4 border-white pb-1 hover:border-accent3 transition-colors transition-colors duration-200">
+                            查看详情
+                        </a>
+                    </div>
+                    <div class="brutalist-card bg-accent3 p-6">
+                        <div class="w-full h-64 bg-primary mb-4"></div>
+                        <h3 class="text-2xl font-bold mb-2">色彩冲突</h3>
+                        <p class="text-lg mb-4">视觉艺术系列</p>
+                        <a href="#" class="inline-block font-bold border-b-4 border-black pb-1 hover:border-accent2 transition-colors transition-colors duration-200">
+                            查看详情
+                        </a>
+                    </div>
+                    <div class="brutalist-card bg-primary p-6 text-white">
+                        <div class="w-full h-64 bg-accent3 mb-4"></div>
+                        <h3 class="text-2xl font-bold mb-2">机械时代</h3>
+                        <p class="text-lg mb-4">工业设计概念</p>
+                        <a href="#" class="inline-block font-bold border-b-4 border-white pb-1 hover:border-accent1 transition-colors transition-colors duration-200">
+                            查看详情
+                        </a>
+                    </div>
+                    <div class="brutalist-card bg-light p-6">
+                        <div class="w-full h-64 bg-accent2 mb-4"></div>
+                        <h3 class="text-2xl font-bold mb-2">几何构成</h3>
+                        <p class="text-lg mb-4">抽象艺术作品</p>
+                        <a href="#" class="inline-block font-bold border-b-4 border-black pb-1 hover:border-primary transition-colors transition-colors duration-200">
+                            查看详情
+                        </a>
+                    </div>
+                    <div class="brutalist-card bg-accent1 p-6">
+                        <div class="w-full h-64 bg-black mb-4"></div>
+                        <h3 class="text-2xl font-bold mb-2">自然与科技</h3>
+                        <p class="text-lg mb-4">混合媒介艺术</p>
+                        <a href="#" class="inline-block font-bold border-b-4 border-black pb-1 hover:border-accent2 transition-colors transition-colors duration-200">
+                            查看详情
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我 -->
+        <section class="py-20 bg-black text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-5xl font-black mb-16 tracking-tighter">关于艺术家</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="brutalist-card bg-white p-6 text-black">
+                        <h3 class="text-3xl font-bold mb-4">设计理念</h3>
+                        <p class="text-lg mb-4">我相信设计应该打破常规，挑战传统美学。通过大胆的色彩、不规则的形状和强烈的视觉对比，我试图创造出能够引起情感共鸣的作品。</p>
+                        <p class="text-lg">野兽派风格不仅仅是一种视觉表达，更是一种态度——对自由、创新和个性的追求。</p>
+                    </div>
+                    <div>
+                        <div class="brutalist-card bg-primary p-6 mb-6">
+                            <h3 class="text-2xl font-bold mb-4">专业技能</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li>• 视觉设计</li>
+                                <li>• 交互设计</li>
+                                <li>• 装置艺术</li>
+                                <li>• 数字艺术</li>
+                                <li>• 品牌设计</li>
+                            </ul>
+                        </div>
+                        <div class="brutalist-card bg-accent3 p-6 text-black">
+                            <h3 class="text-2xl font-bold mb-4">展览经历</h3>
+                            <ul class="space-y-2 text-lg">
+                                <li>• 2026 上海当代艺术展</li>
+                                <li>• 2023 北京设计周</li>
+                                <li>• 2022 深圳双年展</li>
+                                <li>• 2021 广州艺术博览会</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系 -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-5xl font-black mb-16 tracking-tighter">联系我们</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div class="brutalist-card p-8">
+                        <h3 class="text-3xl font-bold mb-6">发送消息</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block text-lg font-bold mb-2">姓名</label>
+                                <input type="text" class="w-full p-3 border-3 border-black focus:outline-none focus:border-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-lg font-bold mb-2">邮箱</label>
+                                <input type="email" class="w-full p-3 border-3 border-black focus:outline-none focus:border-primary">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-lg font-bold mb-2">消息</label>
+                                <textarea rows="5" class="w-full p-3 border-3 border-black focus:outline-none focus:border-primary"></textarea>
+                            </div>
+                            <button type="submit" class="brutalist-btn w-full py-4 bg-black text-white font-bold text-xl" cursor-pointer>
+                                发送
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <div class="brutalist-card bg-accent2 text-white p-8 mb-6">
+                            <h3 class="text-3xl font-bold mb-6">联系方式</h3>
+                            <ul class="space-y-4 text-lg">
+                                <li class="flex items-center">
+                                    <i class="fa fa-envelope mr-4 text-2xl"></i>
+                                    <span>contact@brutal.design</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-phone mr-4 text-2xl"></i>
+                                    <span>+86 123 4567 8910</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-map-marker mr-4 text-2xl"></i>
+                                    <span>上海市浦东新区艺术区</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="brutalist-card bg-accent1 p-8">
+                            <h3 class="text-3xl font-bold mb-6">社交媒体</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="brutalist-btn w-16 h-16 flex items-center justify-center bg-black text-white text-2xl transition-colors duration-200">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" class="brutalist-btn w-16 h-16 flex items-center justify-center bg-black text-white text-2xl transition-colors duration-200">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#" class="brutalist-btn w-16 h-16 flex items-center justify-center bg-black text-white text-2xl transition-colors duration-200">
+                                    <i class="fa fa-behance"></i>
+                                </a>
+                                <a href="#" class="brutalist-btn w-16 h-16 flex items-center justify-center bg-black text-white text-2xl transition-colors duration-200">
+                                    <i class="fa fa-dribbble"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-3xl font-black tracking-tighter">BRUTAL</h2>
+                    <p class="text-lg mt-2">设计无界，创意无限</p>
+                </div>
+                <div class="flex space-x-8">
+                    <a href="#" class="text-lg font-bold hover:text-primary transition-colors transition-colors duration-200">作品</a>
+                    <a href="#" class="text-lg font-bold hover:text-primary transition-colors transition-colors duration-200">关于</a>
+                    <a href="#" class="text-lg font-bold hover:text-primary transition-colors transition-colors duration-200">联系</a>
+                </div>
+            </div>
+            <div class="section-divider my-8"></div>
+            <p class="text-center text-lg">© 2026 野兽派设计. 保留所有权利.</p>
+        </div>
+    </footer>
+</body>
+</html>

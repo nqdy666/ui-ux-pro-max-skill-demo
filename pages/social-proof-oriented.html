@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社会认同导向 - 着陆页样式</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#6366F1',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 10px 10px -5px rgba(59, 130, 246, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-neutral min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-2 transition-colors duration-200">
+                <i class="fa fa-th-large text-primary text-2xl"></i>
+                <span class="text-xl font-semibold text-dark">DesignStyles</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="../index.html" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="index.html#general-styles" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">通用风格</a>
+                <a href="index.html#landing-styles" class="text-primary font-medium transition-colors duration-200">着陆页样式</a>
+                <a href="index.html#dashboard-styles" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-gray-600" cursor-pointer>
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-dark mb-6 text-shadow">社会认同导向设计</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 max-w-3xl mx-auto mb-10">
+                以社会认同和用户评价为核心，增强品牌可信度和说服力
+            </p>
+            <div class="inline-block bg-white px-6 py-3 rounded-full shadow-lg mb-12">
+                <div class="flex items-center space-x-1">
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <i class="fa fa-star text-yellow-400"></i>
+                    <span class="ml-2 font-semibold text-gray-700">4.9/5</span>
+                    <span class="ml-2 text-gray-500">(2,500+ 评价)</span>
+                </div>
+            </div>
+            <a href="#features" class="inline-block bg-primary hover:bg-blue-600 text-white font-medium px-8 py-3 rounded-lg transition-colors shadow-lg transition-colors duration-200">
+                了解更多
+            </a>
+        </div>
+    </section>
+
+    <!-- 社会认同区域 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">值得信赖的品牌</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">全球超过 10,000+ 企业选择我们的服务，加入他们的行列</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-70">
+                <div class="h-12 flex items-center">
+                    <span class="text-2xl font-bold text-gray-600">Google</span>
+                </div>
+                <div class="h-12 flex items-center">
+                    <span class="text-2xl font-bold text-gray-600">Microsoft</span>
+                </div>
+                <div class="h-12 flex items-center">
+                    <span class="text-2xl font-bold text-gray-600">Apple</span>
+                </div>
+                <div class="h-12 flex items-center">
+                    <span class="text-2xl font-bold text-gray-600">Amazon</span>
+                </div>
+                <div class="h-12 flex items-center">
+                    <span class="text-2xl font-bold text-gray-600">Spotify</span>
+                </div>
+                <div class="h-12 flex items-center">
+                    <span class="text-2xl font-bold text-gray-600">Airbnb</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 用户评价区域 -->
+    <section class="py-16 bg-neutral" id="features">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">用户怎么说</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">来自真实用户的评价和反馈</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 评价卡片 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20woman%20headshot&image_size=square" alt="用户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-dark">张女士</h4>
+                            <p class="text-sm text-gray-500">市场总监，某科技公司</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"使用这个平台后，我们的转化率提高了35%，客户满意度也大幅提升。团队的支持非常专业，解决问题的速度很快。强烈推荐给所有需要提升业务的企业。"</p>
+                </div>
+                
+                <!-- 评价卡片 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20man%20headshot&image_size=square" alt="用户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-dark">李先生</h4>
+                            <p class="text-sm text-gray-500">CEO，初创公司</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"作为一家初创公司，我们需要一个可靠的解决方案来吸引客户。这个平台不仅易于使用，而且提供了丰富的工具来展示我们的产品优势。现在我们的客户获取成本降低了25%。"</p>
+                </div>
+                
+                <!-- 评价卡片 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20woman%20headshot%20glasses&image_size=square" alt="用户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-dark">王女士</h4>
+                            <p class="text-sm text-gray-500">产品经理，电商平台</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star-half-o text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"平台的分析工具帮助我们更好地了解客户行为，从而优化我们的产品策略。客服团队的响应速度非常快，总是能及时解决我们的问题。是一个值得信赖的合作伙伴。"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据统计区域 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter1">10,000+</div>
+                    <p class="text-gray-600">活跃用户</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter2">98%</div>
+                    <p class="text-gray-600">客户满意度</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter3">35%</div>
+                    <p class="text-gray-600">平均转化率提升</p>
+                </div>
+                <div class="p-6">
+                    <div class="text-4xl font-bold text-primary mb-2" id="counter4">50+</div>
+                    <p class="text-gray-600">行业覆盖</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤区域 -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">加入 thousands of satisfied customers</h2>
+            <p class="text-white/80 max-w-2xl mx-auto mb-10">
+                立即开始使用我们的服务，提升您的业务表现。我们提供30天免费试用，无需信用卡。
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-primary font-medium px-8 py-3 rounded-lg transition-colors shadow-lg hover:bg-gray-100 transition-colors duration-200">
+                    免费开始
+                </a>
+                <a href="#" class="bg-transparent border-2 border-white text-white font-medium px-8 py-3 rounded-lg transition-colors hover:bg-white/10 transition-colors duration-200">
+                    预约演示
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">DesignStyles</h3>
+                    <p class="text-gray-400">提供各种UI/UX设计风格的展示和灵感</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">风格分类</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#general-styles" class="hover:text-primary transition-colors transition-colors duration-200">通用风格</a></li>
+                        <li><a href="index.html#landing-styles" class="hover:text-primary transition-colors transition-colors duration-200">着陆页样式</a></li>
+                        <li><a href="index.html#dashboard-styles" class="hover:text-primary transition-colors transition-colors duration-200">仪表盘样式</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">资源</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">设计指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">最佳实践</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors transition-colors duration-200">教程</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fa fa-envelope mr-2"></i> contact@designstyles.com</li>
+                        <li><i class="fa fa-phone mr-2"></i> +86 123 4567 8910</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 DesignStyles. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 简单的数字计数动画
+        function animateCounter(id, target) {
+            const element = document.getElementById(id);
+            let count = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(count);
+                }
+            }, 20);
+        }
+
+        // 当页面滚动到统计区域时触发动画
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter('counter1', 10000);
+                    animateCounter('counter2', 98);
+                    animateCounter('counter3', 35);
+                    animateCounter('counter4', 50);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        // 观察统计区域
+        const statsSection = document.querySelector('.py-16.bg-white');
+        if (statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
+</body>
+</html>

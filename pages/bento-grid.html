@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>便当盒网格 - 仪表盘、产品页面、作品集</title>
+    <script src="../assets/js/tailwindcss.js"></script>
+    <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../assets/css/fonts.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .bento-card {
+                @apply bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-6 flex flex-col;
+            }
+            .bento-button {
+                @apply px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors;
+            }
+            .gradient-bg {
+                background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            }
+            .glass-effect {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="../index.html" class="flex items-center space-x-3 transition-colors duration-200">
+                <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
+                    <i class="fa fa-th-large text-white"></i>
+                </div>
+                <span class="text-xl font-bold text-dark">BentoGrid</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="../index.html" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">特性</a>
+                <a href="#examples" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">示例</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">关于</a>
+            </div>
+            <button class="bento-button" cursor-pointer>
+                开始使用
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                    <i class="fa fa-th text-white"></i>
+                    <span class="text-sm">网格布局系统</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    便当盒网格
+                </h1>
+                <p class="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                    受苹果Bento风格启发的网格布局系统，适用于仪表盘、产品页面和作品集展示。
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors" cursor-pointer>
+                        查看示例
+                    </button>
+                    <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg border border-white/30 hover:bg-white/20 transition-colors" cursor-pointer>
+                        了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bento网格展示 -->
+    <section id="examples" class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-dark">Bento 网格示例</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">灵活多变的网格布局，适应各种内容展示需求</p>
+            </div>
+            
+            <!-- Bento Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+                <!-- 大卡片 - 跨2列2行 -->
+                <div class="bento-card md:col-span-2 md:row-span-2 gradient-bg text-white cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="flex-1">
+                        <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
+                            <i class="fa fa-rocket text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-3">产品发布</h3>
+                        <p class="text-white/80 mb-4">展示您的产品特性和优势，使用大卡片吸引用户注意力。</p>
+                    </div>
+                    <div class="mt-auto">
+                        <button class="bg-white text-primary px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors" cursor-pointer>
+                            了解更多
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 中卡片 - 跨1列2行 -->
+                <div class="bento-card md:row-span-2 bg-gradient-to-br from-secondary/20 to-green-100 cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="flex-1">
+                        <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-4">
+                            <i class="fa fa-chart-line text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3 text-dark">数据分析</h3>
+                        <p class="text-gray-600 mb-4">实时数据可视化和分析功能。</p>
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">用户数</span>
+                                <span class="font-semibold text-dark">12.5K</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600">增长率</span>
+                                <span class="font-semibold text-secondary">+23%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 小卡片 1 -->
+                <div class="bento-card bg-gradient-to-br from-accent/20 to-yellow-100 cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center mb-3">
+                        <i class="fa fa-star text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-dark">评分</h3>
+                    <div class="flex items-center space-x-1 mb-2">
+                        <i class="fa fa-star text-accent"></i>
+                        <i class="fa fa-star text-accent"></i>
+                        <i class="fa fa-star text-accent"></i>
+                        <i class="fa fa-star text-accent"></i>
+                        <i class="fa fa-star text-accent"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-dark">4.9</p>
+                    <p class="text-sm text-gray-600">2,847 评价</p>
+                </div>
+
+                <!-- 小卡片 2 -->
+                <div class="bento-card bg-gradient-to-br from-purple-500/20 to-purple-100 cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mb-3">
+                        <i class="fa fa-users text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-dark">用户</h3>
+                    <p class="text-3xl font-bold text-dark mb-1">50K+</p>
+                    <p class="text-sm text-gray-600">活跃用户</p>
+                </div>
+
+                <!-- 小卡片 3 -->
+                <div class="bento-card bg-gradient-to-br from-blue-500/20 to-blue-100 cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mb-3">
+                        <i class="fa fa-clock-o text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-dark">运行时间</h3>
+                    <p class="text-3xl font-bold text-dark mb-1">99.9%</p>
+                    <p class="text-sm text-gray-600">服务可用性</p>
+                </div>
+
+                <!-- 小卡片 4 -->
+                <div class="bento-card bg-gradient-to-br from-pink-500/20 to-pink-100 cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="w-10 h-10 bg-pink-500 rounded-lg flex items-center justify-center mb-3">
+                        <i class="fa fa-heart text-white"></i>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-dark">满意度</h3>
+                    <p class="text-3xl font-bold text-dark mb-1">98%</p>
+                    <p class="text-sm text-gray-600">客户满意度</p>
+                </div>
+
+                <!-- 中卡片 - 跨2列1行 -->
+                <div class="bento-card md:col-span-2 bg-gradient-to-r from-dark to-gray-800 text-white cursor-pointer hover:shadow-xl transition-all duration-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">功能特性</h3>
+                            <p class="text-gray-300">探索我们产品的所有强大功能</p>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="text-center">
+                                <i class="fa fa-shield text-3xl text-secondary mb-2"></i>
+                                <p class="text-xs">安全</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa fa-bolt text-3xl text-accent mb-2"></i>
+                                <p class="text-xs">快速</p>
+                            </div>
+                            <div class="text-center">
+                                <i class="fa fa-cog text-3xl text-blue-400 mb-2"></i>
+                                <p class="text-xs">灵活</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特性展示 -->
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-dark">布局特性</h2>
+                <p class="text-gray-600">Bento网格系统的核心优势</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 gradient-bg rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-th-large text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">灵活布局</h3>
+                    <p class="text-gray-600">支持多种卡片尺寸，自由组合创建独特的布局</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-mobile text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">响应式设计</h3>
+                    <p class="text-gray-600">完美适配各种屏幕尺寸，从手机到桌面</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-paint-brush text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">视觉层次</h3>
+                    <p class="text-gray-600">通过卡片大小和颜色创建清晰的视觉层次</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用场景 -->
+    <section class="py-20 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-dark">应用场景</h2>
+                <p class="text-gray-600">Bento网格的多种应用方式</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 gradient-bg flex items-center justify-center">
+                        <i class="fa fa-tachometer text-6xl text-white/50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">仪表盘</h3>
+                        <p class="text-gray-600">展示关键指标和数据可视化</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-secondary to-green-600 flex items-center justify-center">
+                        <i class="fa fa-cube text-6xl text-white/50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">产品页面</h3>
+                        <p class="text-gray-600">突出产品特性和优势</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+                    <div class="h-48 bg-gradient-to-br from-accent to-yellow-600 flex items-center justify-center">
+                        <i class="fa fa-folder-open text-6xl text-white/50"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">作品集</h3>
+                        <p class="text-gray-600">展示创意作品和项目</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 代码示例 -->
+    <section class="py-20 bg-dark text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4">简单实现</h2>
+                    <p class="text-gray-400">使用Tailwind CSS快速构建Bento网格</p>
+                </div>
+                
+                <div class="bg-gray-800 rounded-2xl p-6 overflow-x-auto">
+                    <pre class="text-sm text-gray-300"><code>&lt;div class="grid grid-cols-4 gap-4"&gt;
+  &lt;!-- 大卡片 --&gt;
+  &lt;div class="col-span-2 row-span-2"&gt;...&lt;/div&gt;
+  
+  &lt;!-- 中卡片 --&gt;
+  &lt;div class="col-span-1 row-span-2"&gt;...&lt;/div&gt;
+  
+  &lt;!-- 小卡片 --&gt;
+  &lt;div class="col-span-1 row-span-1"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="py-20 gradient-bg">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-white">开始使用 Bento Grid</h2>
+            <p class="text-white/80 mb-8 max-w-2xl mx-auto">为您的下一个项目添加现代化的网格布局</p>
+            <button class="bg-white text-primary px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors" cursor-pointer>
+                获取代码
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 gradient-bg rounded flex items-center justify-center">
+                            <i class="fa fa-th-large text-white text-sm"></i>
+                        </div>
+                        <span class="text-xl font-bold">BentoGrid</span>
+                    </div>
+                    <p class="text-gray-400 mt-2">现代化网格布局系统</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="../index.html" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">返回导航站</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">文档</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">GitHub</a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">
+                &copy; 2026 BentoGrid. 保留所有权利。
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
