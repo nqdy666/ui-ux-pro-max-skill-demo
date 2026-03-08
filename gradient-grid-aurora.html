@@ -27,9 +27,6 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
             .gradient-bg {
                 background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
             }
@@ -45,262 +42,153 @@
                     linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
                 background-size: 20px 20px;
             }
+            .aurora-bg {
+                background: 
+                    radial-gradient(ellipse at 20% 20%, rgba(99, 102, 241, 0.4) 0%, transparent 50%),
+                    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.4) 0%, transparent 50%),
+                    radial-gradient(ellipse at 50% 50%, rgba(236, 72, 153, 0.3) 0%, transparent 60%),
+                    linear-gradient(135deg, #1e1b4b 0%, #0f0f23 100%);
+            }
             .card-hover {
                 transition: all 0.3s ease;
             }
             .card-hover:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
             }
-            .aurora-border {
-                position: relative;
+            .glow-border {
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
             }
-            .aurora-border::before {
-                content: '';
-                position: absolute;
-                top: -2px;
-                left: -2px;
-                right: -2px;
-                bottom: -2px;
-                background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #6366f1);
-                border-radius: inherit;
-                z-index: -1;
-                animation: gradientAnimation 3s ease infinite;
-            }
-            @keyframes gradientAnimation {
-                0% { background-position: 0% 50%; }
-                50% { background-position: 100% 50%; }
-                100% { background-position: 0% 50%; }
-            }
-            .pulse-animation {
-                animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            }
-            @keyframes pulse {
-                0%, 100% {
-                    opacity: 1;
-                }
-                50% {
-                    opacity: 0.7;
-                }
-            }
-        </div>
+        }
     </style>
 </head>
-<body class="font-inter bg-light text-dark">
+<body class="font-inter bg-dark text-light min-h-screen">
     <!-- 导航栏 -->
-    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold gradient-text flex items-center">
-                <i class="fa fa-magic mr-2"></i>
-                <span>设计风格导航</span>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark/80 backdrop-blur-md border-b border-white/10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                    <i class="fa fa-magic text-white"></i>
+                </div>
+                <span class="text-xl font-bold gradient-text">AuroraUI</span>
             </a>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
-                <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
-                <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-300 hover:text-white transition-colors">首页</a>
+                <a href="#features" class="text-gray-300 hover:text-white transition-colors">特性</a>
+                <a href="#showcase" class="text-gray-300 hover:text-white transition-colors">展示</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white transition-colors">价格</a>
             </div>
-            <button class="md:hidden text-dark">
-                <i class="fa fa-bars text-xl"></i>
+            <button class="gradient-bg text-white px-6 py-2 rounded-full font-medium hover:opacity-90 transition-opacity">
+                开始使用
             </button>
         </div>
     </nav>
 
     <!-- 英雄区域 -->
-    <section class="gradient-bg grid-pattern text-white py-24 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">渐变网格 / Aurora Evolved</h1>
-                <p class="text-xl md:text-2xl mb-10 opacity-90 max-w-3xl mx-auto">为英雄章节、背景和创意项目打造绚丽的渐变网格效果，营造梦幻而现代的视觉体验。</p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-lg">
-                        探索效果
-                    </button>
-                    <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-primary transition-all text-lg">
-                        了解更多
-                    </button>
-                </div>
+    <section class="relative min-h-screen flex items-center justify-center aurora-bg overflow-hidden">
+        <!-- 网格背景 -->
+        <div class="absolute inset-0 grid-pattern opacity-30"></div>
+        
+        <!-- 浮动渐变球 -->
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/30 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-block mb-6 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/20">
+                <span class="text-sm text-gray-300">✨ 全新设计系统已发布</span>
             </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                <span class="gradient-text">渐变网格</span><br>
+                <span class="text-white">Aurora Evolved</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                融合渐变网格与极光效果，打造令人惊叹的视觉体验。适用于英雄章节、背景设计和创意项目。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="gradient-bg text-white px-8 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity glow-border">
+                    探索更多
+                </button>
+                <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg border border-white/20 hover:bg-white/20 transition-colors">
+                    查看文档
+                </button>
+            </div>
+        </div>
+        
+        <!-- 滚动指示器 -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fa fa-chevron-down text-white/50 text-2xl"></i>
         </div>
     </section>
 
-    <!-- 特性区域 -->
-    <section class="py-20 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">核心特性</h2>
+    <!-- 特性展示 -->
+    <section id="features" class="py-20 bg-dark">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 gradient-text">核心特性</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">探索渐变网格设计系统的强大功能</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- 特性1 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover aurora-border">
-                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa fa-paint-brush text-2xl text-primary"></i>
+                <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 card-hover">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa fa-palette text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">绚丽渐变</h3>
-                    <p class="text-gray-600">使用多种颜色组合创建平滑过渡的渐变效果，为页面增添深度和视觉吸引力。</p>
+                    <h3 class="text-xl font-semibold text-white mb-3">动态渐变</h3>
+                    <p class="text-gray-400">流畅的渐变过渡效果，支持多种颜色组合和动画</p>
                 </div>
-                <!-- 特性2 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover aurora-border">
-                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa fa-th text-2xl text-secondary"></i>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 card-hover">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa fa-th text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">网格图案</h3>
-                    <p class="text-gray-600">添加微妙的网格背景，增强视觉层次感，使渐变效果更加突出。</p>
+                    <h3 class="text-xl font-semibold text-white mb-3">网格系统</h3>
+                    <p class="text-gray-400">灵活的网格布局，完美适配各种屏幕尺寸</p>
                 </div>
-                <!-- 特性3 -->
-                <div class="bg-white p-8 rounded-xl shadow-lg card-hover aurora-border">
-                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-6">
-                        <i class="fa fa-magic text-2xl text-accent"></i>
+                
+                <div class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 card-hover">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa fa-bolt text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-4">动态效果</h3>
-                    <p class="text-gray-600">通过动画和过渡效果，使渐变和网格元素更加生动，提升用户体验。</p>
+                    <h3 class="text-xl font-semibold text-white mb-3">高性能</h3>
+                    <p class="text-gray-400">优化的渲染性能，确保流畅的用户体验</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 应用场景 -->
-    <section class="bg-gray-50 py-20 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">应用场景</h2>
+    <!-- 展示区域 -->
+    <section id="showcase" class="py-20 aurora-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 text-white">设计展示</h2>
+                <p class="text-gray-300">查看实际应用效果</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 场景1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                <div class="relative rounded-2xl overflow-hidden glow-border">
                     <div class="h-64 gradient-bg flex items-center justify-center">
-                        <h3 class="text-2xl font-bold text-white text-center">英雄章节</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">为网站首页或重要页面的英雄区域添加绚丽的渐变网格背景，立即吸引用户注意力。</p>
-                        <button class="text-primary font-semibold hover:underline">查看示例</button>
-                    </div>
-                </div>
-                <!-- 场景2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
-                    <div class="h-64 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 flex items-center justify-center">
-                        <h3 class="text-2xl font-bold text-white text-center">创意项目</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">为创意作品集、艺术展示或设计项目添加独特的渐变网格效果，展现创意和个性。</p>
-                        <button class="text-primary font-semibold hover:underline">查看示例</button>
-                    </div>
-                </div>
-                <!-- 场景3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
-                    <div class="h-64 bg-gradient-to-r from-blue-500 via-cyan-500 to-teal-500 flex items-center justify-center">
-                        <h3 class="text-2xl font-bold text-white text-center">品牌背景</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">为品牌网站或营销材料创建独特的渐变网格背景，增强品牌识别度。</p>
-                        <button class="text-primary font-semibold hover:underline">查看示例</button>
-                    </div>
-                </div>
-                <!-- 场景4 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
-                    <div class="h-64 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 flex items-center justify-center">
-                        <h3 class="text-2xl font-bold text-white text-center">活动页面</h3>
-                    </div>
-                    <div class="p-6">
-                        <p class="text-gray-600 mb-4">为活动宣传、产品发布或促销页面添加活力四射的渐变网格效果，提升活动氛围。</p>
-                        <button class="text-primary font-semibold hover:underline">查看示例</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 渐变展示 -->
-    <section class="py-20 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">渐变效果展示</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- 渐变1 -->
-                <div class="h-48 rounded-xl gradient-bg flex items-center justify-center">
-                    <span class="text-white font-semibold">紫色系渐变</span>
-                </div>
-                <!-- 渐变2 -->
-                <div class="h-48 rounded-xl bg-gradient-to-r from-blue-500 to-teal-500 flex items-center justify-center">
-                    <span class="text-white font-semibold">蓝绿色系渐变</span>
-                </div>
-                <!-- 渐变3 -->
-                <div class="h-48 rounded-xl bg-gradient-to-r from-amber-500 to-red-500 flex items-center justify-center">
-                    <span class="text-white font-semibold">橙红色系渐变</span>
-                </div>
-                <!-- 渐变4 -->
-                <div class="h-48 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 flex items-center justify-center">
-                    <span class="text-white font-semibold">绿色系渐变</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 技术实现 -->
-    <section class="bg-gray-50 py-20 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <h2 class="text-3xl font-bold text-center mb-16 gradient-text">技术实现</h2>
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <div class="space-y-6">
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-code text-xl text-primary"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2">CSS渐变</h3>
-                                <p class="text-gray-600">使用CSS linear-gradient()函数创建平滑的颜色过渡效果，支持多种颜色组合。</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-css3 text-xl text-secondary"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2">网格背景</h3>
-                                <p class="text-gray-600">通过CSS background-image属性创建网格图案，增强视觉层次感。</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
-                                <i class="fa fa-keyboard-o text-xl text-accent"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-semibold mb-2">响应式设计</h3>
-                                <p class="text-gray-600">确保渐变网格效果在不同设备上都能正常显示，保持视觉一致性。</p>
-                            </div>
+                        <div class="text-center text-white">
+                            <i class="fa fa-image text-6xl mb-4 opacity-50"></i>
+                            <p class="text-lg">渐变背景示例</p>
                         </div>
                     </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-semibold">英雄章节背景</h3>
+                        <p class="text-gray-300 text-sm">适用于着陆页头部</p>
+                    </div>
                 </div>
-                <div class="md:w-1/2">
-                    <div class="bg-white p-6 rounded-xl shadow-lg">
-                        <pre class="text-sm text-gray-800 overflow-x-auto"><code>.gradient-bg {
-    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-}
-
-.grid-pattern {
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-.aurora-border {
-    position: relative;
-}
-
-.aurora-border::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, #6366f1, #8b5cf6, #ec4899, #6366f1);
-    border-radius: inherit;
-    z-index: -1;
-    animation: gradientAnimation 3s ease infinite;
-}
-
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}</code></pre>
+                
+                <div class="relative rounded-2xl overflow-hidden glow-border">
+                    <div class="h-64 bg-secondary/30 backdrop-blur-sm flex items-center justify-center border border-white/10">
+                        <div class="text-center text-white">
+                            <i class="fa fa-layer-group text-6xl mb-4 opacity-50"></i>
+                            <p class="text-lg">玻璃拟态卡片</p>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                        <h3 class="text-white font-semibold">卡片组件</h3>
+                        <p class="text-gray-300 text-sm">现代UI设计元素</p>
                     </div>
                 </div>
             </div>
@@ -308,63 +196,36 @@
     </section>
 
     <!-- CTA区域 -->
-    <section class="gradient-bg grid-pattern text-white py-20 px-4">
-        <div class="container mx-auto max-w-4xl text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">开始使用渐变网格</h2>
-            <p class="text-xl mb-8 opacity-90">为您的项目添加绚丽的渐变网格效果，提升视觉吸引力和用户体验。</p>
-            <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-opacity-90 transition-all text-lg pulse-animation">
-                获取代码
+    <section class="py-20 bg-dark">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-white">准备好开始了吗？</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">立即使用渐变网格设计系统，打造令人惊叹的用户界面</p>
+            <button class="gradient-bg text-white px-10 py-4 rounded-full font-semibold text-lg hover:opacity-90 transition-opacity glow-border">
+                免费开始使用
             </button>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-dark text-white py-12 px-4">
-        <div class="container mx-auto max-w-6xl">
+    <footer class="bg-dark border-t border-white/10 py-12">
+        <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <a href="index.html" class="text-xl font-bold gradient-text flex items-center">
-                        <i class="fa fa-magic mr-2"></i>
-                        <span>设计风格导航</span>
-                    </a>
-                    <p class="mt-2 text-gray-400">探索各种UI/UX设计风格</p>
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-8 h-8 gradient-bg rounded flex items-center justify-center">
+                        <i class="fa fa-magic text-white text-sm"></i>
+                    </div>
+                    <span class="text-lg font-bold gradient-text">AuroraUI</span>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
-                    <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
-                    <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">返回导航站</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">文档</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 设计风格导航站. 保留所有权利.</p>
+            <div class="mt-8 pt-8 border-t border-white/10 text-center text-gray-500 text-sm">
+                &copy; 2024 AuroraUI. 保留所有权利。
             </div>
         </div>
     </footer>
-
-    <script>
-        // 渐变动画效果
-        document.addEventListener('DOMContentLoaded', function() {
-            // 为渐变元素添加滚动动画
-            const gradientElements = document.querySelectorAll('.gradient-bg');
-            
-            function checkScroll() {
-                gradientElements.forEach(element => {
-                    const rect = element.getBoundingClientRect();
-                    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
-                    
-                    if (isVisible) {
-                        element.style.opacity = '1';
-                        element.style.transform = 'translateY(0)';
-                    }
-                });
-            }
-            
-            // 初始检查
-            checkScroll();
-            
-            // 滚动时检查
-            window.addEventListener('scroll', checkScroll);
-        });
-    </script>
 </body>
 </html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>销售情报仪表盘 - 销售团队，客户关系管理</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#06B6D4',
+                        secondary: '#22D3EE',
+                        accent: '#67E8F9',
+                        dark: '#164E63',
+                        light: '#ECFEFF'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-cyan-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-cyan-700 to-cyan-500 rounded flex items-center justify-center">
+                    <i class="fa fa-handshake-o text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">Sales Intelligence</span>
+            </a>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium">添加线索</button>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-dark">销售情报仪表盘</h1>
+                <p class="text-gray-600 text-sm mt-1">销售团队与客户关系管理</p>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">本月销售额</p>
+                    <p class="text-2xl font-bold text-primary">¥1.8M</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +24.5%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">销售线索</p>
+                    <p class="text-2xl font-bold text-secondary">342</p>
+                    <p class="text-xs text-green-600">+56 新增</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">转化率</p>
+                    <p class="text-2xl font-bold text-accent">28.5%</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +3.2%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">客户数</p>
+                    <p class="text-2xl font-bold text-dark">1,247</p>
+                    <p class="text-xs text-green-600">+89</p>
+                </div>
+            </div>
+
+            <!-- Sales Funnel & Performance -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">销售漏斗</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <div class="w-20 text-sm">潜在客户</div>
+                            <div class="flex-1 mx-2">
+                                <div class="h-8 bg-primary rounded flex items-center justify-end px-2">
+                                    <span class="text-white text-sm font-semibold">342</span>
+                                </div>
+                            </div>
+                            <div class="w-12 text-sm text-right">100%</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-20 text-sm">意向客户</div>
+                            <div class="flex-1 mx-2">
+                                <div class="h-8 bg-secondary rounded flex items-center justify-end px-2" style="width: 65%">
+                                    <span class="text-white text-sm font-semibold">222</span>
+                                </div>
+                            </div>
+                            <div class="w-12 text-sm text-right">65%</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-20 text-sm">谈判中</div>
+                            <div class="flex-1 mx-2">
+                                <div class="h-8 bg-accent rounded flex items-center justify-end px-2" style="width: 42%">
+                                    <span class="text-white text-sm font-semibold">144</span>
+                                </div>
+                            </div>
+                            <div class="w-12 text-sm text-right">42%</div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-20 text-sm">成交</div>
+                            <div class="flex-1 mx-2">
+                                <div class="h-8 bg-cyan-400 rounded flex items-center justify-end px-2" style="width: 28%">
+                                    <span class="text-white text-sm font-semibold">98</span>
+                                </div>
+                            </div>
+                            <div class="w-12 text-sm text-right">28%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-cyan-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">团队业绩</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>张经理</span>
+                                <span class="font-semibold">¥580K</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>李主管</span>
+                                <span class="font-semibold">¥420K</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>王代表</span>
+                                <span class="font-semibold">¥380K</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 68%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CRM Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-cyan-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-cyan-100">
+                    <h3 class="font-semibold text-dark">最近客户活动</h3>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-cyan-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">客户</th>
+                            <th class="px-4 py-2 text-left">阶段</th>
+                            <th class="px-4 py-2 text-left">金额</th>
+                            <th class="px-4 py-2 text-left">负责人</th>
+                            <th class="px-4 py-2 text-left">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-cyan-50">
+                            <td class="px-4 py-3">科技有限公司</td>
+                            <td class="px-4 py-3">谈判中</td>
+                            <td class="px-4 py-3">¥280K</td>
+                            <td class="px-4 py-3">张经理</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">跟进</span></td>
+                        </tr>
+                        <tr class="border-b border-cyan-50">
+                            <td class="px-4 py-3">创新工作室</td>
+                            <td class="px-4 py-3">成交</td>
+                            <td class="px-4 py-3">¥150K</td>
+                            <td class="px-4 py-3">李主管</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">完成</span></td>
+                        </tr>
+                        <tr class="border-b border-cyan-50">
+                            <td class="px-4 py-3">数字集团</td>
+                            <td class="px-4 py-3">意向</td>
+                            <td class="px-4 py-3">¥320K</td>
+                            <td class="px-4 py-3">王代表</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-blue-100 text-blue-700 rounded text-xs">新线索</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-cyan-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2024 Sales Intelligence. <a href="index.html" class="text-primary hover:underline">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>

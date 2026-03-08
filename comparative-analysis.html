@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比较分析仪表盘 - 并排比较</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#EA580C',
+                        secondary: '#F97316',
+                        accent: '#FB923C',
+                        dark: '#9A3412',
+                        light: '#FFF7ED'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-orange-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-orange-700 to-orange-500 rounded flex items-center justify-center">
+                    <i class="fa fa-columns text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">Compare Analytics</span>
+            </a>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium">导出对比</button>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-dark">比较分析仪表盘</h1>
+                <p class="text-gray-600 text-sm mt-1">并排对比分析与A/B测试</p>
+            </div>
+
+            <!-- Comparison Selector -->
+            <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-4 mb-6">
+                <div class="flex flex-wrap gap-4 items-center">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm font-medium">对比组A:</span>
+                        <select class="px-3 py-2 border border-gray-300 rounded text-sm">
+                            <option>当前版本</option>
+                            <option>上季度</option>
+                            <option>去年同期</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm font-medium">对比组B:</span>
+                        <select class="px-3 py-2 border border-gray-300 rounded text-sm">
+                            <option>新版本</option>
+                            <option>本季度</option>
+                            <option>今年</option>
+                        </select>
+                    </div>
+                    <button class="bg-primary text-white px-4 py-2 rounded text-sm">更新对比</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">转化率对比</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-lg font-bold text-primary">3.2%</span>
+                        <span class="text-sm text-gray-400">vs</span>
+                        <span class="text-lg font-bold text-secondary">2.8%</span>
+                    </div>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +14.3%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">用户留存对比</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-lg font-bold text-primary">68%</span>
+                        <span class="text-sm text-gray-400">vs</span>
+                        <span class="text-lg font-bold text-secondary">62%</span>
+                    </div>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +9.7%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">平均收入对比</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-lg font-bold text-primary">¥156</span>
+                        <span class="text-sm text-gray-400">vs</span>
+                        <span class="text-lg font-bold text-secondary">¥142</span>
+                    </div>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +9.9%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">满意度对比</p>
+                    <div class="flex items-center space-x-2 mt-1">
+                        <span class="text-lg font-bold text-primary">4.6</span>
+                        <span class="text-sm text-gray-400">vs</span>
+                        <span class="text-lg font-bold text-secondary">4.2</span>
+                    </div>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +9.5%</p>
+                </div>
+            </div>
+
+            <!-- Side by Side Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">版本A性能指标</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>加载速度</span>
+                                <span class="font-semibold">1.2s</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>响应时间</span>
+                                <span class="font-semibold">45ms</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>稳定性</span>
+                                <span class="font-semibold">99.9%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 99%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-orange-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">版本B性能指标</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>加载速度</span>
+                                <span class="font-semibold">0.8s</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>响应时间</span>
+                                <span class="font-semibold">32ms</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 96%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>稳定性</span>
+                                <span class="font-semibold">99.95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 99.5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-orange-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-orange-100">
+                    <h3 class="font-semibold text-dark">详细对比数据</h3>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-orange-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">指标</th>
+                            <th class="px-4 py-2 text-left">版本A</th>
+                            <th class="px-4 py-2 text-left">版本B</th>
+                            <th class="px-4 py-2 text-left">变化</th>
+                            <th class="px-4 py-2 text-left">显著性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-orange-50">
+                            <td class="px-4 py-3">日活跃用户</td>
+                            <td class="px-4 py-3">12,450</td>
+                            <td class="px-4 py-3">14,230</td>
+                            <td class="px-4 py-3 text-green-600">+14.3%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">显著</span></td>
+                        </tr>
+                        <tr class="border-b border-orange-50">
+                            <td class="px-4 py-3">平均会话时长</td>
+                            <td class="px-4 py-3">5分32秒</td>
+                            <td class="px-4 py-3">6分18秒</td>
+                            <td class="px-4 py-3 text-green-600">+13.9%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">显著</span></td>
+                        </tr>
+                        <tr class="border-b border-orange-50">
+                            <td class="px-4 py-3">跳出率</td>
+                            <td class="px-4 py-3">34.2%</td>
+                            <td class="px-4 py-3">28.7%</td>
+                            <td class="px-4 py-3 text-green-600">-16.1%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">显著</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-orange-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2024 Compare Analytics. <a href="index.html" class="text-primary hover:underline">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>

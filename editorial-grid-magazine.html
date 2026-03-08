@@ -28,9 +28,6 @@
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .content-auto {
-                content-visibility: auto;
-            }
             .editorial-grid {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -47,330 +44,237 @@
                 transform: translateY(-5px);
                 box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             }
-            .hero-overlay {
-                background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
-            }
-            .caption {
-                font-size: 0.875rem;
-                color: #666;
-                font-style: italic;
-            }
             .dropcap::first-letter {
-                font-size: 3em;
-                font-weight: bold;
                 float: left;
-                margin-right: 0.2em;
+                font-size: 4rem;
                 line-height: 0.8;
+                margin-right: 0.5rem;
+                margin-top: 0.2rem;
+                font-family: 'Playfair Display', serif;
+                font-weight: 700;
+                color: #e63946;
             }
-        </div>
+        }
     </style>
 </head>
-<body class="font-inter bg-light text-primary">
+<body class="font-inter bg-light text-primary min-h-screen">
     <!-- 导航栏 -->
-    <nav class="fixed w-full bg-white shadow-sm z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold font-playfair flex items-center">
-                <span>编辑网格</span>
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <span class="text-2xl font-bold magazine-title">The Editorial</span>
             </a>
-            <div class="hidden md:flex space-x-8">
-                <a href="index.html#general" class="hover:text-accent transition-colors">通用风格</a>
-                <a href="index.html#landing" class="hover:text-accent transition-colors">着陆页样式</a>
-                <a href="index.html#dashboard" class="hover:text-accent transition-colors">仪表盘样式</a>
-                <a href="#" class="hover:text-accent transition-colors">最新文章</a>
-                <a href="#" class="hover:text-accent transition-colors">分类</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-secondary hover:text-primary transition-colors">首页</a>
+                <a href="#features" class="text-secondary hover:text-primary transition-colors">专题</a>
+                <a href="#articles" class="text-secondary hover:text-primary transition-colors">文章</a>
+                <a href="#about" class="text-secondary hover:text-primary transition-colors">关于</a>
             </div>
-            <button class="md:hidden text-primary">
-                <i class="fa fa-bars text-xl"></i>
+            <button class="bg-primary text-white px-6 py-2 rounded font-medium hover:bg-dark transition-colors">
+                订阅
             </button>
         </div>
     </nav>
 
     <!-- 英雄区域 -->
-    <section class="relative h-[80vh] overflow-hidden">
-        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=magazine%20hero%20image%20with%20editorial%20photography%20of%20city%20skyline&image_size=landscape_16_9" alt="杂志封面" class="absolute inset-0 w-full h-full object-cover">
-        <div class="absolute inset-0 hero-overlay flex items-end">
-            <div class="container mx-auto px-4 pb-16">
-                <div class="max-w-3xl">
-                    <span class="inline-block bg-accent text-white px-3 py-1 text-sm font-semibold mb-4">专题报道</span>
-                    <h1 class="magazine-title text-4xl md:text-6xl font-bold text-white mb-4">城市的变迁：现代都市的发展与挑战</h1>
-                    <p class="text-white text-lg mb-6 opacity-90">探索全球城市在数字化时代的转型与可持续发展之路</p>
-                    <div class="flex items-center">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20a%20journalist&image_size=square" alt="作者头像" class="w-12 h-12 rounded-full object-cover mr-4">
-                        <div>
-                            <p class="text-white font-semibold">李明</p>
-                            <p class="text-white/80 text-sm">城市规划专家 | 2024年1月15日</p>
-                        </div>
+    <header class="pt-24 pb-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-8">
+                <span class="text-accent text-sm font-semibold tracking-widest uppercase">Editorial Design</span>
+                <h1 class="text-5xl md:text-6xl font-bold magazine-title mt-4 mb-6">编辑网格 / 杂志风格</h1>
+                <p class="text-secondary text-lg max-w-2xl mx-auto">经典编辑排版与现代网格系统的完美融合，适用于新闻网站、博客和数字杂志。</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- 特色文章 -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="relative overflow-hidden rounded-lg">
+                    <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800" alt="特色文章" class="w-full h-96 object-cover">
+                    <div class="absolute top-4 left-4 bg-accent text-white px-3 py-1 text-sm font-medium rounded">精选</div>
+                </div>
+                <div>
+                    <span class="text-accent text-sm font-semibold tracking-widest uppercase">封面故事</span>
+                    <h2 class="text-3xl md:text-4xl font-bold magazine-title mt-3 mb-4">数字时代的编辑设计演变</h2>
+                    <p class="text-secondary mb-6 leading-relaxed dropcap">
+                        从传统的纸质杂志到现代的数字媒体，编辑设计经历了巨大的变革。网格系统、排版层次和视觉节奏仍然是设计的核心要素。
+                    </p>
+                    <div class="flex items-center space-x-4 text-sm text-secondary">
+                        <span><i class="fa fa-user mr-2"></i>张明</span>
+                        <span><i class="fa fa-calendar mr-2"></i>2024年1月15日</span>
+                        <span><i class="fa fa-clock-o mr-2"></i>8分钟阅读</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 主要内容区域 -->
-    <section class="py-16 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <!-- 特色文章 -->
-            <div class="mb-16">
-                <h2 class="magazine-title text-3xl font-bold mb-8">特色文章</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- 特色文章1 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=architecture%20photography%20of%20modern%20building&image_size=landscape_16_9" alt="现代建筑" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <span class="inline-block bg-gray-100 text-primary px-3 py-1 text-sm font-semibold mb-4">建筑</span>
-                            <h3 class="magazine-title text-2xl font-bold mb-3">未来建筑：可持续设计的新趋势</h3>
-                            <p class="text-secondary mb-4">探索如何通过创新材料和技术打造更加环保、高效的建筑空间。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20female%20architect&image_size=square" alt="作者头像" class="w-8 h-8 rounded-full object-cover mr-3">
-                                    <span class="text-sm font-semibold">王芳</span>
-                                </div>
-                                <span class="text-sm text-secondary">10分钟阅读</span>
-                            </div>
+    <!-- 文章网格 -->
+    <section id="articles" class="py-16 bg-light">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl font-bold magazine-title">最新文章</h2>
+                <a href="#" class="text-accent hover:text-red-700 transition-colors font-medium">查看全部 <i class="fa fa-arrow-right ml-1"></i></a>
+            </div>
+            
+            <div class="editorial-grid">
+                <!-- 文章卡片 1 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">设计</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">排版艺术：字体的力量</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">探索字体设计如何影响阅读体验和品牌认知，以及如何选择合适的字体组合。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>李婷</span>
+                            <span>2024-01-14</span>
                         </div>
                     </div>
-                    <!-- 特色文章2 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=food%20photography%20of%20gourmet%20dish&image_size=landscape_16_9" alt="美食" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <span class="inline-block bg-gray-100 text-primary px-3 py-1 text-sm font-semibold mb-4">美食</span>
-                            <h3 class="magazine-title text-2xl font-bold mb-3">全球美食之旅：探索不同文化的烹饪艺术</h3>
-                            <p class="text-secondary mb-4">从亚洲到欧洲，发现各地美食背后的文化故事和传统技艺。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20male%20chef&image_size=square" alt="作者头像" class="w-8 h-8 rounded-full object-cover mr-3">
-                                    <span class="text-sm font-semibold">张伟</span>
-                                </div>
-                                <span class="text-sm text-secondary">15分钟阅读</span>
-                            </div>
+                </article>
+
+                <!-- 文章卡片 2 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">创意</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">色彩心理学在设计中的应用</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">了解不同颜色如何影响用户情绪和行为，以及如何运用色彩理论提升设计效果。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>王浩</span>
+                            <span>2024-01-13</span>
                         </div>
                     </div>
+                </article>
+
+                <!-- 文章卡片 3 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">趋势</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">2024年网页设计趋势预测</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">从极简主义到大胆排版，探索即将主导网页设计领域的最新趋势。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>陈雪</span>
+                            <span>2024-01-12</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 4 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">技术</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">响应式设计的最佳实践</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">学习如何创建在各种设备上都能完美展示的网站，提升用户体验。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>刘强</span>
+                            <span>2024-01-11</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 5 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">案例</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">品牌重塑的成功案例分析</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">深入分析知名品牌如何通过设计重塑提升市场竞争力和用户认知。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>赵敏</span>
+                            <span>2024-01-10</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 文章卡片 6 -->
+                <article class="article-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600" alt="文章图片" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <span class="text-accent text-xs font-semibold tracking-widest uppercase">工具</span>
+                        <h3 class="text-xl font-bold magazine-title mt-2 mb-3">设计师必备的工具清单</h3>
+                        <p class="text-secondary text-sm mb-4 line-clamp-3">从原型设计到协作工具，盘点2024年最值得设计师使用的工具。</p>
+                        <div class="flex items-center justify-between text-xs text-secondary">
+                            <span>孙伟</span>
+                            <span>2024-01-09</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 设计原则展示 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold magazine-title mb-4">编辑设计原则</h2>
+                <p class="text-secondary">构建专业杂志风格网站的核心要素</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-th-large text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">网格系统</h3>
+                    <p class="text-secondary">使用12列网格创建一致的布局和视觉层次</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-font text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">字体层次</h3>
+                    <p class="text-secondary">衬线体与无衬线体的搭配创造视觉对比</p>
+                </div>
+                
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-image text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">视觉节奏</h3>
+                    <p class="text-secondary">图片与文字的平衡创造舒适的阅读体验</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- 文章网格 -->
-            <div class="mb-16">
-                <h2 class="magazine-title text-3xl font-bold mb-8">最新文章</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- 文章1 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=technology%20photography%20of%20smartphone&image_size=landscape_16_9" alt="科技" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <span class="inline-block bg-gray-100 text-primary px-2 py-1 text-xs font-semibold mb-3">科技</span>
-                            <h3 class="magazine-title text-xl font-bold mb-2">智能手机的未来：折叠屏技术的突破</h3>
-                            <p class="text-secondary text-sm mb-4">探索折叠屏技术如何改变我们与移动设备的交互方式。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20tech%20journalist&image_size=square" alt="作者头像" class="w-6 h-6 rounded-full object-cover mr-2">
-                                    <span class="text-xs font-semibold">刘强</span>
-                                </div>
-                                <span class="text-xs text-secondary">8分钟阅读</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 文章2 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=fashion%20photography%20of%20model&image_size=landscape_16_9" alt="时尚" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <span class="inline-block bg-gray-100 text-primary px-2 py-1 text-xs font-semibold mb-3">时尚</span>
-                            <h3 class="magazine-title text-xl font-bold mb-2">2024年春夏时装周：趋势与灵感</h3>
-                            <p class="text-secondary text-sm mb-4">解析最新时装周的设计趋势和创意灵感来源。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20fashion%20editor&image_size=square" alt="作者头像" class="w-6 h-6 rounded-full object-cover mr-2">
-                                    <span class="text-xs font-semibold">陈静</span>
-                                </div>
-                                <span class="text-xs text-secondary">12分钟阅读</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 文章3 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=travel%20photography%20of%20mountain%20landscape&image_size=landscape_16_9" alt="旅行" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <span class="inline-block bg-gray-100 text-primary px-2 py-1 text-xs font-semibold mb-3">旅行</span>
-                            <h3 class="magazine-title text-xl font-bold mb-2">隐秘的天堂：全球十大未被发现的旅行地</h3>
-                            <p class="text-secondary text-sm mb-4">远离 tourist crowds，探索世界上最隐秘的自然和文化宝藏。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20travel%20writer&image_size=square" alt="作者头像" class="w-6 h-6 rounded-full object-cover mr-2">
-                                    <span class="text-xs font-semibold">赵晓</span>
-                                </div>
-                                <span class="text-xs text-secondary">10分钟阅读</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 文章4 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=health%20and%20wellness%20photography&image_size=landscape_16_9" alt="健康" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <span class="inline-block bg-gray-100 text-primary px-2 py-1 text-xs font-semibold mb-3">健康</span>
-                            <h3 class="magazine-title text-xl font-bold mb-2">数字时代的心理健康：如何保持平衡</h3>
-                            <p class="text-secondary text-sm mb-4">探讨在数字设备无处不在的时代，如何维护心理健康和生活平衡。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20health%20expert&image_size=square" alt="作者头像" class="w-6 h-6 rounded-full object-cover mr-2">
-                                    <span class="text-xs font-semibold">孙医生</span>
-                                </div>
-                                <span class="text-xs text-secondary">14分钟阅读</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 文章5 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=art%20exhibition%20photography&image_size=landscape_16_9" alt="艺术" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <span class="inline-block bg-gray-100 text-primary px-2 py-1 text-xs font-semibold mb-3">艺术</span>
-                            <h3 class="magazine-title text-xl font-bold mb-2">当代艺术的新方向：数字艺术的崛起</h3>
-                            <p class="text-secondary text-sm mb-4">探索数字技术如何改变艺术创作和展示的方式。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20art%20critic&image_size=square" alt="作者头像" class="w-6 h-6 rounded-full object-cover mr-2">
-                                    <span class="text-xs font-semibold">吴艺</span>
-                                </div>
-                                <span class="text-xs text-secondary">11分钟阅读</span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 文章6 -->
-                    <div class="article-card bg-white rounded-xl overflow-hidden shadow-md">
-                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=business%20meeting%20photography&image_size=landscape_16_9" alt="商业" class="w-full h-48 object-cover">
-                        <div class="p-5">
-                            <span class="inline-block bg-gray-100 text-primary px-2 py-1 text-xs font-semibold mb-3">商业</span>
-                            <h3 class="magazine-title text-xl font-bold mb-2">创业新趋势：可持续商业模式的兴起</h3>
-                            <p class="text-secondary text-sm mb-4">分析如何将环保理念融入商业模式，创造经济和环境的双重价值。</p>
-                            <div class="flex justify-between items-center">
-                                <div class="flex items-center">
-                                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20business%20writer&image_size=square" alt="作者头像" class="w-6 h-6 rounded-full object-cover mr-2">
-                                    <span class="text-xs font-semibold">周商</span>
-                                </div>
-                                <span class="text-xs text-secondary">9分钟阅读</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 专题报道 -->
-            <div class="mb-16">
-                <h2 class="magazine-title text-3xl font-bold mb-8">专题报道</h2>
-                <div class="bg-white rounded-xl overflow-hidden shadow-md">
-                    <div class="flex flex-col md:flex-row">
-                        <div class="md:w-1/2">
-                            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=climate%20change%20photography%20with%20polar%20ice%20melting&image_size=landscape_16_9" alt="气候变化" class="w-full h-full object-cover">
-                        </div>
-                        <div class="md:w-1/2 p-8">
-                            <span class="inline-block bg-accent text-white px-3 py-1 text-sm font-semibold mb-4">环境</span>
-                            <h3 class="magazine-title text-2xl font-bold mb-4">气候变化与未来：我们的星球面临的挑战</h3>
-                            <p class="text-secondary mb-6 dropcap">气候变化已经成为全球面临的最紧迫挑战之一。从极地冰川融化到极端天气事件增加，地球正在经历前所未有的变化。本文深入探讨气候变化的科学依据、影响以及我们可以采取的行动。</p>
-                            <p class="text-secondary mb-6">通过采访顶尖气候科学家和环保活动家，我们了解到，虽然形势严峻，但采取集体行动仍然可以为我们的星球创造一个更可持续的未来。</p>
-                            <div class="flex items-center">
-                                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=portrait%20of%20environmental%20journalist&image_size=square" alt="作者头像" class="w-10 h-10 rounded-full object-cover mr-4">
-                                <div>
-                                    <p class="font-semibold">黄磊</p>
-                                    <p class="text-sm text-secondary">环境记者 | 2024年1月10日</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 订阅区域 -->
-            <div class="bg-primary text-white rounded-xl p-8 text-center">
-                <h2 class="magazine-title text-3xl font-bold mb-4">订阅我们的杂志</h2>
-                <p class="mb-6 opacity-90">获取最新的文章和专题报道，直接发送到您的邮箱</p>
-                <div class="max-w-md mx-auto flex">
-                    <input type="email" placeholder="您的邮箱地址" class="flex-1 px-4 py-3 rounded-l-lg text-primary focus:outline-none">
-                    <button class="bg-accent text-white px-6 py-3 rounded-r-lg font-semibold hover:bg-accent/90 transition-colors">
-                        订阅
-                    </button>
-                </div>
+    <!-- 订阅区域 -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold magazine-title mb-4">订阅我们的周刊</h2>
+            <p class="text-gray-300 mb-8 max-w-xl mx-auto">获取最新的设计趋势、技巧和灵感，直接发送到您的邮箱。</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+                <input type="email" placeholder="输入您的邮箱" class="flex-1 px-4 py-3 rounded text-primary">
+                <button class="bg-accent hover:bg-red-700 text-white px-6 py-3 rounded font-medium transition-colors">
+                    订阅
+                </button>
             </div>
         </div>
     </section>
 
     <!-- 页脚 -->
-    <footer class="bg-dark text-white py-12 px-4">
-        <div class="container mx-auto max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <div>
-                    <h3 class="magazine-title text-xl font-bold mb-4">编辑网格</h3>
-                    <p class="text-gray-400 mb-4">探索新闻、文化、科技和生活的前沿内容</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa fa-instagram"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
-                            <i class="fa fa-linkedin"></i>
-                        </a>
-                    </div>
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-2xl font-bold magazine-title">The Editorial</span>
+                    <p class="text-gray-400 mt-2">专业编辑设计系统</p>
                 </div>
-                <div>
-                    <h4 class="font-semibold mb-4">栏目</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">科技</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">文化</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">时尚</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">旅行</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">健康</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">关于我们</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">团队</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">投稿指南</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">广告合作</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">隐私政策</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-semibold mb-4">联系我们</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li class="flex items-start">
-                            <i class="fa fa-map-marker mt-1 mr-3"></i>
-                            <span>北京市朝阳区建国路88号</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fa fa-phone mr-3"></i>
-                            <span>010-12345678</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fa fa-envelope mr-3"></i>
-                            <span>contact@editorialgrid.com</span>
-                        </li>
-                    </ul>
+                <div class="flex space-x-6">
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">返回导航站</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">关于</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">联系</a>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 编辑网格杂志. 保留所有权利.</p>
+            <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                &copy; 2024 The Editorial. 保留所有权利。
             </div>
         </div>
     </footer>
-
-    <script>
-        // 文章卡片交互效果
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleCards = document.querySelectorAll('.article-card');
-            
-            articleCards.forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
-            });
-        });
-    </script>
 </body>
 </html>

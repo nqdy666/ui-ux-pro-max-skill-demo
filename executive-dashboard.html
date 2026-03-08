@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>执行仪表盘 - 高管总结</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#581C87',
+                        secondary: '#7C3AED',
+                        accent: '#A855F7',
+                        dark: '#3B0764',
+                        light: '#FAF5FF'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-purple-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-purple-800 to-purple-600 rounded flex items-center justify-center">
+                    <i class="fa fa-bar-chart text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">Executive View</span>
+            </a>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium">导出摘要</button>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-dark">执行仪表盘</h1>
+                <p class="text-gray-600 text-sm mt-1">高管决策支持系统</p>
+            </div>
+
+            <!-- Executive KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-purple-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">总收入</p>
+                    <p class="text-2xl font-bold text-primary">¥2.4M</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +15.3%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-purple-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">净利润</p>
+                    <p class="text-2xl font-bold text-secondary">¥486K</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +12.1%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-purple-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">客户满意度</p>
+                    <p class="text-2xl font-bold text-accent">94%</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +2.4%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-purple-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">市场份额</p>
+                    <p class="text-2xl font-bold text-dark">23.5%</p>
+                    <p class="text-xs text-green-600"><i class="fa fa-arrow-up"></i> +1.2%</p>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-purple-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">季度收入趋势</h3>
+                    <div class="h-48 flex items-end space-x-4">
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-purple-200 rounded-t" style="height: 60%"></div>
+                            <span class="text-xs mt-2">Q1</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-purple-300 rounded-t" style="height: 75%"></div>
+                            <span class="text-xs mt-2">Q2</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-purple-400 rounded-t" style="height: 85%"></div>
+                            <span class="text-xs mt-2">Q3</span>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center">
+                            <div class="w-full bg-primary rounded-t" style="height: 100%"></div>
+                            <span class="text-xs mt-2">Q4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-purple-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">关键指标概览</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>销售目标</span>
+                                <span class="font-semibold">87%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 87%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>客户留存</span>
+                                <span class="font-semibold">92%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 92%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>运营效率</span>
+                                <span class="font-semibold">78%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-accent h-2 rounded-full" style="width: 78%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-purple-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-purple-100">
+                    <h3 class="font-semibold text-dark">部门业绩摘要</h3>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-purple-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">部门</th>
+                            <th class="px-4 py-2 text-left">收入</th>
+                            <th class="px-4 py-2 text-left">增长率</th>
+                            <th class="px-4 py-2 text-left">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-purple-50">
+                            <td class="px-4 py-3">销售部</td>
+                            <td class="px-4 py-3">¥1.2M</td>
+                            <td class="px-4 py-3 text-green-600">+18.5%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">优秀</span></td>
+                        </tr>
+                        <tr class="border-b border-purple-50">
+                            <td class="px-4 py-3">市场部</td>
+                            <td class="px-4 py-3">¥680K</td>
+                            <td class="px-4 py-3 text-green-600">+12.3%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">良好</span></td>
+                        </tr>
+                        <tr class="border-b border-purple-50">
+                            <td class="px-4 py-3">技术部</td>
+                            <td class="px-4 py-3">¥520K</td>
+                            <td class="px-4 py-3 text-yellow-600">+5.2%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">一般</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-purple-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2024 Executive Dashboard. <a href="index.html" class="text-primary hover:underline">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>

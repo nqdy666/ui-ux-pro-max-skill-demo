@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深入分析 - 详细探索</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D97706',
+                        secondary: '#F59E0B',
+                        accent: '#FBBF24',
+                        dark: '#92400E',
+                        light: '#FFFBEB'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter bg-light min-h-screen">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-yellow-200">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-yellow-700 to-yellow-500 rounded flex items-center justify-center">
+                    <i class="fa fa-search-plus text-white text-sm"></i>
+                </div>
+                <span class="text-lg font-bold text-dark">Deep Analytics</span>
+            </a>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium">导出分析</button>
+        </div>
+    </nav>
+
+    <main class="pt-16 pb-8 px-4">
+        <div class="container mx-auto">
+            <div class="mb-6">
+                <h1 class="text-2xl font-bold text-dark">深入分析仪表盘</h1>
+                <p class="text-gray-600 text-sm mt-1">多维度数据探索与分析</p>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-4 mb-6">
+                <div class="flex flex-wrap gap-3">
+                    <select class="px-3 py-2 border border-gray-300 rounded text-sm">
+                        <option>全部数据源</option>
+                        <option>数据库</option>
+                        <option>API</option>
+                        <option>日志</option>
+                    </select>
+                    <select class="px-3 py-2 border border-gray-300 rounded text-sm">
+                        <option>最近30天</option>
+                        <option>最近7天</option>
+                        <option>最近24小时</option>
+                    </select>
+                    <input type="text" placeholder="搜索..." class="px-3 py-2 border border-gray-300 rounded text-sm flex-1 min-w-[200px]">
+                    <button class="bg-primary text-white px-4 py-2 rounded text-sm"><i class="fa fa-filter"></i> 应用筛选</button>
+                </div>
+            </div>
+
+            <!-- KPI Cards -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">分析维度</p>
+                    <p class="text-2xl font-bold text-primary">24</p>
+                    <p class="text-xs text-green-600">+3 新增</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">数据点</p>
+                    <p class="text-2xl font-bold text-secondary">1.2M</p>
+                    <p class="text-xs text-green-600">+18.5%</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">关联发现</p>
+                    <p class="text-2xl font-bold text-accent">47</p>
+                    <p class="text-xs text-green-600">+12</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-4">
+                    <p class="text-xs text-gray-500 uppercase">异常标记</p>
+                    <p class="text-2xl font-bold text-dark">8</p>
+                    <p class="text-xs text-red-600">需关注</p>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">多维度分布</h3>
+                    <div class="h-48 flex items-end justify-around">
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 bg-yellow-200 rounded-t" style="height: 80px"></div>
+                            <span class="text-xs mt-2">维度A</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 bg-yellow-300 rounded-t" style="height: 120px"></div>
+                            <span class="text-xs mt-2">维度B</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 bg-yellow-400 rounded-t" style="height: 100px"></div>
+                            <span class="text-xs mt-2">维度C</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 bg-yellow-500 rounded-t" style="height: 140px"></div>
+                            <span class="text-xs mt-2">维度D</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="w-12 bg-primary rounded-t" style="height: 160px"></div>
+                            <span class="text-xs mt-2">维度E</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm border border-yellow-100 p-6">
+                    <h3 class="font-semibold text-dark mb-4">趋势分析</h3>
+                    <div class="h-48 relative">
+                        <svg viewBox="0 0 400 200" class="w-full h-full">
+                            <polyline fill="none" stroke="#D97706" stroke-width="3" points="0,150 80,120 160,140 240,80 320,60 400,40"/>
+                            <circle cx="0" cy="150" r="4" fill="#D97706"/>
+                            <circle cx="80" cy="120" r="4" fill="#D97706"/>
+                            <circle cx="160" cy="140" r="4" fill="#D97706"/>
+                            <circle cx="240" cy="80" r="4" fill="#D97706"/>
+                            <circle cx="320" cy="60" r="4" fill="#D97706"/>
+                            <circle cx="400" cy="40" r="4" fill="#D97706"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Data Table -->
+            <div class="bg-white rounded-lg shadow-sm border border-yellow-100 overflow-hidden">
+                <div class="px-4 py-3 border-b border-yellow-100 flex justify-between items-center">
+                    <h3 class="font-semibold text-dark">详细数据</h3>
+                    <div class="flex space-x-2">
+                        <button class="text-sm text-primary hover:underline">导出CSV</button>
+                        <button class="text-sm text-primary hover:underline">导出Excel</button>
+                    </div>
+                </div>
+                <table class="w-full text-sm">
+                    <thead class="bg-yellow-50">
+                        <tr>
+                            <th class="px-4 py-2 text-left">ID</th>
+                            <th class="px-4 py-2 text-left">类别</th>
+                            <th class="px-4 py-2 text-left">数值</th>
+                            <th class="px-4 py-2 text-left">变化</th>
+                            <th class="px-4 py-2 text-left">状态</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-yellow-50">
+                            <td class="px-4 py-3">#001</td>
+                            <td class="px-4 py-3">用户行为</td>
+                            <td class="px-4 py-3">45,231</td>
+                            <td class="px-4 py-3 text-green-600">+12.5%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">正常</span></td>
+                        </tr>
+                        <tr class="border-b border-yellow-50">
+                            <td class="px-4 py-3">#002</td>
+                            <td class="px-4 py-3">交易数据</td>
+                            <td class="px-4 py-3">12,847</td>
+                            <td class="px-4 py-3 text-green-600">+8.3%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-green-100 text-green-700 rounded text-xs">正常</span></td>
+                        </tr>
+                        <tr class="border-b border-yellow-50">
+                            <td class="px-4 py-3">#003</td>
+                            <td class="px-4 py-3">系统日志</td>
+                            <td class="px-4 py-3">892,456</td>
+                            <td class="px-4 py-3 text-red-600">+45.2%</td>
+                            <td class="px-4 py-3"><span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded text-xs">异常</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-yellow-100 py-4 px-4">
+        <div class="container mx-auto text-center text-sm text-gray-500">
+            <p>&copy; 2024 Deep Analytics. <a href="index.html" class="text-primary hover:underline">返回导航站</a></p>
+        </div>
+    </footer>
+</body>
+</html>
