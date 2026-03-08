@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>空间界面（VisionOS） - 空间计算应用，虚拟现实/增强现实</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007aff',
+                        secondary: '#34c759',
+                        accent: '#ff2d55',
+                        dark: '#1c1c1e',
+                        light: '#f5f5f7'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .spatial-container {
+                @apply bg-light dark:bg-dark min-h-screen font-inter relative overflow-hidden;
+            }
+            .spatial-header {
+                @apply fixed top-0 left-0 right-0 z-50 bg-light/90 dark:bg-dark/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-700;
+            }
+            .spatial-title {
+                @apply text-xl font-bold;
+            }
+            .spatial-card {
+                @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-200 dark:border-slate-700 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:translate-y-[-4px];
+            }
+            .spatial-btn {
+                @apply bg-primary text-white px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/90 hover:shadow-lg;
+            }
+            .spatial-input {
+                @apply w-full bg-white/80 dark:bg-slate-700/80 border border-slate-300 dark:border-slate-600 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50;
+            }
+            .spatial-grid {
+                @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+            }
+            .spatial-hero {
+                @apply min-h-screen flex items-center justify-center relative overflow-hidden;
+            }
+            .spatial-hero-bg {
+                @apply absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10;
+            }
+            .floating-element {
+                @apply absolute rounded-xl bg-white/20 dark:bg-slate-800/20 backdrop-blur-md border border-white/30 dark:border-slate-700/30 p-4 transition-all duration-500;
+            }
+        }
+    </style>
+</head>
+<body class="spatial-container">
+    <!-- Floating Elements -->
+    <div class="floating-element" style="top: 20%; left: 10%; width: 200px; height: 150px; animation: float 6s ease-in-out infinite;"></div>
+    <div class="floating-element" style="top: 60%; right: 15%; width: 150px; height: 100px; animation: float 8s ease-in-out infinite 1s;"></div>
+    <div class="floating-element" style="bottom: 20%; left: 20%; width: 180px; height: 120px; animation: float 7s ease-in-out infinite 2s;"></div>
+
+    <!-- Header -->
+    <header class="spatial-header">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-cube text-primary text-2xl"></i>
+                <h1 class="spatial-title">SPATIAL UI</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#home" class="font-medium hover:text-primary transition-colors">首页</a>
+                <a href="#features" class="font-medium hover:text-primary transition-colors">特性</a>
+                <a href="#demo" class="font-medium hover:text-primary transition-colors">演示</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors">联系</a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                    <i class="fa fa-moon-o dark:hidden text-slate-600"></i>
+                    <i class="fa fa-sun-o hidden dark:block text-slate-300"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="spatial-hero">
+        <div class="spatial-hero-bg"></div>
+        <div class="container mx-auto max-w-5xl relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">空间界面</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">为空间计算应用、虚拟现实和增强现实设计的沉浸式用户界面</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#features" class="spatial-btn">探索特性</a>
+                    <a href="#demo" class="spatial-btn bg-secondary">查看演示</a>
+                </div>
+            </div>
+            <div class="spatial-card max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border border-slate-200 dark:border-slate-700 p-4 rounded-lg bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
+                        <i class="fa fa-vr-cardboard text-primary text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">虚拟现实</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">完全沉浸式的3D环境，提供身临其境的体验</p>
+                    </div>
+                    <div class="border border-slate-200 dark:border-slate-700 p-4 rounded-lg bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
+                        <i class="fa fa-eye text-primary text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">增强现实</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">将数字内容叠加到现实世界，增强用户感知</p>
+                    </div>
+                    <div class="border border-slate-200 dark:border-slate-700 p-4 rounded-lg bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm">
+                        <i class="fa fa-cubes text-primary text-3xl mb-4"></i>
+                        <h3 class="text-lg font-bold mb-2">空间计算</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">利用3D空间理解，创造智能交互体验</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h3 class="text-3xl font-bold mb-12 text-center">核心特性</h3>
+            <div class="spatial-grid">
+                <!-- Feature 1 -->
+                <div class="spatial-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-arrows-alt"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">3D空间导航</h4>
+                    <p class="text-slate-600 dark:text-slate-400">通过手势和头部追踪，在3D空间中自由导航和交互</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="spatial-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-hand-pointer-o"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">手势控制</h4>
+                    <p class="text-slate-600 dark:text-slate-400">使用自然手势与界面元素交互，无需物理控制器</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="spatial-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-object-group"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">空间感知</h4>
+                    <p class="text-slate-600 dark:text-slate-400">智能识别和适应周围环境，创造真实的空间体验</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="spatial-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">多人协作</h4>
+                    <p class="text-slate-600 dark:text-slate-400">支持多用户在同一空间中协作，共享虚拟环境</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="spatial-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">环境适应</h4>
+                    <p class="text-slate-600 dark:text-slate-400">根据环境光线和空间大小自动调整界面元素</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="spatial-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-magic"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4">沉浸式体验</h4>
+                    <p class="text-slate-600 dark:text-slate-400">创造身临其境的虚拟环境，提供真实的感官体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-24 px-4 bg-slate-100 dark:bg-slate-800">
+        <div class="container mx-auto max-w-6xl">
+            <h3 class="text-3xl font-bold mb-12 text-center">界面演示</h3>
+            <div class="spatial-card">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">虚拟现实界面</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">完全沉浸式的3D界面，用户可以在虚拟空间中自由移动和交互</p>
+                        <div class="h-64 bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+                            <i class="fa fa-vr-cardboard text-6xl text-primary/50"></i>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm">360度全景视图</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm">空间音频效果</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm">手势和语音控制</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4">增强现实界面</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">将数字内容叠加到现实世界，增强用户对周围环境的感知</p>
+                        <div class="h-64 bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center">
+                            <i class="fa fa-eye text-6xl text-primary/50"></i>
+                        </div>
+                        <div class="mt-4 space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm">现实世界叠加</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm">环境识别和跟踪</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full"></div>
+                                <span class="text-sm">交互式信息卡片</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h3 class="text-3xl font-bold mb-12 text-center">联系我们</h3>
+            <div class="spatial-card">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">姓名</label>
+                            <input type="text" class="spatial-input" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">邮箱</label>
+                            <input type="email" class="spatial-input" placeholder="请输入您的邮箱">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2">消息</label>
+                        <textarea class="spatial-input h-32" placeholder="请输入您的消息"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="spatial-btn">发送消息</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-slate-200 dark:border-slate-700">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="spatial-title">SPATIAL UI</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2">空间界面设计</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700 text-center">
+                <p class="text-slate-500 dark:text-slate-400">© 2026 空间界面设计</p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+    </style>
+
+    <script>
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+        } else {
+            html.classList.remove('dark');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>功能丰富的展示 - 着陆页样式</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#4f46e5',
+                        dark: '#1e293b',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .hero-gradient {
+                background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            }
+            .btn-primary {
+                transition: all 0.3s ease;
+            }
+            .btn-primary:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);
+            }
+            .feature-card {
+                transition: all 0.3s ease;
+            }
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+            .tab-active {
+                border-bottom: 2px solid #6366f1;
+                color: #6366f1;
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-light text-dark">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold text-primary flex items-center">
+                <i class="fa fa-cogs mr-2"></i>
+                <span>设计风格导航</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
+                <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
+                <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-dark">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero-gradient text-white py-24 px-4 relative overflow-hidden">
+        <!-- 背景效果 -->
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <span class="inline-block bg-white/20 backdrop-blur-sm px-4 py-1 rounded-full text-sm font-semibold mb-6">功能丰富的SaaS平台</span>
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">全方位解决方案<br>满足您的业务需求</h1>
+                <p class="text-xl mb-10 opacity-90">我们的SaaS平台集成了多种强大功能，为您提供一站式解决方案，帮助您简化工作流程，提高效率。</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg">
+                        免费试用
+                    </button>
+                    <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10">
+                        查看演示
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-6">核心功能</span>
+                    <h2 class="text-3xl font-bold mb-6">强大的功能，简单的操作</h2>
+                    <p class="text-gray-600 mb-8">我们的平台集成了多种强大功能，为您提供全方位的解决方案，帮助您简化工作流程，提高效率。</p>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-tasks text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">项目管理</h3>
+                                <p class="text-gray-600">创建、跟踪和管理项目，确保任务按时完成，团队协作更加高效。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-bar-chart text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">数据分析</h3>
+                                <p class="text-gray-600">实时数据分析和可视化，帮助您做出数据驱动的决策。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-users text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">团队协作</h3>
+                                <p class="text-gray-600">无缝的团队协作功能，包括实时沟通、文件共享和任务分配。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-primary/10 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/10 rounded-full blur-xl"></div>
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=feature%20rich%20SaaS%20dashboard%20interface&image_size=landscape_16_9" alt="SaaS平台界面" class="w-full rounded-xl shadow-2xl relative z-10">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能选项卡 -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4">功能展示</span>
+                <h2 class="text-3xl font-bold mb-6">探索我们的核心功能</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们的平台提供多种强大功能，满足您的各种业务需求。</p>
+            </div>
+            
+            <!-- 选项卡导航 -->
+            <div class="flex flex-wrap justify-center mb-10 border-b border-gray-200">
+                <button class="px-6 py-4 font-semibold tab-active">项目管理</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">数据分析</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">团队协作</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">客户管理</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">自动化工作流</button>
+            </div>
+            
+            <!-- 选项卡内容 -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=project%20management%20interface%20with%20tasks%20and%20timelines&image_size=landscape_16_9" alt="项目管理功能" class="w-full rounded-xl shadow-lg">
+                    </div>
+                    <div class="md:w-1/2 md:pl-8">
+                        <h3 class="text-2xl font-bold mb-4">智能项目管理</h3>
+                        <p class="text-gray-600 mb-6">我们的项目管理功能帮助您创建、跟踪和管理项目，确保任务按时完成，团队协作更加高效。</p>
+                        <ul class="space-y-4">
+                            <li class="flex items-center">
+                                <i class="fa fa-check-circle text-primary mr-3"></i>
+                                <span>任务创建和分配</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check-circle text-primary mr-3"></i>
+                                <span>项目时间线和甘特图</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check-circle text-primary mr-3"></i>
+                                <span>任务状态跟踪</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check-circle text-primary mr-3"></i>
+                                <span>团队协作和沟通</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-check-circle text-primary mr-3"></i>
+                                <span>项目报告和分析</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能卡片 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 功能1 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-bar-chart text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">数据分析</h3>
+                    <p class="text-gray-600 mb-6">实时数据分析和可视化，帮助您做出数据驱动的决策。</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>实时数据仪表盘</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>自定义报表</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>数据导出</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 功能2 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-users text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">团队协作</h3>
+                    <p class="text-gray-600 mb-6">无缝的团队协作功能，包括实时沟通、文件共享和任务分配。</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>实时聊天</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>文件共享</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>团队日历</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 功能3 -->
+                <div class="feature-card bg-white p-8 rounded-xl shadow-lg">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-user text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">客户管理</h3>
+                    <p class="text-gray-600 mb-6">全面的客户管理功能，帮助您跟踪客户信息和互动历史。</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>客户数据库</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>互动历史</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-primary mr-2"></i>
+                            <span>客户细分</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4">客户评价</span>
+                <h2 class="text-3xl font-bold mb-6">客户怎么说</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">听听我们的客户如何评价我们的SaaS平台。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 评价1 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20businessman&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">张总监</h4>
+                            <p class="text-sm text-gray-500">科技公司总监</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">这个SaaS平台彻底改变了我们的工作方式，项目管理功能让我们的团队协作更加高效，数据分析工具帮助我们做出更明智的决策。</p>
+                </div>
+                <!-- 评价2 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20businesswoman&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">李经理</h4>
+                            <p class="text-sm text-gray-500">营销总监</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">客户管理功能非常强大，帮助我们更好地了解客户需求，提高客户满意度，同时团队协作功能让我们的营销团队工作更加顺畅。</p>
+                </div>
+                <!-- 评价3 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20portrait%20of%20young%20professional&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold">王工程师</h4>
+                            <p class="text-sm text-gray-500">软件工程师</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star-half-o text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">自动化工作流功能节省了我们大量时间，数据分析工具提供了有价值的 insights，整体来说这是一个非常强大的平台。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 定价区域 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <span class="inline-block bg-primary/10 text-primary px-4 py-1 rounded-full text-sm font-semibold mb-4">定价方案</span>
+                <h2 class="text-3xl font-bold mb-6">选择适合您的方案</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">我们提供多种定价方案，满足不同规模企业的需求。</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 基础版 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">基础版</h3>
+                    <div class="mb-6">
+                        <span class="text-3xl font-bold">¥99</span>
+                        <span class="text-gray-500">/月</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>最多5个项目</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>最多10个用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>基础数据分析</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>邮件支持</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                        选择基础版
+                    </button>
+                </div>
+                <!-- 专业版 -->
+                <div class="bg-primary text-white p-8 rounded-xl shadow-lg relative">
+                    <div class="absolute top-0 right-0 bg-white text-primary px-4 py-1 rounded-bl-lg font-semibold">
+                        最受欢迎
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">专业版</h3>
+                    <div class="mb-6">
+                        <span class="text-3xl font-bold">¥299</span>
+                        <span class="text-white/80">/月</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-white mr-2"></i>
+                            <span>无限项目</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-white mr-2"></i>
+                            <span>最多50个用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-white mr-2"></i>
+                            <span>高级数据分析</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-white mr-2"></i>
+                            <span>优先邮件支持</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-white mr-2"></i>
+                            <span>自定义报表</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                        选择专业版
+                    </button>
+                </div>
+                <!-- 企业版 -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-2">企业版</h3>
+                    <div class="mb-6">
+                        <span class="text-3xl font-bold">¥999</span>
+                        <span class="text-gray-500">/月</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>无限项目</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>无限用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>企业级数据分析</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>24/7电话支持</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>自定义集成</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-500 mr-2"></i>
+                            <span>专属客户经理</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                        联系销售
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="hero-gradient text-white py-20 px-4">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">准备好开始使用了吗？</h2>
+            <p class="text-xl mb-8 opacity-90">立即开始免费试用，体验我们功能丰富的SaaS平台，提升您的业务效率。</p>
+            <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg">
+                免费试用14天
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-xl font-bold flex items-center">
+                        <i class="fa fa-cogs mr-2 text-primary"></i>
+                        <span>设计风格导航</span>
+                    </a>
+                    <p class="mt-2 text-gray-400">探索各种UI/UX设计风格</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
+                    <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
+                    <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 设计风格导航站. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 选项卡切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.border-b button');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有选项卡的活动状态
+                    tabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('text-gray-500');
+                    });
+                    
+                    // 添加当前选项卡的活动状态
+                    this.classList.add('tab-active');
+                    this.classList.remove('text-gray-500');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

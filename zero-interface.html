@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>零接口 - 语音助手，人工智能平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        dark: '#1F2937',
+                        light: '#F9FAFB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .voice-wave {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 4px;
+            }
+            .voice-wave span {
+                width: 4px;
+                height: 24px;
+                background-color: #6366F1;
+                border-radius: 2px;
+                animation: wave 1.2s ease-in-out infinite;
+            }
+            .voice-wave span:nth-child(2) {
+                animation-delay: 0.1s;
+            }
+            .voice-wave span:nth-child(3) {
+                animation-delay: 0.2s;
+            }
+            .voice-wave span:nth-child(4) {
+                animation-delay: 0.3s;
+            }
+            .voice-wave span:nth-child(5) {
+                animation-delay: 0.4s;
+            }
+            @keyframes wave {
+                0%, 100% {
+                    height: 8px;
+                }
+                50% {
+                    height: 24px;
+                }
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-light to-gray-100 min-h-screen font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm fixed w-full z-10">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i class="fa fa-microphone text-primary text-2xl"></i>
+                <span class="text-xl font-bold">零接口</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <button class="px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors">
+                    首页
+                </button>
+                <button class="px-4 py-2 border border-primary text-primary rounded-md hover:bg-primary/10 transition-colors">
+                    <i class="fa fa-cog mr-1"></i> 设置
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 flex flex-col items-center justify-center text-center">
+        <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-8 animate-float">
+            <i class="fa fa-microphone text-primary text-4xl"></i>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 max-w-3xl">语音优先的零接口体验</h1>
+        <p class="text-xl text-gray-600 mb-12 max-w-2xl">通过语音交互和人工智能，创造无界面的沉浸式用户体验</p>
+        <div class="voice-wave mb-8">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <button class="px-8 py-4 bg-primary text-white rounded-full text-lg font-medium hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl">
+            <i class="fa fa-microphone mr-2"></i> 开始语音交互
+        </button>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">核心特性</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-comments text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">自然语言处理</h3>
+                    <p class="text-gray-600">理解上下文和意图，提供智能的语音响应</p>
+                </div>
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-brain text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">人工智能驱动</h3>
+                    <p class="text-gray-600">基于机器学习的个性化体验和智能建议</p>
+                </div>
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-wifi text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">多设备同步</h3>
+                    <p class="text-gray-600">在不同设备间无缝切换，保持一致的体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-assistive-listening-systems text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">语音助手</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">通过语音指令控制智能设备，获取信息，设置提醒和预约</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>智能家庭控制</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>个人助理功能</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>信息查询与服务</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-robot text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">人工智能平台</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">通过自然语言界面与AI系统交互，获取智能分析和建议</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>智能客服系统</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>数据分析助手</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>创意内容生成</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 交互示例 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">交互示例</h2>
+            <div class="max-w-2xl mx-auto bg-gray-50 p-8 rounded-lg shadow-md">
+                <div class="mb-6">
+                    <div class="flex items-start mb-4">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fa fa-user text-primary"></i>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm max-w-[80%]">
+                            <p>今天天气怎么样？</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start mb-4">
+                        <div class="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fa fa-robot text-secondary"></i>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm max-w-[80%]">
+                            <p>今天北京的天气晴朗，温度在15-22摄氏度之间，适合户外活动。</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fa fa-user text-primary"></i>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm max-w-[80%]">
+                            <p>帮我设置明天早上7点的闹钟</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <div class="flex-1 bg-white rounded-full shadow-sm flex items-center px-4 py-3">
+                        <i class="fa fa-microphone text-gray-400 mr-3"></i>
+                        <input type="text" placeholder="说点什么..." class="flex-1 border-none outline-none">
+                        <button class="text-primary">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">零接口</h3>
+                    <p class="text-gray-400">通过语音和AI创造无缝的用户体验</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">首页</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">功能</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">应用场景</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span>contact@zerointerface.ai</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span>+86 123 4567 8910</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2024 零接口. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 模拟语音波形动画
+        const voiceWave = document.querySelector('.voice-wave');
+        let isListening = false;
+
+        document.querySelector('button:has(.fa-microphone)').addEventListener('click', function() {
+            isListening = !isListening;
+            if (isListening) {
+                voiceWave.classList.add('animate-pulse-slow');
+                this.innerHTML = '<i class="fa fa-stop mr-2"></i> 停止语音交互';
+            } else {
+                voiceWave.classList.remove('animate-pulse-slow');
+                this.innerHTML = '<i class="fa fa-microphone mr-2"></i> 开始语音交互';
+            }
+        });
+    </script>
+</body>
+</html>

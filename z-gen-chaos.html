@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z世代混沌/极繁主义 - Z世代生活方式，音乐艺术家</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        :root {
+            --primary: #ff2a6d;
+            --secondary: #05d9e8;
+            --accent1: #d1f7ff;
+            --accent2: #f706cf;
+            --accent3: #ff9f1c;
+            --accent4: #2de2e6;
+            --dark: #1a1a2e;
+            --light: #f9f9f9;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .header {
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent2), var(--accent3));
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 70%, var(--accent2) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 30%, var(--secondary) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, var(--primary) 0%, transparent 50%);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--light), var(--accent1), var(--light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent1);
+            margin-bottom: 3rem;
+            max-width: 800px;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent2));
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 42, 109, 0.5);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 42, 109, 0.8);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 6rem 0;
+        }
+        
+        .card {
+            padding: 2.5rem;
+            background: rgba(26, 26, 46, 0.8);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary), var(--accent2));
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .card:hover::before {
+            opacity: 0.1;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .card-text {
+            color: var(--accent1);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 3rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .feature-item {
+            padding: 2rem;
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: scale(1.05);
+            border-color: var(--primary);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .feature-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--light);
+        }
+        
+        .feature-text {
+            color: var(--accent1);
+            font-size: 0.875rem;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 1/1;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+        
+        .gallery-title {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .gallery-text {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+        
+        .footer {
+            padding: 4rem 0;
+            background: rgba(10, 10, 20, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .footer-link {
+            color: var(--accent1);
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--accent1);
+            font-size: 0.875rem;
+        }
+        
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        @keyframes textGlow {
+            0% {
+                text-shadow: 0 0 10px rgba(255, 42, 109, 0.5);
+            }
+            100% {
+                text-shadow: 0 0 20px rgba(5, 217, 232, 0.8);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部 -->
+    <header class="header">
+        <div class="container flex justify-between items-center">
+            <div class="logo">CHAOS</div>
+            <nav class="nav">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">风格</a>
+                <a href="#" class="nav-link">作品</a>
+                <a href="#" class="nav-link">关于</a>
+                <a href="#" class="nav-link">联系</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- 英雄区域 -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Z世代混沌<br>极繁主义</h1>
+            <p class="hero-subtitle">打破传统设计规则，融合鲜艳色彩、不规则布局和数字美学，为Z世代生活方式和音乐艺术家打造独特的视觉体验。</p>
+            <a href="#" class="cta-button">
+                <span>探索风格</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+    
+    <!-- 特性区域 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">核心特性</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3 class="card-title">鲜艳色彩</h3>
+                    <p class="card-text">大胆使用高饱和度色彩，创造视觉冲击力，反映Z世代的活力与个性。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-random"></i>
+                    </div>
+                    <h3 class="card-title">不规则布局</h3>
+                    <p class="card-text">打破传统网格限制，采用自由流动的布局，营造混沌而有序的视觉效果。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="card-title">多层叠加</h3>
+                    <p class="card-text">通过图层叠加和混合模式，创造深度和视觉层次感，增强沉浸感。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3 class="card-title">音乐融合</h3>
+                    <p class="card-text">与音乐元素紧密结合，通过视觉设计传达音乐的节奏和情感。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="card-title">数字原生</h3>
+                    <p class="card-text">为数字平台优化，适应社交媒体和移动设备的视觉需求。</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="card-title">动态效果</h3>
+                    <p class="card-text">加入微动画和交互效果，增强用户参与感和视觉吸引力。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 应用场景 -->
+    <section class="section" style="background: rgba(10, 10, 20, 0.5);">
+        <div class="container">
+            <h2 class="section-title">应用场景</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="feature-title">音乐艺术家</h3>
+                    <p class="feature-text">为歌手、DJ和乐队打造独特的视觉形象，包括专辑封面、社交媒体和演唱会视觉。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-instagram"></i>
+                    </div>
+                    <h3 class="feature-title">社交媒体</h3>
+                    <p class="feature-text">创建吸引眼球的社交媒体内容，提高品牌曝光度和用户互动率。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3 class="feature-title">时尚品牌</h3>
+                    <p class="feature-text">为Z世代定位的时尚品牌设计视觉形象，包括网站、包装和营销材料。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="feature-title">游戏界面</h3>
+                    <p class="feature-text">为电子游戏设计用户界面，创造沉浸式的游戏体验。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="feature-title">数字艺术</h3>
+                    <p class="feature-text">创作数字艺术作品，表达Z世代的文化和价值观。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="feature-title">创意机构</h3>
+                    <p class="feature-text">为创意机构打造作品集和品牌形象，展示其创新能力。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 设计示例 -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">设计示例</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chaos%20maximalism%20z%20generation%20music%20album%20cover%20with%20vibrant%20colors%20and%20irregular%20shapes&image_size=square" alt="音乐专辑封面">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">音乐专辑封面</h3>
+                        <p class="gallery-text">融合鲜艳色彩和不规则元素，打造独特的音乐视觉</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chaos%20maximalism%20social%20media%20post%20for%20z%20generation%20with%20colorful%20elements&image_size=square" alt="社交媒体帖子">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">社交媒体帖子</h3>
+                        <p class="gallery-text">吸引眼球的社交媒体内容，提高用户互动</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chaos%20maximalism%20fashion%20brand%20website%20design%20with%20vibrant%20colors&image_size=square" alt="时尚品牌网站">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">时尚品牌网站</h3>
+                        <p class="gallery-text">为Z世代打造的时尚品牌视觉体验</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chaos%20maximalism%20game%20user%20interface%20with%20neon%20colors&image_size=square" alt="游戏界面">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">游戏界面</h3>
+                        <p class="gallery-text">沉浸式游戏界面设计，增强游戏体验</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chaos%20maximalism%20digital%20art%20piece%20with%20abstract%20shapes%20and%20colors&image_size=square" alt="数字艺术">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">数字艺术</h3>
+                        <p class="gallery-text">表达Z世代文化的数字艺术作品</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=chaos%20maximalism%20creative%20agency%20portfolio%20design&image_size=square" alt="创意机构作品集">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">创意机构作品集</h3>
+                        <p class="gallery-text">展示创新能力的机构形象设计</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CHAOS</h3>
+                    <p style="color: var(--accent1); font-size: 0.875rem; margin-bottom: 1.5rem;">Z世代混沌/极繁主义设计工作室，为新时代创造独特视觉体验。</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>服务</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">品牌设计</a>
+                        <a href="#" class="footer-link">网站设计</a>
+                        <a href="#" class="footer-link">社交媒体</a>
+                        <a href="#" class="footer-link">数字艺术</a>
+                        <a href="#" class="footer-link">音乐视觉</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>关于</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">我们的故事</a>
+                        <a href="#" class="footer-link">团队</a>
+                        <a href="#" class="footer-link">作品集</a>
+                        <a href="#" class="footer-link">博客</a>
+                        <a href="#" class="footer-link">联系我们</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>联系方式</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">email@chaosdesign.com</a>
+                        <a href="#" class="footer-link">+86 123 4567 8910</a>
+                        <a href="#" class="footer-link">北京市朝阳区创意园区</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 CHAOS Design Studio. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant Studio - 活力创意工作室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff5a5f',
+                        secondary: '#00b8d9',
+                        accent1: '#ffd60a',
+                        accent2: '#34a853',
+                        accent3: '#9c27b0',
+                        dark: '#263238',
+                        light: '#ffffff'
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #263238;
+        }
+        .block-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .block-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ff5a5f, #00b8d9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .grid-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .btn-primary {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 90, 95, 0.4);
+        }
+        .btn-secondary {
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 184, 217, 0.4);
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        .pulse-animation {
+            animation: pulse 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold gradient-text">VIBRANT</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-dark font-medium hover:text-primary transition-colors">首页</a>
+                    <a href="#services" class="text-gray-600 font-medium hover:text-primary transition-colors">服务</a>
+                    <a href="#projects" class="text-gray-600 font-medium hover:text-primary transition-colors">项目</a>
+                    <a href="#about" class="text-gray-600 font-medium hover:text-primary transition-colors">关于</a>
+                    <a href="#contact" class="text-gray-600 font-medium hover:text-primary transition-colors">联系</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-dark text-2xl">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主内容 -->
+    <main class="pt-24">
+        <!-- 英雄区域 -->
+        <section class="py-20 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                            创意无限，<br>
+                            <span class="gradient-text">活力四射</span>
+                        </h2>
+                        <p class="text-xl text-gray-600 mb-8">我们是一家充满活力的创意工作室，为初创公司和品牌提供全方位的设计和开发服务</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="btn-primary px-8 py-3 bg-primary text-white font-bold rounded-lg">
+                                开始合作
+                            </button>
+                            <button class="btn-secondary px-8 py-3 bg-secondary text-white font-bold rounded-lg">
+                                查看作品
+                            </button>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="block-card bg-accent1 p-8 rounded-2xl">
+                            <i class="fa fa-lightbulb-o text-6xl text-dark mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2">创新思维</h3>
+                            <p>突破传统，创造独特的品牌体验</p>
+                        </div>
+                        <div class="block-card bg-secondary p-8 rounded-2xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pulse-animation">
+                            <i class="fa fa-code text-6xl text-white mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2 text-white">技术驱动</h3>
+                            <p class="text-white">前沿技术，打造卓越产品</p>
+                        </div>
+                        <div class="block-card bg-primary p-8 rounded-2xl absolute bottom-0 right-0">
+                            <i class="fa fa-paint-brush text-6xl text-white mb-4"></i>
+                            <h3 class="text-xl font-bold mb-2 text-white">设计美学</h3>
+                            <p class="text-white">精致设计，提升品牌价值</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务 -->
+        <section id="services" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-16 text-center">我们的<span class="gradient-text">服务</span></h2>
+                <div class="grid-blocks">
+                    <div class="block-card bg-white p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa fa-paint-brush text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">品牌设计</h3>
+                        <p class="text-gray-600 mb-4">创建独特的品牌标识，包括标志、色彩系统和品牌指南</p>
+                        <a href="#" class="text-primary font-medium hover:underline">了解更多 →</a>
+                    </div>
+                    <div class="block-card bg-white p-8">
+                        <div class="w-16 h-16 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa fa-code text-2xl text-secondary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">网站开发</h3>
+                        <p class="text-gray-600 mb-4">构建响应式、高性能的网站和Web应用</p>
+                        <a href="#" class="text-secondary font-medium hover:underline">了解更多 →</a>
+                    </div>
+                    <div class="block-card bg-white p-8">
+                        <div class="w-16 h-16 bg-accent1/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa fa-mobile text-2xl text-dark"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">移动应用</h3>
+                        <p class="text-gray-600 mb-4">开发用户友好的移动应用，提升用户体验</p>
+                        <a href="#" class="text-dark font-medium hover:underline">了解更多 →</a>
+                    </div>
+                    <div class="block-card bg-white p-8">
+                        <div class="w-16 h-16 bg-accent2/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa fa-line-chart text-2xl text-accent2"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">数字营销</h3>
+                        <p class="text-gray-600 mb-4">制定有效的数字营销策略，提升品牌知名度</p>
+                        <a href="#" class="text-accent2 font-medium hover:underline">了解更多 →</a>
+                    </div>
+                    <div class="block-card bg-white p-8">
+                        <div class="w-16 h-16 bg-accent3/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa fa-gamepad text-2xl text-accent3"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">游戏设计</h3>
+                        <p class="text-gray-600 mb-4">创造引人入胜的游戏体验和交互设计</p>
+                        <a href="#" class="text-accent3 font-medium hover:underline">了解更多 →</a>
+                    </div>
+                    <div class="block-card bg-white p-8">
+                        <div class="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fa fa-video-camera text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">视频制作</h3>
+                        <p class="text-gray-600 mb-4">制作高质量的视频内容，讲述品牌故事</p>
+                        <a href="#" class="text-primary font-medium hover:underline">了解更多 →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目 -->
+        <section id="projects" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-16 text-center">精选<span class="gradient-text">项目</span></h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="block-card overflow-hidden">
+                        <div class="w-full h-64 bg-primary/20 flex items-center justify-center">
+                            <i class="fa fa-laptop text-6xl text-primary"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">电商平台</h3>
+                            <p class="text-gray-600 mb-4">为时尚品牌打造的现代化电商网站</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">Web设计</span>
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">开发</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-card overflow-hidden">
+                        <div class="w-full h-64 bg-secondary/20 flex items-center justify-center">
+                            <i class="fa fa-mobile text-6xl text-secondary"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">健康应用</h3>
+                            <p class="text-gray-600 mb-4">帮助用户追踪健康数据的移动应用</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">移动开发</span>
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">UI/UX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-card overflow-hidden">
+                        <div class="w-full h-64 bg-accent1/20 flex items-center justify-center">
+                            <i class="fa fa-gamepad text-6xl text-dark"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">休闲游戏</h3>
+                            <p class="text-gray-600 mb-4">适合所有年龄段的休闲益智游戏</p>
+                            <div class="flex space-x-2">
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">游戏设计</span>
+                                <span class="px-3 py-1 bg-gray-100 rounded-full text-sm">开发</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                    <button class="btn-primary px-8 py-3 bg-primary text-white font-bold rounded-lg">
+                        查看更多项目
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 关于我们 -->
+        <section id="about" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-16 text-center">关于<span class="gradient-text">我们</span></h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">我们的故事</h3>
+                        <p class="text-gray-600 mb-6">Vibrant Studio 成立于2020年，由一群充满激情的设计师和开发者组成。我们致力于为客户提供创新、高质量的数字解决方案，帮助品牌在竞争激烈的市场中脱颖而出。</p>
+                        <p class="text-gray-600 mb-8">我们相信创意的力量，通过融合艺术与技术，为客户创造独特的品牌体验。我们的团队拥有丰富的行业经验，能够为不同规模的企业提供定制化的服务。</p>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-primary mb-2">50+</div>
+                                <div class="text-gray-600">完成项目</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-secondary mb-2">25+</div>
+                                <div class="text-gray-600">合作伙伴</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl font-bold text-accent1 mb-2">5+</div>
+                                <div class="text-gray-600">行业奖项</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="block-card bg-primary p-6 text-white">
+                            <h4 class="font-bold mb-2">我们的使命</h4>
+                            <p>通过创意和技术，帮助品牌实现其愿景，创造有意义的用户体验。</p>
+                        </div>
+                        <div class="block-card bg-secondary p-6 text-white">
+                            <h4 class="font-bold mb-2">我们的愿景</h4>
+                            <p>成为行业领先的创意工作室，为客户提供卓越的数字解决方案。</p>
+                        </div>
+                        <div class="block-card bg-accent1 p-6">
+                            <h4 class="font-bold mb-2">我们的价值观</h4>
+                            <p>创新、质量、合作、诚信</p>
+                        </div>
+                        <div class="block-card bg-accent2 p-6 text-white">
+                            <h4 class="font-bold mb-2">我们的团队</h4>
+                            <p>由设计师、开发者、营销专家组成的多元化团队</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 联系我们 -->
+        <section id="contact" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold mb-16 text-center">联系<span class="gradient-text">我们</span></h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="block-card bg-white p-8 border border-gray-200">
+                        <h3 class="text-2xl font-bold mb-6">发送消息</h3>
+                        <form>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">姓名</label>
+                                <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-4">
+                                <label class="block font-medium mb-2">邮箱</label>
+                                <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block font-medium mb-2">消息</label>
+                                <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-3 bg-primary text-white font-bold rounded-lg">
+                                发送消息
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <div class="block-card bg-dark text-white p-8 mb-8">
+                            <h3 class="text-2xl font-bold mb-6">联系方式</h3>
+                            <ul class="space-y-4">
+                                <li class="flex items-start">
+                                    <i class="fa fa-map-marker text-primary mt-1 mr-4"></i>
+                                    <span>上海市浦东新区创意园区A座1001室</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-phone text-primary mr-4"></i>
+                                    <span>+86 123 4567 8910</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <i class="fa fa-envelope text-primary mr-4"></i>
+                                    <span>contact@vibrantstudio.com</span>
+                                </li>
+                            </ul>
+                            <div class="mt-8">
+                                <h4 class="font-bold mb-4">关注我们</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                                        <i class="fa fa-weixin"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                                        <i class="fa fa-weibo"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                                        <i class="fa fa-instagram"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block-card bg-accent1 p-8">
+                            <h3 class="text-xl font-bold mb-4">工作时间</h3>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between">
+                                    <span>周一至周五</span>
+                                    <span>9:00 - 18:00</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>周六</span>
+                                    <span>10:00 - 16:00</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>周日</span>
+                                    <span>休息</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-xl font-bold mb-4 gradient-text">VIBRANT</h4>
+                    <p class="text-gray-400 mb-4">充满活力的创意工作室，为品牌创造独特的数字体验</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-primary transition-colors">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">服务</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">品牌设计</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">网站开发</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">移动应用</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">数字营销</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">公司</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">关于我们</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">团队</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">项目</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">博客</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold mb-4">联系我们</h5>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker mr-2"></i>
+                            <span>上海市浦东新区</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span>+86 123 4567 8910</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span>contact@vibrantstudio.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Vibrant Studio. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

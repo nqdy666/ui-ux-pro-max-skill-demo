@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>互动产品演示 - 着陆页样式</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        secondary: '#EC4899',
+                        neutral: '#F3F4F6',
+                        dark: '#1F2937'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .demo-card {
+                transition: all 0.3s ease;
+            }
+            .demo-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(139, 92, 246, 0.1), 0 10px 10px -5px rgba(139, 92, 246, 0.04);
+            }
+            .feature-icon {
+                transition: all 0.3s ease;
+            }
+            .feature-icon:hover {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-neutral min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i class="fa fa-th-large text-primary text-2xl"></i>
+                <span class="text-xl font-semibold text-dark">DesignStyles</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#general-styles" class="text-gray-600 hover:text-primary transition-colors">通用风格</a>
+                <a href="index.html#landing-styles" class="text-primary font-medium">着陆页样式</a>
+                <a href="index.html#dashboard-styles" class="text-gray-600 hover:text-primary transition-colors">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-gray-600">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-violet-50 to-fuchsia-50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-dark mb-6 text-shadow">互动产品演示</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 max-w-3xl mx-auto mb-10">
+                通过交互式演示让用户亲身体验产品功能和优势
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+                <a href="#demo" class="inline-block bg-primary hover:bg-violet-600 text-white font-medium px-8 py-3 rounded-lg transition-colors shadow-lg">
+                    开始演示
+                </a>
+                <a href="#features" class="inline-block bg-white text-primary font-medium px-8 py-3 rounded-lg transition-colors shadow-lg hover:bg-gray-50">
+                    了解更多
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 互动演示区域 -->
+    <section class="py-16 bg-white" id="demo">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">亲身体验产品功能</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">点击下方按钮，体验不同的产品功能</p>
+            </div>
+            
+            <!-- 演示控制面板 -->
+            <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+                <div class="bg-gradient-to-r from-primary to-secondary p-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        </div>
+                        <span class="text-white font-medium">产品演示控制台</span>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <!-- 演示内容区域 -->
+                    <div id="demo-content" class="mb-6 min-h-[300px] bg-gray-50 rounded-xl p-6 flex items-center justify-center">
+                        <div class="text-center">
+                            <i class="fa fa-mouse-pointer text-6xl text-primary mb-4"></i>
+                            <p class="text-gray-600">点击下方的功能按钮开始演示</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能按钮 -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button onclick="showDemo('analytics')" class="demo-btn bg-primary text-white py-3 px-4 rounded-lg hover:bg-violet-600 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fa fa-chart-line"></i>
+                            <span>数据分析</span>
+                        </button>
+                        <button onclick="showDemo('automation')" class="demo-btn bg-secondary text-white py-3 px-4 rounded-lg hover:bg-pink-600 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fa fa-cogs"></i>
+                            <span>自动化</span>
+                        </button>
+                        <button onclick="showDemo('collaboration')" class="demo-btn bg-blue-500 text-white py-3 px-4 rounded-lg hover:bg-blue-600 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fa fa-users"></i>
+                            <span>协作</span>
+                        </button>
+                        <button onclick="showDemo('security')" class="demo-btn bg-green-500 text-white py-3 px-4 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center space-x-2">
+                            <i class="fa fa-shield-alt"></i>
+                            <span>安全</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能特性区域 -->
+    <section class="py-16 bg-neutral" id="features">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">核心功能</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">探索我们产品的强大功能</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 功能卡片 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md demo-card cursor-pointer" onclick="showDemo('analytics')">
+                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-4 feature-icon">
+                        <i class="fa fa-chart-line text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">智能分析</h3>
+                    <p class="text-gray-600">实时数据分析，洞察业务趋势</p>
+                </div>
+                
+                <!-- 功能卡片 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md demo-card cursor-pointer" onclick="showDemo('automation')">
+                    <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-4 feature-icon">
+                        <i class="fa fa-cogs text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">流程自动化</h3>
+                    <p class="text-gray-600">自动化重复任务，提升效率</p>
+                </div>
+                
+                <!-- 功能卡片 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md demo-card cursor-pointer" onclick="showDemo('collaboration')">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-4 feature-icon">
+                        <i class="fa fa-users text-2xl text-blue-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">团队协作</h3>
+                    <p class="text-gray-600">无缝协作，提升团队生产力</p>
+                </div>
+                
+                <!-- 功能卡片 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md demo-card cursor-pointer" onclick="showDemo('security')">
+                    <div class="w-14 h-14 bg-green-500/10 rounded-xl flex items-center justify-center mb-4 feature-icon">
+                        <i class="fa fa-shield-alt text-2xl text-green-500"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">企业级安全</h3>
+                    <p class="text-gray-600">全方位保护您的数据安全</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 使用步骤区域 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">简单三步开始使用</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">快速上手，立即体验</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">注册账户</h3>
+                    <p class="text-gray-600">只需几分钟即可完成注册</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-secondary text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">配置产品</h3>
+                    <p class="text-gray-600">根据您的需求自定义设置</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-blue-500 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">开始使用</h3>
+                    <p class="text-gray-600">立即体验强大的产品功能</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤区域 -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">准备好开始了吗？</h2>
+            <p class="text-white/80 max-w-2xl mx-auto mb-10">
+                立即注册，享受14天免费试用，体验完整功能
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-primary font-medium px-8 py-3 rounded-lg transition-colors shadow-lg hover:bg-gray-100">
+                    免费试用
+                </a>
+                <a href="#" class="bg-transparent border-2 border-white text-white font-medium px-8 py-3 rounded-lg transition-colors hover:bg-white/10">
+                    联系销售
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">DesignStyles</h3>
+                    <p class="text-gray-400">提供各种UI/UX设计风格的展示和灵感</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">风格分类</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#general-styles" class="hover:text-primary transition-colors">通用风格</a></li>
+                        <li><a href="index.html#landing-styles" class="hover:text-primary transition-colors">着陆页样式</a></li>
+                        <li><a href="index.html#dashboard-styles" class="hover:text-primary transition-colors">仪表盘样式</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">资源</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">设计指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">最佳实践</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">教程</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fa fa-envelope mr-2"></i> contact@designstyles.com</li>
+                        <li><i class="fa fa-phone mr-2"></i> +86 123 4567 8910</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DesignStyles. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 演示内容数据
+        const demoContent = {
+            analytics: {
+                icon: 'fa-chart-line',
+                title: '智能数据分析',
+                description: '实时追踪关键指标，生成可视化报表',
+                features: ['实时数据更新', '自定义报表', '趋势预测', '数据导出']
+            },
+            automation: {
+                icon: 'fa-cogs',
+                title: '流程自动化',
+                description: '自动化工作流程，减少人工操作',
+                features: ['智能触发器', '多步骤流程', '条件判断', '错误处理']
+            },
+            collaboration: {
+                icon: 'fa-users',
+                title: '团队协作',
+                description: '实时协作，提升团队效率',
+                features: ['实时编辑', '评论反馈', '任务分配', '版本控制']
+            },
+            security: {
+                icon: 'fa-shield-alt',
+                title: '企业级安全',
+                description: '全方位保护您的数据',
+                features: ['数据加密', '访问控制', '审计日志', '合规认证']
+            }
+        };
+
+        // 显示演示内容
+        function showDemo(type) {
+            const content = demoContent[type];
+            const demoContainer = document.getElementById('demo-content');
+            
+            // 添加淡出效果
+            demoContainer.style.opacity = '0';
+            
+            setTimeout(() => {
+                demoContainer.innerHTML = `
+                    <div class="text-center w-full">
+                        <i class="fa ${content.icon} text-6xl text-primary mb-4"></i>
+                        <h3 class="text-2xl font-bold text-dark mb-2">${content.title}</h3>
+                        <p class="text-gray-600 mb-6">${content.description}</p>
+                        <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
+                            ${content.features.map(feature => `
+                                <div class="bg-white p-3 rounded-lg shadow-sm flex items-center space-x-2">
+                                    <i class="fa fa-check-circle text-green-500"></i>
+                                    <span class="text-sm text-gray-700">${feature}</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                
+                // 添加淡入效果
+                demoContainer.style.opacity = '1';
+                demoContainer.style.transition = 'opacity 0.3s ease';
+            }, 300);
+        }
+    </script>
+</body>
+</html>

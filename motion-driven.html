@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>运动驱动 - 作品集网站</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --motion-primary: #FF3D00;
+            --motion-secondary: #2979FF;
+            --motion-accent: #00E676;
+            --motion-dark: #121212;
+            --motion-light: #F5F5F5;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--motion-dark);
+            min-height: 100vh;
+            color: var(--motion-light);
+            overflow-x: hidden;
+        }
+        
+        .motion-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .motion-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--motion-primary);
+        }
+        
+        .motion-btn {
+            background: linear-gradient(135deg, var(--motion-primary), var(--motion-secondary));
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .motion-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .motion-btn:hover::before {
+            left: 100%;
+        }
+        
+        .motion-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 15px rgba(255, 61, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--motion-light);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--motion-primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--motion-primary), var(--motion-secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--motion-primary), var(--motion-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, var(--motion-primary), var(--motion-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #9e9e9e;
+            margin-bottom: 3rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 61, 0, 0.1), transparent 70%);
+            animation: pulse 4s infinite;
+        }
+        
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 1s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/50 backdrop-blur-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-blue-500 flex items-center justify-center">
+                    <i class="fa fa-play text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-blue-500">MotionDrive</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">作品集</a>
+                <a href="#" class="nav-link">关于</a>
+                <a href="#" class="nav-link">服务</a>
+                <a href="#" class="nav-link">联系我们</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="motion-btn">了解更多</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="hero-bg min-h-screen flex items-center">
+        <div class="container mx-auto px-4 py-20">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-slide-in">
+                    <h1 class="section-title text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        运动驱动的<br>创意体验
+                    </h1>
+                    <p class="section-subtitle text-lg mb-8">
+                        为作品集网站和讲故事平台打造的动感界面，通过流畅的动画和过渡效果，为用户带来沉浸式的视觉体验。
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="motion-btn text-center">查看作品集</button>
+                        <button class="px-6 py-3 rounded-lg border border-white/20 hover:bg-white/10 transition text-center">
+                            了解更多
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2 animate-float">
+                    <div class="motion-card p-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20portfolio%20interface&image_size=landscape_16_9" alt="作品集预览" class="w-full rounded-lg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品集区域 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="text-center mb-16 animate-fade-in">
+            <h2 class="section-title text-3xl md:text-4xl">精选作品集</h2>
+            <p class="section-subtitle max-w-2xl mx-auto">探索我们的创意项目，每一个作品都讲述着独特的故事</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="portfolio-item animate-fade-in" style="animation-delay: 0.2s;">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20project%201&image_size=square" alt="项目1" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay">
+                    <h3 class="text-xl font-semibold mb-2">品牌动画</h3>
+                    <p class="text-sm text-white/80 mb-3">为科技公司打造的品牌动画系列</p>
+                    <button class="motion-btn text-sm py-2 px-4">查看详情</button>
+                </div>
+            </div>
+            <div class="portfolio-item animate-fade-in" style="animation-delay: 0.4s;">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20project%202&image_size=square" alt="项目2" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay">
+                    <h3 class="text-xl font-semibold mb-2">产品演示</h3>
+                    <p class="text-sm text-white/80 mb-3">移动应用的交互式产品演示</p>
+                    <button class="motion-btn text-sm py-2 px-4">查看详情</button>
+                </div>
+            </div>
+            <div class="portfolio-item animate-fade-in" style="animation-delay: 0.6s;">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20project%203&image_size=square" alt="项目3" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay">
+                    <h3 class="text-xl font-semibold mb-2">故事动画</h3>
+                    <p class="text-sm text-white/80 mb-3">儿童教育应用的故事动画系列</p>
+                    <button class="motion-btn text-sm py-2 px-4">查看详情</button>
+                </div>
+            </div>
+            <div class="portfolio-item animate-fade-in" style="animation-delay: 0.8s;">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20project%204&image_size=square" alt="项目4" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay">
+                    <h3 class="text-xl font-semibold mb-2">网站动效</h3>
+                    <p class="text-sm text-white/80 mb-3">电子商务网站的互动动效设计</p>
+                    <button class="motion-btn text-sm py-2 px-4">查看详情</button>
+                </div>
+            </div>
+            <div class="portfolio-item animate-fade-in" style="animation-delay: 1s;">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20project%205&image_size=square" alt="项目5" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay">
+                    <h3 class="text-xl font-semibold mb-2">数据可视化</h3>
+                    <p class="text-sm text-white/80 mb-3">金融数据的动态可视化设计</p>
+                    <button class="motion-btn text-sm py-2 px-4">查看详情</button>
+                </div>
+            </div>
+            <div class="portfolio-item animate-fade-in" style="animation-delay: 1.2s;">
+                <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20project%206&image_size=square" alt="项目6" class="w-full h-64 object-cover">
+                <div class="portfolio-overlay">
+                    <h3 class="text-xl font-semibold mb-2">UI动画</h3>
+                    <p class="text-sm text-white/80 mb-3">移动应用的界面过渡动画</p>
+                    <button class="motion-btn text-sm py-2 px-4">查看详情</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="bg-gray-900 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl">核心功能</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">为作品集网站和讲故事平台提供全方位的动效支持</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="feature-icon">
+                        <i class="fa fa-film"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">流畅动画</h3>
+                    <p class="text-gray-400">精心设计的动画效果，为用户带来沉浸式的视觉体验</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="feature-icon">
+                        <i class="fa fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">创意设计</h3>
+                    <p class="text-gray-400">独特的视觉设计，让您的作品集在竞争中脱颖而出</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.6s;">
+                    <div class="feature-icon">
+                        <i class="fa fa-mobile"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">响应式设计</h3>
+                    <p class="text-gray-400">在任何设备上都能获得最佳的动效体验</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.8s;">
+                    <div class="feature-icon">
+                        <i class="fa fa-lightbulb-o"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">故事讲述</h3>
+                    <p class="text-gray-400">通过动画和交互，讲述引人入胜的品牌故事</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 1s;">
+                    <div class="feature-icon">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">易于定制</h3>
+                    <p class="text-gray-400">灵活的定制选项，满足您的个性化需求</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 1.2s;">
+                    <div class="feature-icon">
+                        <i class="fa fa-bolt"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">高性能</h3>
+                    <p class="text-gray-400">优化的动画性能，确保流畅的用户体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于区域 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <div class="motion-card p-6 animate-float">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=motion%20design%20studio&image_size=landscape_16_9" alt="工作室" class="w-full rounded-lg">
+                </div>
+            </div>
+            <div class="md:w-1/2 md:pl-10 animate-slide-in">
+                <h2 class="section-title text-3xl md:text-4xl mb-6">关于我们</h2>
+                <p class="text-gray-400 mb-6">
+                    我们是一家专注于运动设计的创意工作室，致力于为客户打造具有视觉冲击力的作品集网站和讲故事平台。
+                </p>
+                <p class="text-gray-400 mb-6">
+                    我们的团队由经验丰富的设计师和动画师组成，拥有多年的行业经验，能够为不同类型的客户提供定制化的解决方案。
+                </p>
+                <button class="motion-btn">了解更多</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="bg-gray-900 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl md:text-4xl">客户评价</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">听听我们的客户怎么说</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.2s;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20creative%20person%201&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">张明</h4>
+                            <p class="text-sm text-gray-400">创意总监</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-400">MotionDrive为我们的作品集网站提供了令人惊艳的动画效果，大大提升了我们的品牌形象和用户体验。</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.4s;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20creative%20person%202&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">李华</h4>
+                            <p class="text-sm text-gray-400">产品经理</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-400">作为一家讲故事平台，我们需要一个能够吸引用户的界面，MotionDrive的动效设计完美满足了我们的需求。</p>
+                </div>
+                <div class="motion-card p-6 animate-fade-in" style="animation-delay: 0.6s;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20creative%20person%203&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">王芳</h4>
+                            <p class="text-sm text-gray-400">设计师</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-4">
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star text-yellow-400"></i>
+                        <i class="fa fa-star-half-o text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-400">MotionDrive的团队非常专业，他们理解我们的需求，并且创造了超出我们预期的动效设计。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="container mx-auto px-4 py-20 text-center">
+        <div class="motion-card p-10 animate-fade-in">
+            <h2 class="section-title text-3xl md:text-4xl mb-6">准备好开始了吗？</h2>
+            <p class="section-subtitle max-w-2xl mx-auto mb-8">让我们为您的作品集网站或讲故事平台增添动感活力</p>
+            <button class="motion-btn text-lg px-8 py-4">联系我们</button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-r from-orange-500 to-blue-500 flex items-center justify-center">
+                            <i class="fa fa-play text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-blue-500">MotionDrive</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">为作品集网站和讲故事平台提供动感界面设计</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">服务</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">作品集设计</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">动画制作</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">UI/UX设计</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">品牌设计</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">资源</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">博客</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">教程</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">案例研究</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">常见问题</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fa fa-envelope mr-2 text-gray-400"></i> <a href="mailto:info@motiondrive.com" class="text-gray-400 hover:text-white transition">info@motiondrive.com</a></li>
+                        <li class="flex items-center"><i class="fa fa-phone mr-2 text-gray-400"></i> <a href="tel:+861234567890" class="text-gray-400 hover:text-white transition">+86 123 4567 890</a></li>
+                        <li class="flex items-center"><i class="fa fa-map-marker mr-2 text-gray-400"></i> <span class="text-gray-400">北京市朝阳区创意园区</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                © 2024 MotionDrive. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

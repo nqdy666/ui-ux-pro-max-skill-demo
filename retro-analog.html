@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>复古模拟/复古胶片 - 摄影、音乐/黑胶品牌</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#d4a373',
+                        secondary: '#e9edc9',
+                        accent: '#faedcd',
+                        dark: '#2c3e50',
+                        light: '#fefae0'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        playfair: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .film-grain {
+                position: relative;
+            }
+            .film-grain::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+                pointer-events: none;
+                z-index: 1;
+            }
+            .vintage-photo {
+                filter: sepia(30%) contrast(105%) brightness(95%);
+                border: 8px solid #fff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transform: rotate(-1deg);
+                transition: transform 0.3s ease;
+            }
+            .vintage-photo:hover {
+                transform: rotate(0deg) scale(1.02);
+            }
+            .retro-text {
+                font-family: 'Playfair Display', serif;
+                letter-spacing: 0.05em;
+            }
+            .vinyl-record {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background: #000;
+                position: relative;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+                animation: spin 20s linear infinite;
+            }
+            .vinyl-record::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: #333;
+                border: 2px solid #555;
+            }
+            .vinyl-record::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: #777;
+            }
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+            .retro-button {
+                background: linear-gradient(145deg, #d4a373, #e6b383);
+                border: 1px solid #c09363;
+                box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
+            .retro-button:hover {
+                transform: translate(1px, 1px);
+                box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+            }
+            .retro-button:active {
+                transform: translate(2px, 2px);
+                box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+            }
+        </div>
+    </style>
+</head>
+<body class="font-inter bg-light text-dark film-grain">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold retro-text flex items-center">
+                <i class="fa fa-camera mr-2 text-primary"></i>
+                <span>复古模拟</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
+                <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
+                <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-dark">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="py-24 px-4 bg-secondary">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight retro-text">复古模拟/复古胶片</h1>
+                    <p class="text-xl mb-8">为摄影、音乐和黑胶品牌打造复古怀旧的视觉体验，重现胶片时代的温暖质感。</p>
+                    <div class="flex space-x-4">
+                        <button class="retro-button text-white px-6 py-3 rounded font-semibold">
+                            探索效果
+                        </button>
+                        <button class="bg-transparent border-2 border-dark text-dark px-6 py-3 rounded font-semibold hover:bg-dark hover:text-white transition-all">
+                            了解更多
+                        </button>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage%20film%20camera%20on%20wooden%20table%20with%20film%20rolls&image_size=landscape_16_9" alt="复古相机" class="vintage-photo w-full">
+                        <div class="absolute -top-4 -right-4 w-32 h-32">
+                            <div class="vinyl-record"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 特性区域 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16 retro-text">核心特性</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 特性1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-camera text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 retro-text">胶片质感</h3>
+                    <p class="text-gray-600">通过滤镜和纹理效果，重现胶片摄影的温暖质感和独特魅力。</p>
+                </div>
+                <!-- 特性2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-music text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 retro-text">黑胶美学</h3>
+                    <p class="text-gray-600">融入黑胶唱片的视觉元素，为音乐品牌营造复古怀旧的氛围。</p>
+                </div>
+                <!-- 特性3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-paint-brush text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4 retro-text">复古色彩</h3>
+                    <p class="text-gray-600">使用暖色调和复古色彩 palette，营造怀旧而温馨的视觉体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-20 px-4 bg-accent">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16 retro-text">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- 场景1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=photography%20portfolio%20with%20vintage%20film%20photos&image_size=landscape_16_9" alt="摄影作品集" class="vintage-photo w-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 retro-text">摄影作品集</h3>
+                    <p class="text-gray-600 mb-4">为摄影师和摄影工作室打造复古风格的作品集网站，展示胶片摄影的独特魅力。</p>
+                    <button class="retro-button text-white px-4 py-2 rounded font-semibold">
+                        查看示例
+                    </button>
+                </div>
+                <!-- 场景2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vinyl%20record%20store%20interior%20with%20vintage%20aesthetic&image_size=landscape_16_9" alt="黑胶唱片店" class="vintage-photo w-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 retro-text">黑胶唱片品牌</h3>
+                    <p class="text-gray-600 mb-4">为黑胶唱片店、音乐厂牌或复古音乐平台打造具有怀旧感的品牌网站。</p>
+                    <button class="retro-button text-white px-4 py-2 rounded font-semibold">
+                        查看示例
+                    </button>
+                </div>
+                <!-- 场景3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=retro%20film%20development%20lab&image_size=landscape_16_9" alt="胶片冲洗店" class="vintage-photo w-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 retro-text">胶片冲洗服务</h3>
+                    <p class="text-gray-600 mb-4">为胶片冲洗店或摄影实验室打造复古风格的服务网站，突出传统工艺的价值。</p>
+                    <button class="retro-button text-white px-4 py-2 rounded font-semibold">
+                        查看示例
+                    </button>
+                </div>
+                <!-- 场景4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="mb-6">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage%20music%20concert%20poster&image_size=landscape_16_9" alt="音乐活动" class="vintage-photo w-full">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 retro-text">音乐活动</h3>
+                    <p class="text-gray-600 mb-4">为复古主题的音乐活动、爵士音乐会或黑胶唱片展会打造宣传网站。</p>
+                    <button class="retro-button text-white px-4 py-2 rounded font-semibold">
+                        查看示例
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 视觉效果展示 -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16 retro-text">视觉效果展示</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 效果1 -->
+                <div class="relative">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage%20portrait%20photography%20on%20film&image_size=square" alt="复古肖像" class="vintage-photo w-full">
+                    <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded text-sm">
+                        肖像摄影
+                    </div>
+                </div>
+                <!-- 效果2 -->
+                <div class="relative">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage%20landscape%20photography%20on%20film&image_size=square" alt="复古风景" class="vintage-photo w-full">
+                    <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded text-sm">
+                        风景摄影
+                    </div>
+                </div>
+                <!-- 效果3 -->
+                <div class="relative">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage%20street%20photography%20on%20film&image_size=square" alt="复古街拍" class="vintage-photo w-full">
+                    <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded text-sm">
+                        街拍摄影
+                    </div>
+                </div>
+                <!-- 效果4 -->
+                <div class="relative">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=vintage%20still%20life%20photography%20on%20film&image_size=square" alt="复古静物" class="vintage-photo w-full">
+                    <div class="absolute bottom-4 left-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded text-sm">
+                        静物摄影
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术实现 -->
+    <section class="py-20 px-4 bg-secondary">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16 retro-text">技术实现</h2>
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-code text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2 retro-text">CSS滤镜</h3>
+                                <p class="text-gray-600">使用CSS filter属性添加sepia、contrast和brightness效果，模拟胶片质感。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-picture-o text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2 retro-text">胶片颗粒</h3>
+                                <p class="text-gray-600">通过SVG背景添加微妙的胶片颗粒效果，增强复古感。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-font text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2 retro-text">复古字体</h3>
+                                <p class="text-gray-600">使用衬线字体如Playfair Display，增强复古美学效果。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-white p-6 rounded-xl shadow-md">
+                        <pre class="text-sm text-gray-800 overflow-x-auto"><code>.vintage-photo {
+    filter: sepia(30%) contrast(105%) brightness(95%);
+    border: 8px solid #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: rotate(-1deg);
+    transition: transform 0.3s ease;
+}
+
+.film-grain::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1;
+}
+
+.retro-button {
+    background: linear-gradient(145deg, #d4a373, #e6b383);
+    border: 1px solid #c09363;
+    box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="py-20 px-4 bg-primary text-white">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 retro-text">开始使用复古风格</h2>
+            <p class="text-xl mb-8">为您的摄影或音乐项目添加复古模拟效果，重现胶片时代的温暖质感。</p>
+            <button class="bg-white text-primary px-8 py-4 rounded font-semibold hover:bg-accent transition-all text-lg retro-button">
+                获取代码
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-xl font-bold retro-text flex items-center">
+                        <i class="fa fa-camera mr-2 text-primary"></i>
+                        <span>复古模拟</span>
+                    </a>
+                    <p class="mt-2 text-gray-400">探索各种UI/UX设计风格</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
+                    <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
+                    <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 设计风格导航站. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 复古效果交互
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为照片添加悬停效果
+            const vintagePhotos = document.querySelectorAll('.vintage-photo');
+            
+            vintagePhotos.forEach(photo => {
+                photo.addEventListener('mouseenter', function() {
+                    this.style.transform = 'rotate(0deg) scale(1.02)';
+                });
+                
+                photo.addEventListener('mouseleave', function() {
+                    this.style.transform = 'rotate(-1deg) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

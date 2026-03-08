@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUD / 科幻FUI - 科幻游戏、太空技术、网络安全</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00ff00',
+                        secondary: '#00ffff',
+                        accent: '#ff00ff',
+                        dark: '#0a0a0a',
+                        light: '#1a1a1a'
+                    },
+                    fontFamily: {
+                        orbitron: ['Orbitron', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .hud-container {
+                @apply bg-dark text-primary min-h-screen font-orbitron relative overflow-hidden;
+            }
+            .hud-header {
+                @apply fixed top-0 left-0 right-0 z-50 border-b border-primary/30 bg-dark/80 backdrop-blur-sm;
+            }
+            .hud-title {
+                @apply text-2xl font-bold tracking-wider;
+            }
+            .hud-card {
+                @apply border border-primary/30 bg-dark/60 backdrop-blur-sm p-4 rounded-lg transition-all duration-300 hover:border-primary/60 hover:shadow-lg hover:shadow-primary/10;
+            }
+            .hud-btn {
+                @apply border border-primary px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary hover:text-dark font-medium;
+            }
+            .hud-input {
+                @apply w-full bg-dark/60 border border-primary/30 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 text-primary;
+            }
+            .hud-grid {
+                @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+            }
+            .scan-line {
+                @apply absolute top-0 left-0 right-0 h-1 bg-primary/20 animate-scan;
+            }
+            .glow {
+                @apply text-primary drop-shadow-[0_0_5px_rgba(0,255,0,0.7)];
+            }
+            .glow-blue {
+                @apply text-secondary drop-shadow-[0_0_5px_rgba(0,255,255,0.7)];
+            }
+            .glow-purple {
+                @apply text-accent drop-shadow-[0_0_5px_rgba(255,0,255,0.7)];
+            }
+        }
+
+        @keyframes scan {
+            0% {
+                top: -10px;
+            }
+            100% {
+                top: 100vh;
+            }
+        }
+
+        .animate-scan {
+            animation: scan 8s linear infinite;
+        }
+
+        .hud-container::before {
+            content: '';
+            @apply absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0zNiAxOGMzLjMxNCAwIDYtMi42ODYgNi02cy0yLjY4Ni02LTYtNi02IDIuNjg2LTYgNiAyLjY4NiA2IDYgNnptMCAzMGMzLjMxNCAwIDYtMi42ODYgNi02cy0yLjY4Ni02LTYtNi02IDIuNjg2LTYgNiAyLjY4NiA2IDYgNnptLTE4IDBjMy4zMTQgMCA2LTIuNjg2IDYtNnMtMi42ODYtNi02LTYtNiAyLjY4Ni02IDYgMi42ODYgNiA2IDZ6bTAgMzBjMy4zMTQgMCA2LTIuNjg2IDYtNnMtMi42ODYtNi02LTYtNiAyLjY4Ni02IDYgMi42ODYgNiA2IDZ6Ij48L3BhdGg+PC9nPjwvc3ZnPg==')] opacity-10 pointer-events-none;
+        }
+    </style>
+</head>
+<body class="hud-container">
+    <!-- Scan Line -->
+    <div class="scan-line"></div>
+
+    <!-- Header -->
+    <header class="hud-header">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-rocket text-primary text-2xl"></i>
+                <h1 class="hud-title glow">HUD SYSTEM</h1>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs text-primary">STATUS:</span>
+                    <span class="text-xs glow">ONLINE</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <span class="text-xs text-primary">SYSTEM:</span>
+                    <span class="text-xs glow-blue">STABLE</span>
+                </div>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-primary/10 transition-colors">
+                    <i class="fa fa-moon-o text-primary"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center py-24 px-4">
+        <div class="container mx-auto max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6 glow">HUD / 科幻FUI</h2>
+                <p class="text-lg text-primary/80 mb-8 max-w-2xl mx-auto">为科幻游戏、太空技术和网络安全应用设计的未来感用户界面</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="#features" class="hud-btn">探索功能</a>
+                    <a href="#demo" class="hud-btn">查看演示</a>
+                </div>
+            </div>
+            <div class="hud-card">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="border border-primary/30 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 glow">系统状态</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">CPU 使用率</span>
+                                <span class="text-sm glow">45%</span>
+                            </div>
+                            <div class="w-full bg-dark/60 rounded-full h-2">
+                                <div class="bg-primary h-2 rounded-full" style="width: 45%"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">内存使用率</span>
+                                <span class="text-sm glow">62%</span>
+                            </div>
+                            <div class="w-full bg-dark/60 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 62%"></div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">网络状态</span>
+                                <span class="text-sm glow-blue">稳定</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-primary/30 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 glow">任务监控</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                                <span class="text-sm">系统扫描</span>
+                                <span class="text-xs text-primary/60 ml-auto">进行中</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span class="text-sm">安全检查</span>
+                                <span class="text-xs text-primary/60 ml-auto">完成</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                                <span class="text-sm">更新就绪</span>
+                                <span class="text-xs text-primary/60 ml-auto">待处理</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <div class="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                                <span class="text-sm">数据同步</span>
+                                <span class="text-xs text-primary/60 ml-auto">进行中</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border border-primary/30 p-4 rounded-lg">
+                        <h3 class="text-lg font-bold mb-2 glow">网络安全</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">防火墙</span>
+                                <span class="text-sm glow-green">已启用</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">入侵检测</span>
+                                <span class="text-sm glow-green">已启用</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">加密状态</span>
+                                <span class="text-sm glow-blue">AES-256</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm">安全评分</span>
+                                <span class="text-sm glow-purple">98/100</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <h3 class="text-3xl font-bold mb-12 text-center glow">核心功能</h3>
+            <div class="hud-grid">
+                <!-- Feature 1 -->
+                <div class="hud-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-shield"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 glow">实时监控</h4>
+                    <p class="text-primary/80 mb-4">实时监控系统状态、网络流量和安全威胁，确保系统安全稳定运行</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-primary/60">状态</span>
+                        <span class="text-xs glow-green">已启用</span>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="hud-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-line-chart"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 glow">数据分析</h4>
+                    <p class="text-primary/80 mb-4">强大的数据分析能力，提供详细的系统性能和安全状况报告</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-primary/60">状态</span>
+                        <span class="text-xs glow-green">已启用</span>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="hud-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-lock"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 glow">安全防护</h4>
+                    <p class="text-primary/80 mb-4">多层安全防护机制，包括防火墙、入侵检测和数据加密</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-primary/60">状态</span>
+                        <span class="text-xs glow-green">已启用</span>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="hud-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-rocket"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 glow">太空技术</h4>
+                    <p class="text-primary/80 mb-4">为太空技术应用提供专业的监控和控制系统界面</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-primary/60">状态</span>
+                        <span class="text-xs glow-green">已启用</span>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="hud-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-gamepad"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 glow">游戏界面</h4>
+                    <p class="text-primary/80 mb-4">为科幻游戏提供沉浸式的HUD界面，增强游戏体验</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-primary/60">状态</span>
+                        <span class="text-xs glow-green">已启用</span>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="hud-card">
+                    <div class="text-4xl text-primary mb-4">
+                        <i class="fa fa-cogs"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-4 glow">系统管理</h4>
+                    <p class="text-primary/80 mb-4">全面的系统管理功能，包括配置、更新和故障排除</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-primary/60">状态</span>
+                        <span class="text-xs glow-green">已启用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="py-24 px-4 bg-dark/60">
+        <div class="container mx-auto max-w-6xl">
+            <h3 class="text-3xl font-bold mb-12 text-center glow">界面演示</h3>
+            <div class="hud-card">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 glow">科幻游戏HUD</h4>
+                        <p class="text-primary/80 mb-6">为科幻游戏设计的沉浸式HUD界面，提供实时游戏状态、地图导航和武器系统信息</p>
+                        <div class="space-y-4">
+                            <div class="border border-primary/30 p-4 rounded-lg">
+                                <h5 class="text-lg font-bold mb-2 glow">游戏状态</h5>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <div class="flex justify-between items-center mb-1">
+                                            <span class="text-sm">生命值</span>
+                                            <span class="text-sm glow">75%</span>
+                                        </div>
+                                        <div class="w-full bg-dark/60 rounded-full h-2">
+                                            <div class="bg-red-500 h-2 rounded-full" style="width: 75%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between items-center mb-1">
+                                            <span class="text-sm">能量</span>
+                                            <span class="text-sm glow">42%</span>
+                                        </div>
+                                        <div class="w-full bg-dark/60 rounded-full h-2">
+                                            <div class="bg-blue-500 h-2 rounded-full" style="width: 42%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-primary/30 p-4 rounded-lg">
+                                <h5 class="text-lg font-bold mb-2 glow">武器系统</h5>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">主武器</span>
+                                        <span class="text-sm glow">激光步枪</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">弹药</span>
+                                        <span class="text-sm glow">120/200</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">副武器</span>
+                                        <span class="text-sm glow">等离子手枪</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold mb-4 glow">太空技术监控</h4>
+                        <p class="text-primary/80 mb-6">为太空技术应用设计的监控界面，提供航天器状态、轨道数据和通信系统信息</p>
+                        <div class="space-y-4">
+                            <div class="border border-primary/30 p-4 rounded-lg">
+                                <h5 class="text-lg font-bold mb-2 glow">航天器状态</h5>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">轨道高度</span>
+                                        <span class="text-sm glow">400 km</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">速度</span>
+                                        <span class="text-sm glow">7.6 km/s</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">电池电量</span>
+                                        <span class="text-sm glow">85%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="border border-primary/30 p-4 rounded-lg">
+                                <h5 class="text-lg font-bold mb-2 glow">通信系统</h5>
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">信号强度</span>
+                                        <span class="text-sm glow">92%</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">延迟</span>
+                                        <span class="text-sm glow">0.2s</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm">连接状态</span>
+                                        <span class="text-sm glow-green">稳定</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-4">
+        <div class="container mx-auto max-w-4xl">
+            <h3 class="text-3xl font-bold mb-12 text-center glow">联系我们</h3>
+            <div class="hud-card">
+                <form class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-primary">姓名</label>
+                            <input type="text" class="hud-input" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2 text-primary">邮箱</label>
+                            <input type="email" class="hud-input" placeholder="请输入您的邮箱">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-primary">消息</label>
+                        <textarea class="hud-input h-32" placeholder="请输入您的消息"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="hud-btn">发送消息</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-primary/30">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="hud-title glow">HUD SYSTEM</h2>
+                    <p class="text-primary/60 mt-2">科幻FUI设计</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-primary/60 hover:text-primary transition-colors">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="text-primary/60 hover:text-primary transition-colors">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-primary/60 hover:text-primary transition-colors">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-primary/60 hover:text-primary transition-colors">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-primary/30 text-center">
+                <p class="text-primary/60">© 2026 HUD / 科幻FUI设计</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme toggle (HUD style is always dark)
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            // HUD style is always dark, so this is just a placeholder
+            console.log('Theme toggle clicked');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // Animate progress bars
+        window.addEventListener('load', () => {
+            const progressBars = document.querySelectorAll('.bg-primary, .bg-secondary, .bg-red-500, .bg-blue-500');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1s ease-in-out';
+                    bar.style.width = width;
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>

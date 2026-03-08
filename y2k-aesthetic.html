@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千禧年美学 - 时尚品牌、音乐、Z世代</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FF6B6B',
+                        secondary: '#4ECDC4',
+                        accent: '#FFE66D',
+                        dark: '#292F36',
+                        light: '#F7FFF7'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'float': 'float 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        glow: {
+                            '0%': { textShadow: '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #FF6B6B, 0 0 20px #FF6B6B' },
+                            '100%': { textShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #4ECDC4, 0 0 40px #4ECDC4' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .y2k-card {
+                @apply bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 p-6 border-2 border-accent;
+            }
+            .y2k-button {
+                @apply px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors shadow-md hover:shadow-lg;
+            }
+            .gradient-text {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+            }
+        }
+    </style>
+</head>
+<body class="bg-light font-sans">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i class="fa fa-star text-primary text-2xl"></i>
+                <span class="text-xl font-bold gradient-text">千禧年美学</span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <button class="y2k-button">
+                    首页
+                </button>
+                <button class="px-4 py-2 border-2 border-accent text-accent rounded-lg hover:bg-accent/10 transition-colors">
+                    <i class="fa fa-cog mr-1"></i> 设置
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="py-20 bg-gradient-to-br from-accent/20 to-primary/20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 animate-glow">
+                    <span class="gradient-text">千禧年美学</span>
+                </h1>
+                <p class="text-xl mb-8">为时尚品牌、音乐和Z世代打造的充满活力的设计风格</p>
+                <div class="flex flex-wrap gap-4 justify-center">
+                    <button class="y2k-button">
+                        了解更多
+                    </button>
+                    <button class="px-6 py-3 border-2 border-secondary text-secondary rounded-lg hover:bg-secondary/10 transition-colors">
+                        查看示例
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心特性 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">核心设计原则</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="y2k-card">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 animate-float">
+                        <i class="fa fa-paint-brush text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 gradient-text">明亮的色彩</h3>
+                    <p class="text-gray-600">使用鲜艳、对比强烈的色彩，创造充满活力的视觉效果</p>
+                </div>
+                <div class="y2k-card">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mb-4 animate-float">
+                        <i class="fa fa-star text-secondary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 gradient-text">几何形状</h3>
+                    <p class="text-gray-600">使用圆形、三角形等几何形状，创造独特的视觉元素</p>
+                </div>
+                <div class="y2k-card">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mb-4 animate-float">
+                        <i class="fa fa-music text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 gradient-text">动感元素</h3>
+                    <p class="text-gray-600">添加动画和交互效果，创造充满活力的用户体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">应用场景</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="y2k-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-shopping-bag text-primary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold gradient-text">时尚品牌</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">为时尚品牌打造充满活力和个性的视觉形象</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>品牌网站</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>社交媒体营销</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-primary mt-1 mr-2"></i>
+                            <span>产品展示</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="y2k-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-music text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold gradient-text">音乐</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">为音乐平台和艺术家打造独特的视觉体验</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>音乐流媒体平台</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>艺术家网站</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-secondary mt-1 mr-2"></i>
+                            <span>音乐活动宣传</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="y2k-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                            <i class="fa fa-users text-accent text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold gradient-text">Z世代</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">为Z世代用户打造符合他们审美和价值观的数字产品</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>社交媒体应用</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>数字社区</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-check text-accent mt-1 mr-2"></i>
+                            <span>潮流电商</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 界面示例 -->
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 gradient-text">界面示例</h2>
+            <div class="y2k-card max-w-4xl mx-auto">
+                <h3 class="text-xl font-bold mb-6 gradient-text">时尚品牌网站</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-primary/20 to-secondary/20 p-6 rounded-xl">
+                        <h4 class="font-bold mb-4 gradient-text">产品展示</h4>
+                        <div class="aspect-square bg-white rounded-lg mb-4 flex items-center justify-center border-2 border-accent">
+                            <span class="font-bold gradient-text">产品图片</span>
+                        </div>
+                        <button class="w-full y2k-button">
+                            查看详情
+                        </button>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-br from-accent/20 to-primary/20 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2 gradient-text">品牌故事</h4>
+                            <p class="text-gray-600">我们是一家为Z世代打造的时尚品牌，致力于创造独特、可持续的时尚产品。</p>
+                        </div>
+                        <div class="bg-gradient-to-br from-secondary/20 to-accent/20 p-6 rounded-xl">
+                            <h4 class="font-bold mb-2 gradient-text">联系我们</h4>
+                            <form class="space-y-2">
+                                <input type="text" placeholder="姓名" class="w-full px-4 py-2 border-2 border-accent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <input type="email" placeholder="邮箱" class="w-full px-4 py-2 border-2 border-accent rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                                <button type="submit" class="w-full y2k-button">
+                                    发送
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 gradient-text">千禧年美学</h3>
+                    <p class="text-gray-400">为时尚品牌、音乐和Z世代打造的充满活力的设计风格</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 gradient-text">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-primary transition-colors">首页</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">设计指南</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">资源中心</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold mb-4 gradient-text">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope mr-2"></i>
+                            <span>contact@y2kaesthetic.design</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone mr-2"></i>
+                            <span>+86 123 4567 8910</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2024 千禧年美学. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拟物同胚 - 经典界面设计</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --skeu-primary: #8b5a2b;
+            --skeu-secondary: #d2b48c;
+            --skeu-accent: #cd853f;
+            --skeu-dark: #3e2723;
+            --skeu-light: #f5f5dc;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--skeu-light);
+            min-height: 100vh;
+            color: var(--skeu-dark);
+        }
+        
+        h1, h2, h3, h4, .display-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .skeu-card {
+            background-color: #f9f6f0;
+            border-radius: 8px;
+            box-shadow: 
+                0 4px 6px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0d6c2;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .skeu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 10px 15px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+        }
+        
+        .skeu-btn {
+            background: linear-gradient(135deg, #f0e6d2, #d9c7a9);
+            border: 1px solid #c4b093;
+            border-radius: 6px;
+            padding: 10px 20px;
+            color: var(--skeu-dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+        
+        .skeu-btn:hover {
+            background: linear-gradient(135deg, #d9c7a9, #f0e6d2);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 4px 8px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+        
+        .skeu-btn-primary {
+            background: linear-gradient(135deg, var(--skeu-accent), #d49a5f);
+            border: 1px solid #b87633;
+            color: white;
+        }
+        
+        .skeu-btn-primary:hover {
+            background: linear-gradient(135deg, #d49a5f, var(--skeu-accent));
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--skeu-dark);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--skeu-primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--skeu-primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--skeu-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--skeu-dark);
+        }
+        
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #6b5b47;
+            margin-bottom: 3rem;
+        }
+        
+        .app-preview {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0d6c2;
+        }
+        
+        .wood-texture {
+            background: linear-gradient(135deg, #d2b48c, #cd853f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .leather-texture {
+            background-color: #8b5a2b;
+            background-image: 
+                linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px),
+                linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        .metal-texture {
+            background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
+            box-shadow: 
+                0 2px 4px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .glass-texture {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="bg-amber-100 shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 rounded-lg leather-texture flex items-center justify-center">
+                    <i class="fa fa-diamond text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold wood-texture">ClassicUI</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#" class="nav-link">首页</a>
+                <a href="#" class="nav-link">产品</a>
+                <a href="#" class="nav-link">功能</a>
+                <a href="#" class="nav-link">价格</a>
+                <a href="#" class="nav-link">联系我们</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="skeu-btn">登录</button>
+                <button class="skeu-btn skeu-btn-primary">注册</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="section-title">
+                    拟物同胚<br>经典界面设计
+                </h1>
+                <p class="section-subtitle">
+                    为遗留应用、游戏和高端产品打造的经典拟物风格界面，提供熟悉而精致的用户体验。
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="skeu-btn skeu-btn-primary text-center">开始免费试用</button>
+                    <button class="skeu-btn text-center">观看演示</button>
+                </div>
+                <div class="mt-10 flex items-center space-x-6">
+                    <div class="flex -space-x-2">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20user%20avatar%201&image_size=square" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-amber-200">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20user%20avatar%202&image_size=square" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-amber-200">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20user%20avatar%203&image_size=square" alt="用户头像" class="w-10 h-10 rounded-full border-2 border-amber-200">
+                    </div>
+                    <div>
+                        <div class="flex items-center">
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <i class="fa fa-star text-yellow-500"></i>
+                            <i class="fa fa-star text-yellow-500"></i>
+                        </div>
+                        <p class="text-sm text-gray-600">来自500+企业的信任</p>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <div class="app-preview">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=skeuomorphic%20interface%20design&image_size=landscape_16_9" alt="应用界面预览" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="bg-amber-50 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title">强大的功能</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">为经典应用提供全方位的功能支持</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="skeu-card p-6">
+                    <div class="feature-icon">
+                        <i class="fa fa-desktop"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">熟悉的界面</h3>
+                    <p class="text-gray-600">拟物设计提供熟悉的视觉元素，降低用户学习成本</p>
+                </div>
+                <div class="skeu-card p-6">
+                    <div class="feature-icon">
+                        <i class="fa fa-gamepad"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">游戏体验</h3>
+                    <p class="text-gray-600">为游戏应用提供沉浸式的拟物界面，增强游戏体验</p>
+                </div>
+                <div class="skeu-card p-6">
+                    <div class="feature-icon">
+                        <i class="fa fa-diamond"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">高端感</h3>
+                    <p class="text-gray-600">为高端产品打造精致的拟物界面，提升品牌价值</p>
+                </div>
+                <div class="skeu-card p-6">
+                    <div class="feature-icon">
+                        <i class="fa fa-history"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">遗留系统</h3>
+                    <p class="text-gray-600">为遗留应用提供现代拟物界面，保持系统一致性</p>
+                </div>
+                <div class="skeu-card p-6">
+                    <div class="feature-icon">
+                        <i class="fa fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">定制化</h3>
+                    <p class="text-gray-600">提供丰富的定制选项，打造独特的拟物界面</p>
+                </div>
+                <div class="skeu-card p-6">
+                    <div class="feature-icon">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">用户友好</h3>
+                    <p class="text-gray-600">拟物设计直观易懂，适合各种年龄段的用户</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品展示 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="flex flex-col md:flex-row items-center justify-between mb-20">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="section-title">游戏界面</h2>
+                <p class="section-subtitle">为游戏应用打造的沉浸式拟物界面</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>精致的按钮和控件设计</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>沉浸式的游戏菜单界面</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>真实感的游戏道具和UI元素</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>流畅的动画和过渡效果</span>
+                    </li>
+                </ul>
+                <button class="skeu-btn skeu-btn-primary mt-8">了解更多</button>
+            </div>
+            <div class="md:w-1/2">
+                <div class="app-preview">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=skeuomorphic%20game%20interface&image_size=landscape_16_9" alt="游戏界面" class="w-full">
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col md:flex-row-reverse items-center justify-between">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="section-title">高端产品界面</h2>
+                <p class="section-subtitle">为高端产品打造的精致拟物界面</p>
+                <ul class="space-y-4">
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>皮革、金属等质感的界面元素</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>精致的阴影和高光效果</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>优雅的排版和布局</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fa fa-check-circle text-green-600 mr-3"></i>
+                        <span>细节丰富的交互反馈</span>
+                    </li>
+                </ul>
+                <button class="skeu-btn skeu-btn-primary mt-8">了解更多</button>
+            </div>
+            <div class="md:w-1/2">
+                <div class="app-preview">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=skeuomorphic%20luxury%20product%20interface&image_size=landscape_16_9" alt="高端产品界面" class="w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价格区域 -->
+    <section class="bg-amber-50 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="section-title">灵活的价格方案</h2>
+                <p class="section-subtitle max-w-2xl mx-auto">选择最适合您业务需求的方案</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="skeu-card p-6">
+                    <h3 class="text-xl font-semibold mb-2">基础版</h3>
+                    <div class="text-4xl font-bold mb-4 wood-texture">¥99<span class="text-sm text-gray-600">/月</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>最多5个用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>10GB存储空间</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>基础拟物组件</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="fa fa-times mr-2"></i>
+                            <span>高级定制</span>
+                        </li>
+                    </ul>
+                    <button class="skeu-btn w-full">开始使用</button>
+                </div>
+                <div class="skeu-card p-6 relative" style="border: 2px solid var(--skeu-accent);">
+                    <div class="absolute top-0 right-0 bg-amber-700 text-white text-xs px-3 py-1 rounded-bl-lg">推荐</div>
+                    <h3 class="text-xl font-semibold mb-2">专业版</h3>
+                    <div class="text-4xl font-bold mb-4 wood-texture">¥299<span class="text-sm text-gray-600">/月</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>最多20个用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>100GB存储空间</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>完整拟物组件库</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>高级定制</span>
+                        </li>
+                    </ul>
+                    <button class="skeu-btn skeu-btn-primary w-full">开始使用</button>
+                </div>
+                <div class="skeu-card p-6">
+                    <h3 class="text-xl font-semibold mb-2">企业版</h3>
+                    <div class="text-4xl font-bold mb-4 wood-texture">¥999<span class="text-sm text-gray-600">/月</span></div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>无限用户</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>1TB存储空间</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>企业级拟物设计</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-check text-green-600 mr-2"></i>
+                            <span>专属支持</span>
+                        </li>
+                    </ul>
+                    <button class="skeu-btn w-full">联系销售</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户评价 -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="text-center mb-16">
+            <h2 class="section-title">客户评价</h2>
+            <p class="section-subtitle max-w-2xl mx-auto">听听我们的客户怎么说</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="skeu-card p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20person%201&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">张明</h4>
+                        <p class="text-sm text-gray-600">游戏开发者</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                </div>
+                <p class="text-gray-600">ClassicUI为我们的游戏提供了完美的拟物界面，玩家反馈非常积极，认为界面既美观又直观。</p>
+            </div>
+            <div class="skeu-card p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20person%202&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">李华</h4>
+                        <p class="text-sm text-gray-600">产品经理</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                </div>
+                <p class="text-gray-600">作为一家高端品牌，我们需要一个能够体现品质感的界面，ClassicUI的拟物设计完美满足了我们的需求。</p>
+            </div>
+            <div class="skeu-card p-6">
+                <div class="flex items-center mb-4">
+                    <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20person%203&image_size=square" alt="客户头像" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-semibold">王芳</h4>
+                        <p class="text-sm text-gray-600">IT总监</p>
+                    </div>
+                </div>
+                <div class="flex mb-4">
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star text-yellow-500"></i>
+                    <i class="fa fa-star-half-o text-yellow-500"></i>
+                </div>
+                <p class="text-gray-600">我们的遗留系统需要现代化改造，ClassicUI的拟物设计让系统既保持了原有风格的一致性，又获得了现代感。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动号召 -->
+    <section class="bg-amber-100 py-20">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h2 class="section-title">准备好开始了吗？</h2>
+                <p class="section-subtitle max-w-2xl mx-auto mb-8">加入 thousands of satisfied customers who are already using ClassicUI to build classic interfaces.</p>
+                <button class="skeu-btn skeu-btn-primary text-lg px-8 py-4">开始免费试用</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-amber-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg leather-texture flex items-center justify-center">
+                            <i class="fa fa-diamond text-white text-xl"></i>
+                        </div>
+                        <span class="text-xl font-bold">ClassicUI</span>
+                    </div>
+                    <p class="text-amber-200 mb-4">为遗留应用、游戏和高端产品提供经典拟物界面设计</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="text-amber-200 hover:text-white transition"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">产品</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">功能</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">定价</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">更新</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">集成</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">资源</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">文档</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">教程</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">博客</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">支持</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">公司</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">关于我们</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">联系我们</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">招聘</a></li>
+                        <li><a href="#" class="text-amber-200 hover:text-white transition">隐私政策</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-amber-800 mt-12 pt-8 text-center text-amber-300 text-sm">
+                © 2024 ClassicUI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

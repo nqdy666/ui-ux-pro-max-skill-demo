@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>色差 / RGB 分裂 - 音乐平台、游戏、科技</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#ff00ff',
+                        secondary: '#00ffff',
+                        accent: '#ffff00',
+                        dark: '#0a0a0a',
+                        light: '#f8f9fa'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .rgb-split {
+                position: relative;
+            }
+            .rgb-split::before {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: #ff00ff;
+                z-index: -1;
+                transform: translate(-3px, 0);
+                animation: splitAnimation 3s ease-in-out infinite;
+            }
+            .rgb-split::after {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                color: #00ffff;
+                z-index: -1;
+                transform: translate(3px, 0);
+                animation: splitAnimation 3s ease-in-out infinite reverse;
+            }
+            @keyframes splitAnimation {
+                0%, 100% {
+                    transform: translate(0, 0);
+                    opacity: 0.7;
+                }
+                50% {
+                    transform: translate(5px, 0);
+                    opacity: 0.9;
+                }
+            }
+            .glitch-effect {
+                position: relative;
+                animation: glitch 2s infinite;
+            }
+            @keyframes glitch {
+                0% {
+                    transform: translate(0);
+                }
+                20% {
+                    transform: translate(-2px, 2px);
+                }
+                40% {
+                    transform: translate(-2px, -2px);
+                }
+                60% {
+                    transform: translate(2px, 2px);
+                }
+                80% {
+                    transform: translate(2px, -2px);
+                }
+                100% {
+                    transform: translate(0);
+                }
+            }
+            .neon-border {
+                box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #00ffff, 0 0 25px #00ffff;
+                animation: neonPulse 2s ease-in-out infinite alternate;
+            }
+            @keyframes neonPulse {
+                from {
+                    box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #00ffff, 0 0 25px #00ffff;
+                }
+                to {
+                    box-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #00ffff, 0 0 50px #00ffff;
+                }
+            }
+            .bg-grid {
+                background-image: 
+                    linear-gradient(rgba(255, 0, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+                background-size: 20px 20px;
+            }
+        </div>
+    </style>
+</head>
+<body class="font-inter bg-dark text-white">
+    <!-- 导航栏 -->
+    <nav class="fixed w-full bg-dark/80 backdrop-blur-sm border-b border-pink-500/30 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold flex items-center">
+                <i class="fa fa-music mr-2 text-primary"></i>
+                <span class="rgb-split" data-text="RGB分裂">RGB分裂</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
+                <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
+                <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-white">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="bg-dark bg-grid py-24 px-4 relative overflow-hidden">
+        <div class="container mx-auto max-w-6xl relative z-10">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                    <span class="rgb-split" data-text="RGB分裂效果">RGB分裂效果</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-10 text-gray-300">为音乐平台、游戏和科技产品打造独特的视觉效果，通过色差分裂创造未来感和动感</p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button class="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/80 transition-all text-lg neon-border">
+                        探索效果
+                    </button>
+                    <button class="bg-transparent border-2 border-secondary text-secondary px-8 py-4 rounded-lg font-semibold hover:bg-secondary/20 transition-all text-lg">
+                        了解更多
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 背景效果 -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/30 to-blue-900/30"></div>
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- 特性区域 -->
+    <section class="py-20 px-4 bg-dark">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                <span class="rgb-split" data-text="核心特性">核心特性</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 特性1 -->
+                <div class="bg-dark border border-pink-500/30 p-8 rounded-xl hover:border-pink-500 transition-colors">
+                    <div class="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mb-6 neon-border">
+                        <i class="fa fa-sliders text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">RGB分裂效果</h3>
+                    <p class="text-gray-400">通过分离红、绿、蓝三色通道，创造出独特的视觉分裂效果，增强视觉冲击力。</p>
+                </div>
+                <!-- 特性2 -->
+                <div class="bg-dark border border-cyan-500/30 p-8 rounded-xl hover:border-cyan-500 transition-colors">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-6 neon-border">
+                        <i class="fa fa-bolt text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">动态动画</h3>
+                    <p class="text-gray-400">添加流畅的动画效果，使RGB分裂更加生动，提升用户体验和视觉吸引力。</p>
+                </div>
+                <!-- 特性3 -->
+                <div class="bg-dark border border-yellow-500/30 p-8 rounded-xl hover:border-yellow-500 transition-colors">
+                    <div class="w-16 h-16 bg-accent/20 rounded-full flex items-center justify-center mb-6 neon-border">
+                        <i class="fa fa-magic text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">未来感设计</h3>
+                    <p class="text-gray-400">通过RGB分裂效果，为音乐平台、游戏和科技产品打造具有未来感的视觉体验。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="py-20 px-4 bg-dark bg-grid">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                <span class="rgb-split" data-text="应用场景">应用场景</span>
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 场景1 -->
+                <div class="bg-dark border border-pink-500/30 rounded-xl overflow-hidden hover:border-pink-500 transition-colors">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=music%20platform%20interface%20with%20RGB%20split%20effect&image_size=landscape_16_9" alt="音乐平台" class="w-full h-full object-cover glitch-effect">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">音乐平台</h3>
+                        <p class="text-gray-400 mb-4">为音乐流媒体平台添加RGB分裂效果，增强音乐视觉化体验，营造动感氛围。</p>
+                        <button class="text-primary font-semibold hover:underline">查看示例</button>
+                    </div>
+                </div>
+                <!-- 场景2 -->
+                <div class="bg-dark border border-cyan-500/30 rounded-xl overflow-hidden hover:border-cyan-500 transition-colors">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=game%20interface%20with%20RGB%20split%20effect&image_size=landscape_16_9" alt="游戏界面" class="w-full h-full object-cover glitch-effect">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">游戏界面</h3>
+                        <p class="text-gray-400 mb-4">为游戏界面添加RGB分裂效果，增强游戏的未来感和科技感，提升玩家体验。</p>
+                        <button class="text-secondary font-semibold hover:underline">查看示例</button>
+                    </div>
+                </div>
+                <!-- 场景3 -->
+                <div class="bg-dark border border-yellow-500/30 rounded-xl overflow-hidden hover:border-yellow-500 transition-colors">
+                    <div class="h-64 relative overflow-hidden">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=tech%20product%20website%20with%20RGB%20split%20effect&image_size=landscape_16_9" alt="科技产品" class="w-full h-full object-cover glitch-effect">
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark to-transparent"></div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">科技产品</h3>
+                        <p class="text-gray-400 mb-4">为科技产品网站添加RGB分裂效果，展示产品的先进性和创新性，吸引目标用户。</p>
+                        <button class="text-accent font-semibold hover:underline">查看示例</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 技术实现 -->
+    <section class="py-20 px-4 bg-dark">
+        <div class="container mx-auto max-w-6xl">
+            <h2 class="text-3xl font-bold text-center mb-16">
+                <span class="rgb-split" data-text="技术实现">技术实现</span>
+            </h2>
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-code text-xl text-primary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">CSS实现</h3>
+                                <p class="text-gray-400">使用CSS伪元素和动画实现RGB分裂效果，无需JavaScript，性能优异。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-css3 text-xl text-secondary"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">动画效果</h3>
+                                <p class="text-gray-400">通过CSS animations属性创建平滑的分裂动画，增强视觉效果。</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-accent/20 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                                <i class="fa fa-mobile text-xl text-accent"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">响应式设计</h3>
+                                <p class="text-gray-400">确保RGB分裂效果在不同设备上都能正常显示，保持视觉一致性。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-dark border border-pink-500/30 p-6 rounded-xl neon-border">
+                        <pre class="text-sm text-gray-300 overflow-x-auto"><code>.rgb-split {
+    position: relative;
+}
+
+.rgb-split::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ff00ff;
+    z-index: -1;
+    transform: translate(-3px, 0);
+    animation: splitAnimation 3s ease-in-out infinite;
+}
+
+.rgb-split::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #00ffff;
+    z-index: -1;
+    transform: translate(3px, 0);
+    animation: splitAnimation 3s ease-in-out infinite reverse;
+}
+
+@keyframes splitAnimation {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(5px, 0);
+        opacity: 0.9;
+    }
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA区域 -->
+    <section class="py-20 px-4 bg-dark bg-grid relative overflow-hidden">
+        <div class="container mx-auto max-w-4xl text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">
+                <span class="rgb-split" data-text="开始使用RGB分裂">开始使用RGB分裂</span>
+            </h2>
+            <p class="text-xl mb-8 text-gray-300">为您的项目添加独特的RGB分裂效果，提升视觉吸引力和用户体验。</p>
+            <button class="bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/80 transition-all text-lg neon-border">
+                获取代码
+            </button>
+        </div>
+        <!-- 背景效果 -->
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark border-t border-pink-500/30 py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html" class="text-xl font-bold flex items-center">
+                        <i class="fa fa-music mr-2 text-primary"></i>
+                        <span class="rgb-split" data-text="RGB分裂">RGB分裂</span>
+                    </a>
+                    <p class="mt-2 text-gray-400">探索各种UI/UX设计风格</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
+                    <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
+                    <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 设计风格导航站. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // RGB分裂效果交互
+        document.addEventListener('DOMContentLoaded', function() {
+            // 为文本元素添加鼠标悬停效果
+            const rgbElements = document.querySelectorAll('.rgb-split');
+            
+            rgbElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    this.style.animation = 'glitch 0.5s ease-in-out';
+                });
+                
+                element.addEventListener('animationend', function() {
+                    this.style.animation = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

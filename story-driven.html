@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>以讲故事为驱动 - 着陆页样式</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#059669',
+                        secondary: '#047857',
+                        neutral: '#F0FDF4',
+                        dark: '#064E3B'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .story-card {
+                transition: all 0.3s ease;
+            }
+            .story-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.1), 0 10px 10px -5px rgba(5, 150, 105, 0.04);
+            }
+        }
+    </style>
+</head>
+<body class="font-inter bg-neutral min-h-screen">
+    <!-- 导航栏 -->
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html" class="flex items-center space-x-2">
+                <i class="fa fa-th-large text-primary text-2xl"></i>
+                <span class="text-xl font-semibold text-dark">DesignStyles</span>
+            </a>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
+                <a href="index.html#general-styles" class="text-gray-600 hover:text-primary transition-colors">通用风格</a>
+                <a href="index.html#landing-styles" class="text-primary font-medium">着陆页样式</a>
+                <a href="index.html#dashboard-styles" class="text-gray-600 hover:text-primary transition-colors">仪表盘样式</a>
+            </div>
+            <button class="md:hidden text-gray-600">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="pt-32 pb-20 bg-gradient-to-br from-emerald-50 to-teal-50">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-bold text-dark mb-6 text-shadow">以讲故事为驱动</h1>
+            <p class="text-[clamp(1rem,2vw,1.25rem)] text-gray-600 max-w-3xl mx-auto mb-10">
+                通过引人入胜的故事，建立情感连接，传递品牌价值
+            </p>
+            <a href="#story" class="inline-block bg-primary hover:bg-emerald-700 text-white font-medium px-8 py-3 rounded-lg transition-colors shadow-lg">
+                开始阅读
+            </a>
+        </div>
+    </section>
+
+    <!-- 故事时间线区域 -->
+    <section class="py-16 bg-white" id="story">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">我们的故事</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">从一个小想法到改变行业，这是我们的旅程</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- 故事节点 1 -->
+                <div class="flex flex-col md:flex-row items-center mb-12">
+                    <div class="w-full md:w-1/2 md:pr-8 mb-4 md:mb-0">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=startup%20founders%20meeting%20in%20garage&image_size=landscape" alt="创业初期" class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="w-full md:w-1/2 md:pl-8">
+                        <div class="inline-block bg-primary text-white px-3 py-1 rounded-full text-sm mb-4">2018</div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">梦想开始的地方</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            在一个简陋的车库里，三位志同道合的创始人怀揣着改变行业的梦想，开始了他们的创业之旅。没有资金，没有资源，只有对技术的热情和对未来的信念。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 故事节点 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center mb-12">
+                    <div class="w-full md:w-1/2 md:pl-8 mb-4 md:mb-0">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=team%20celebration%20office%20party&image_size=landscape" alt="第一个里程碑" class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="w-full md:w-1/2 md:pr-8">
+                        <div class="inline-block bg-primary text-white px-3 py-1 rounded-full text-sm mb-4">2019</div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">第一个里程碑</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            经过无数个日夜的努力，我们推出了第一个产品版本。虽然功能简单，但得到了第一批用户的认可。这给了我们继续前进的动力。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 故事节点 3 -->
+                <div class="flex flex-col md:flex-row items-center mb-12">
+                    <div class="w-full md:w-1/2 md:pr-8 mb-4 md:mb-0">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20tech%20office%20workspace&image_size=landscape" alt="快速成长" class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="w-full md:w-1/2 md:pl-8">
+                        <div class="inline-block bg-primary text-white px-3 py-1 rounded-full text-sm mb-4">2021</div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">快速成长</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            团队从3人扩展到50人，办公室也从车库搬到了市中心的科技园区。我们的产品开始被更多企业采用，影响力逐渐扩大。
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 故事节点 4 -->
+                <div class="flex flex-col md:flex-row-reverse items-center">
+                    <div class="w-full md:w-1/2 md:pl-8 mb-4 md:mb-0">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=global%20team%20video%20conference&image_size=landscape" alt="走向全球" class="rounded-xl shadow-lg w-full">
+                    </div>
+                    <div class="w-full md:w-1/2 md:pr-8">
+                        <div class="inline-block bg-primary text-white px-3 py-1 rounded-full text-sm mb-4">2024</div>
+                        <h3 class="text-2xl font-bold text-dark mb-4">走向全球</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            今天，我们的服务已经覆盖全球50多个国家，帮助超过10,000家企业实现数字化转型。但这只是开始，我们的故事还在继续...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 客户故事区域 -->
+    <section class="py-16 bg-neutral">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">客户故事</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">听听我们的客户怎么说</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20woman%20smiling&image_size=square" alt="客户头像" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-dark">刘女士</h4>
+                            <p class="text-sm text-gray-500">某电商平台创始人</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"他们的产品彻底改变了我们的运营方式。从最初的小团队到现在的规模化运营，他们一直是我们最信赖的合作伙伴。"</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20man%20smiling&image_size=square" alt="客户头像" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-dark">张先生</h4>
+                            <p class="text-sm text-gray-500">某科技公司CTO</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"技术实力过硬，服务响应迅速。他们不仅提供了优秀的解决方案，更帮助我们实现了业务的数字化转型。"</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md story-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=professional%20business%20woman%20glasses&image_size=square" alt="客户头像" class="w-16 h-16 rounded-full object-cover mr-4">
+                        <div>
+                            <h4 class="font-semibold text-dark">王女士</h4>
+                            <p class="text-sm text-gray-500">某教育机构负责人</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">"教育行业的数字化转型充满挑战，但他们的团队理解我们的需求，提供了量身定制的解决方案。"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 价值观区域 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold text-dark mb-4">我们的价值观</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">这些原则指导着我们的每一个决定</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-heart text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">用户至上</h3>
+                    <p class="text-gray-600">始终以用户需求为中心</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-lightbulb text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">持续创新</h3>
+                    <p class="text-gray-600">不断探索新技术和新方法</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-handshake text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">诚信合作</h3>
+                    <p class="text-gray-600">建立长期的信任关系</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-globe text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-dark mb-2">社会责任</h3>
+                    <p class="text-gray-600">用技术创造社会价值</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 行动召唤区域 -->
+    <section class="py-20 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-[clamp(1.5rem,3vw,2.5rem)] font-bold mb-6">成为故事的一部分</h2>
+            <p class="text-white/80 max-w-2xl mx-auto mb-10">
+                加入我们，一起书写下一个精彩的篇章
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-primary font-medium px-8 py-3 rounded-lg transition-colors shadow-lg hover:bg-gray-100">
+                    开始合作
+                </a>
+                <a href="#" class="bg-transparent border-2 border-white text-white font-medium px-8 py-3 rounded-lg transition-colors hover:bg-white/10">
+                    了解更多
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">DesignStyles</h3>
+                    <p class="text-gray-400">提供各种UI/UX设计风格的展示和灵感</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">风格分类</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html#general-styles" class="hover:text-primary transition-colors">通用风格</a></li>
+                        <li><a href="index.html#landing-styles" class="hover:text-primary transition-colors">着陆页样式</a></li>
+                        <li><a href="index.html#dashboard-styles" class="hover:text-primary transition-colors">仪表盘样式</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">资源</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-primary transition-colors">设计指南</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">最佳实践</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">教程</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fa fa-envelope mr-2"></i> contact@designstyles.com</li>
+                        <li><i class="fa fa-phone mr-2"></i> +86 123 4567 8910</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DesignStyles. 保留所有权利。</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
