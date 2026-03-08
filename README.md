@@ -1,6 +1,6 @@
 # UI/UX 风格导航站
 
-> 基于 [ui-ux-pro-max-skill](https://github.com/nqdy666/ui-ux-pro-max-skill-demo) 智能设计系统的演示项目
+> 基于 [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) 智能设计系统的演示项目
 
 ## 项目简介
 
