@@ -48,19 +48,19 @@
     <!-- 导航栏 -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 transition-colors duration-200">
                 <div class="w-10 h-10 gradient-bg rounded-xl flex items-center justify-center">
                     <i class="fa fa-th-large text-white"></i>
                 </div>
                 <span class="text-xl font-bold text-dark">BentoGrid</span>
             </a>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
-                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">特性</a>
-                <a href="#examples" class="text-gray-600 hover:text-primary transition-colors">示例</a>
-                <a href="#about" class="text-gray-600 hover:text-primary transition-colors">关于</a>
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">特性</a>
+                <a href="#examples" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">示例</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">关于</a>
             </div>
-            <button class="bento-button">
+            <button class="bento-button" cursor-pointer>
                 开始使用
             </button>
         </div>
@@ -81,10 +81,10 @@
                     受苹果Bento风格启发的网格布局系统，适用于仪表盘、产品页面和作品集展示。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors">
+                    <button class="bg-white text-primary px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors" cursor-pointer>
                         查看示例
                     </button>
-                    <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg border border-white/30 hover:bg-white/20 transition-colors">
+                    <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg border border-white/30 hover:bg-white/20 transition-colors" cursor-pointer>
                         了解更多
                     </button>
                 </div>
@@ -103,7 +103,7 @@
             <!-- Bento Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
                 <!-- 大卡片 - 跨2列2行 -->
-                <div class="bento-card md:col-span-2 md:row-span-2 gradient-bg text-white">
+                <div class="bento-card md:col-span-2 md:row-span-2 gradient-bg text-white cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex-1">
                         <div class="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center mb-4">
                             <i class="fa fa-rocket text-2xl"></i>
@@ -112,14 +112,14 @@
                         <p class="text-white/80 mb-4">展示您的产品特性和优势，使用大卡片吸引用户注意力。</p>
                     </div>
                     <div class="mt-auto">
-                        <button class="bg-white text-primary px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                        <button class="bg-white text-primary px-6 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors" cursor-pointer>
                             了解更多
                         </button>
                     </div>
                 </div>
 
                 <!-- 中卡片 - 跨1列2行 -->
-                <div class="bento-card md:row-span-2 bg-gradient-to-br from-secondary/20 to-green-100">
+                <div class="bento-card md:row-span-2 bg-gradient-to-br from-secondary/20 to-green-100 cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex-1">
                         <div class="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-4">
                             <i class="fa fa-chart-line text-white text-2xl"></i>
@@ -143,7 +143,7 @@
                 </div>
 
                 <!-- 小卡片 1 -->
-                <div class="bento-card bg-gradient-to-br from-accent/20 to-yellow-100">
+                <div class="bento-card bg-gradient-to-br from-accent/20 to-yellow-100 cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="w-10 h-10 bg-accent rounded-lg flex items-center justify-center mb-3">
                         <i class="fa fa-star text-white"></i>
                     </div>
@@ -160,7 +160,7 @@
                 </div>
 
                 <!-- 小卡片 2 -->
-                <div class="bento-card bg-gradient-to-br from-purple-500/20 to-purple-100">
+                <div class="bento-card bg-gradient-to-br from-purple-500/20 to-purple-100 cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center mb-3">
                         <i class="fa fa-users text-white"></i>
                     </div>
@@ -170,7 +170,7 @@
                 </div>
 
                 <!-- 小卡片 3 -->
-                <div class="bento-card bg-gradient-to-br from-blue-500/20 to-blue-100">
+                <div class="bento-card bg-gradient-to-br from-blue-500/20 to-blue-100 cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mb-3">
                         <i class="fa fa-clock-o text-white"></i>
                     </div>
@@ -180,7 +180,7 @@
                 </div>
 
                 <!-- 小卡片 4 -->
-                <div class="bento-card bg-gradient-to-br from-pink-500/20 to-pink-100">
+                <div class="bento-card bg-gradient-to-br from-pink-500/20 to-pink-100 cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="w-10 h-10 bg-pink-500 rounded-lg flex items-center justify-center mb-3">
                         <i class="fa fa-heart text-white"></i>
                     </div>
@@ -190,7 +190,7 @@
                 </div>
 
                 <!-- 中卡片 - 跨2列1行 -->
-                <div class="bento-card md:col-span-2 bg-gradient-to-r from-dark to-gray-800 text-white">
+                <div class="bento-card md:col-span-2 bg-gradient-to-r from-dark to-gray-800 text-white cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex items-center justify-between">
                         <div>
                             <h3 class="text-xl font-bold mb-2">功能特性</h3>
@@ -324,7 +324,7 @@
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold mb-6 text-white">开始使用 Bento Grid</h2>
             <p class="text-white/80 mb-8 max-w-2xl mx-auto">为您的下一个项目添加现代化的网格布局</p>
-            <button class="bg-white text-primary px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors">
+            <button class="bg-white text-primary px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-colors" cursor-pointer>
                 获取代码
             </button>
         </div>
@@ -344,9 +344,9 @@
                     <p class="text-gray-400 mt-2">现代化网格布局系统</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">返回导航站</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">文档</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">返回导航站</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">文档</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">GitHub</a>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">

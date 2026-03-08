@@ -81,19 +81,19 @@
     <!-- 导航栏 -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 transition-colors duration-200">
                 <div class="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
                     <i class="fa fa-robot text-white"></i>
                 </div>
                 <span class="text-xl font-bold text-dark">AI Native UI</span>
             </a>
             <div class="hidden md:flex items-center space-x-8">
-                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors">首页</a>
-                <a href="#features" class="text-gray-600 hover:text-primary transition-colors">特性</a>
-                <a href="#demo" class="text-gray-600 hover:text-primary transition-colors">演示</a>
-                <a href="#about" class="text-gray-600 hover:text-primary transition-colors">关于</a>
+                <a href="index.html" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">特性</a>
+                <a href="#demo" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">演示</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition-colors transition-colors duration-200">关于</a>
             </div>
-            <button class="ai-button">
+            <button class="ai-button" cursor-pointer>
                 开始体验
             </button>
         </div>
@@ -114,10 +114,10 @@
                     为人工智能产品、聊天机器人和AI副驾驶设计的原生界面系统。智能、直观、人性化。
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
+                    <button class="bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors" cursor-pointer>
                         探索功能
                     </button>
-                    <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold text-lg border border-white/30 hover:bg-white/20 transition-colors">
+                    <button class="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-lg font-semibold text-lg border border-white/30 hover:bg-white/20 transition-colors" cursor-pointer>
                         查看演示
                     </button>
                 </div>
@@ -134,7 +134,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="ai-card">
+                <div class="ai-card cursor-pointer hover:shadow-lg transition-all duration-200">
                     <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6">
                         <i class="fa fa-comments text-primary text-2xl"></i>
                     </div>
@@ -142,7 +142,7 @@
                     <p class="text-gray-600">自然语言对话界面，让用户与AI进行流畅的交互</p>
                 </div>
                 
-                <div class="ai-card">
+                <div class="ai-card cursor-pointer hover:shadow-lg transition-all duration-200">
                     <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6">
                         <i class="fa fa-bolt text-secondary text-2xl"></i>
                     </div>
@@ -150,7 +150,7 @@
                     <p class="text-gray-600">即时反馈和流式输出，提供流畅的用户体验</p>
                 </div>
                 
-                <div class="ai-card">
+                <div class="ai-card cursor-pointer hover:shadow-lg transition-all duration-200">
                     <div class="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center mb-6">
                         <i class="fa fa-brain text-accent text-2xl"></i>
                     </div>
@@ -243,7 +243,7 @@
                     <div class="p-4 bg-white border-t border-gray-200">
                         <div class="flex items-center space-x-3">
                             <input type="text" placeholder="输入消息..." class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50">
-                            <button class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary/90 transition-colors">
+                            <button class="bg-primary text-white w-12 h-12 rounded-lg flex items-center justify-center hover:bg-primary/90 transition-colors" cursor-pointer>
                                 <i class="fa fa-paper-plane"></i>
                             </button>
                         </div>
@@ -344,7 +344,7 @@
         <div class="container mx-auto px-6 text-center">
             <h2 class="text-4xl font-bold mb-6 text-white">开始构建AI原生应用</h2>
             <p class="text-white/80 mb-8 max-w-2xl mx-auto">使用我们的设计系统，快速打造智能、直观的AI产品界面</p>
-            <button class="bg-white text-primary px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors">
+            <button class="bg-white text-primary px-10 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors" cursor-pointer>
                 获取设计系统
             </button>
         </div>
@@ -364,9 +364,9 @@
                     <p class="text-gray-400 mt-2">AI原生界面设计系统</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors">返回导航站</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">文档</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                    <a href="index.html" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">返回导航站</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">文档</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors transition-colors duration-200">GitHub</a>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-500 text-sm">

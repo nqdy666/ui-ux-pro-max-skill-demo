@@ -29,13 +29,13 @@
 <body class="font-inter bg-light min-h-screen">
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-orange-200">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 transition-colors duration-200">
                 <div class="w-8 h-8 bg-gradient-to-br from-orange-700 to-orange-500 rounded flex items-center justify-center">
                     <i class="fa fa-columns text-white text-sm"></i>
                 </div>
                 <span class="text-lg font-bold text-dark">Compare Analytics</span>
             </a>
-            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium">导出对比</button>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium" cursor-pointer>导出对比</button>
         </div>
     </nav>
 
@@ -65,7 +65,7 @@
                             <option>今年</option>
                         </select>
                     </div>
-                    <button class="bg-primary text-white px-4 py-2 rounded text-sm">更新对比</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded text-sm" cursor-pointer>更新对比</button>
                 </div>
             </div>
 
@@ -223,7 +223,7 @@
 
     <footer class="bg-white border-t border-orange-100 py-4 px-4">
         <div class="container mx-auto text-center text-sm text-gray-500">
-            <p>&copy; 2024 Compare Analytics. <a href="index.html" class="text-primary hover:underline">返回导航站</a></p>
+            <p>&copy; 2024 Compare Analytics. <a href="index.html" class="text-primary hover:underline transition-colors duration-200">返回导航站</a></p>
         </div>
     </footer>
 </body>

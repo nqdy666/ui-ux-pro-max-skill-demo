@@ -63,23 +63,23 @@
     <!-- 导航栏 -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-gray-200">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 transition-colors duration-200">
                 <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
                     <i class="fa fa-database text-white text-sm"></i>
                 </div>
                 <span class="text-lg font-bold text-text">DataIntensive</span>
             </a>
             <div class="hidden md:flex items-center space-x-6">
-                <a href="index.html" class="text-muted hover:text-primary transition-colors text-sm">首页</a>
-                <a href="#" class="text-muted hover:text-primary transition-colors text-sm">仪表盘</a>
-                <a href="#" class="text-muted hover:text-primary transition-colors text-sm">报表</a>
-                <a href="#" class="text-muted hover:text-primary transition-colors text-sm">设置</a>
+                <a href="index.html" class="text-muted hover:text-primary transition-colors text-sm transition-colors duration-200">首页</a>
+                <a href="#" class="text-muted hover:text-primary transition-colors text-sm transition-colors duration-200">仪表盘</a>
+                <a href="#" class="text-muted hover:text-primary transition-colors text-sm transition-colors duration-200">报表</a>
+                <a href="#" class="text-muted hover:text-primary transition-colors text-sm transition-colors duration-200">设置</a>
             </div>
             <div class="flex items-center space-x-3">
-                <button class="text-muted hover:text-primary">
+                <button class="text-muted hover:text-primary" cursor-pointer>
                     <i class="fa fa-bell"></i>
                 </button>
-                <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary/90 transition-colors">
+                <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium hover:bg-primary/90 transition-colors" cursor-pointer>
                     导出数据
                 </button>
             </div>
@@ -96,42 +96,42 @@
                     <p class="text-muted text-sm mt-1">复杂数据分析与实时监控</p>
                 </div>
                 <div class="flex flex-wrap gap-2">
-                    <button class="filter-btn active">今日</button>
-                    <button class="filter-btn">本周</button>
-                    <button class="filter-btn">本月</button>
-                    <button class="filter-btn">本季度</button>
-                    <button class="filter-btn">自定义</button>
+                    <button class="filter-btn active" cursor-pointer>今日</button>
+                    <button class="filter-btn" cursor-pointer>本周</button>
+                    <button class="filter-btn" cursor-pointer>本月</button>
+                    <button class="filter-btn" cursor-pointer>本季度</button>
+                    <button class="filter-btn" cursor-pointer>自定义</button>
                 </div>
             </div>
 
             <!-- KPI 卡片行 -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-6">
-                <div class="data-card">
+                <div class="data-card cursor-pointer hover:shadow-md transition-all duration-200">
                     <p class="text-xs text-muted uppercase tracking-wider mb-1">总数据量</p>
                     <p class="kpi-value">2.4TB</p>
                     <p class="text-xs text-green-600 mt-1"><i class="fa fa-arrow-up"></i> +12.5%</p>
                 </div>
-                <div class="data-card">
+                <div class="data-card cursor-pointer hover:shadow-md transition-all duration-200">
                     <p class="text-xs text-muted uppercase tracking-wider mb-1">活跃查询</p>
                     <p class="kpi-value">1,247</p>
                     <p class="text-xs text-green-600 mt-1"><i class="fa fa-arrow-up"></i> +8.3%</p>
                 </div>
-                <div class="data-card">
+                <div class="data-card cursor-pointer hover:shadow-md transition-all duration-200">
                     <p class="text-xs text-muted uppercase tracking-wider mb-1">平均响应</p>
                     <p class="kpi-value">45ms</p>
                     <p class="text-xs text-red-600 mt-1"><i class="fa fa-arrow-down"></i> -2.1%</p>
                 </div>
-                <div class="data-card">
+                <div class="data-card cursor-pointer hover:shadow-md transition-all duration-200">
                     <p class="text-xs text-muted uppercase tracking-wider mb-1">错误率</p>
                     <p class="kpi-value">0.02%</p>
                     <p class="text-xs text-green-600 mt-1"><i class="fa fa-arrow-down"></i> -0.01%</p>
                 </div>
-                <div class="data-card">
+                <div class="data-card cursor-pointer hover:shadow-md transition-all duration-200">
                     <p class="text-xs text-muted uppercase tracking-wider mb-1">并发用户</p>
                     <p class="kpi-value">3,856</p>
                     <p class="text-xs text-green-600 mt-1"><i class="fa fa-arrow-up"></i> +15.2%</p>
                 </div>
-                <div class="data-card">
+                <div class="data-card cursor-pointer hover:shadow-md transition-all duration-200">
                     <p class="text-xs text-muted uppercase tracking-wider mb-1">系统负载</p>
                     <p class="kpi-value">67%</p>
                     <p class="text-xs text-cta mt-1"><i class="fa fa-minus"></i> 稳定</p>
@@ -145,8 +145,8 @@
                     <div class="flex justify-between items-center mb-4">
                         <h3 class="font-semibold text-text">数据查询趋势</h3>
                         <div class="flex space-x-2">
-                            <button class="text-xs text-muted hover:text-primary"><i class="fa fa-download"></i> 导出</button>
-                            <button class="text-xs text-muted hover:text-primary"><i class="fa fa-expand"></i> 全屏</button>
+                            <button class="text-xs text-muted hover:text-primary" cursor-pointer><i class="fa fa-download"></i> 导出</button>
+                            <button class="text-xs text-muted hover:text-primary" cursor-pointer><i class="fa fa-expand"></i> 全屏</button>
                         </div>
                     </div>
                     <div class="h-64 flex items-end space-x-2">
@@ -229,7 +229,7 @@
                     <h3 class="font-semibold text-text">实时查询日志</h3>
                     <div class="flex space-x-2">
                         <input type="text" placeholder="搜索..." class="px-3 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50">
-                        <button class="px-3 py-1 text-sm bg-primary text-white rounded hover:bg-primary/90 transition-colors">
+                        <button class="px-3 py-1 text-sm bg-primary text-white rounded hover:bg-primary/90 transition-colors" cursor-pointer>
                             <i class="fa fa-filter"></i> 筛选
                         </button>
                     </div>
@@ -255,7 +255,7 @@
                                 <td>SELECT</td>
                                 <td class="font-firaCode">23ms</td>
                                 <td><span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">成功</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8841</td>
@@ -264,7 +264,7 @@
                                 <td>JOIN</td>
                                 <td class="font-firaCode">145ms</td>
                                 <td><span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">成功</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8840</td>
@@ -273,7 +273,7 @@
                                 <td>AGGREGATE</td>
                                 <td class="font-firaCode">67ms</td>
                                 <td><span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded">警告</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8839</td>
@@ -282,7 +282,7 @@
                                 <td>GET</td>
                                 <td class="font-firaCode">3ms</td>
                                 <td><span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">成功</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8838</td>
@@ -291,7 +291,7 @@
                                 <td>POST</td>
                                 <td class="font-firaCode">-</td>
                                 <td><span class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded">失败</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8837</td>
@@ -300,7 +300,7 @@
                                 <td>SELECT</td>
                                 <td class="font-firaCode">12ms</td>
                                 <td><span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">成功</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8836</td>
@@ -309,7 +309,7 @@
                                 <td>INSERT</td>
                                 <td class="font-firaCode">89ms</td>
                                 <td><span class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded">成功</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                             <tr>
                                 <td class="font-firaCode text-xs">#QRY-8835</td>
@@ -318,7 +318,7 @@
                                 <td>REPORT</td>
                                 <td class="font-firaCode">2.3s</td>
                                 <td><span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded">慢查询</span></td>
-                                <td><button class="text-primary hover:text-primary/80"><i class="fa fa-eye"></i></button></td>
+                                <td><button class="text-primary hover:text-primary/80" cursor-pointer><i class="fa fa-eye"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -326,13 +326,13 @@
                 <div class="px-4 py-3 border-t border-gray-200 flex justify-between items-center">
                     <p class="text-sm text-muted">显示 1-8 共 1,247 条</p>
                     <div class="flex space-x-2">
-                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50" disabled>上一页</button>
-                        <button class="px-3 py-1 text-sm bg-primary text-white rounded">1</button>
-                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100">2</button>
-                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100">3</button>
+                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100 disabled:opacity-50" cursor-pointer disabled>上一页</button>
+                        <button class="px-3 py-1 text-sm bg-primary text-white rounded" cursor-pointer>1</button>
+                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100" cursor-pointer>2</button>
+                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100" cursor-pointer>3</button>
                         <span class="px-2 py-1 text-sm text-muted">...</span>
-                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100">156</button>
-                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100">下一页</button>
+                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100" cursor-pointer>156</button>
+                        <button class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-100" cursor-pointer>下一页</button>
                     </div>
                 </div>
             </div>
@@ -344,9 +344,9 @@
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
             <p class="text-sm text-muted">&copy; 2024 DataIntensive Dashboard. 保留所有权利。</p>
             <div class="flex space-x-4 mt-2 md:mt-0">
-                <a href="index.html" class="text-sm text-muted hover:text-primary transition-colors">返回导航站</a>
-                <a href="#" class="text-sm text-muted hover:text-primary transition-colors">帮助</a>
-                <a href="#" class="text-sm text-muted hover:text-primary transition-colors">隐私</a>
+                <a href="index.html" class="text-sm text-muted hover:text-primary transition-colors transition-colors duration-200">返回导航站</a>
+                <a href="#" class="text-sm text-muted hover:text-primary transition-colors transition-colors duration-200">帮助</a>
+                <a href="#" class="text-sm text-muted hover:text-primary transition-colors transition-colors duration-200">隐私</a>
             </div>
         </div>
     </footer>

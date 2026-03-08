@@ -57,16 +57,16 @@
     <!-- 导航栏 -->
     <nav class="fixed w-full bg-white/90 backdrop-blur-sm shadow-sm z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="text-xl font-bold text-primary flex items-center">
+            <a href="index.html" class="text-xl font-bold text-primary flex items-center transition-colors duration-200">
                 <i class="fa fa-cogs mr-2"></i>
                 <span>设计风格导航</span>
             </a>
             <div class="hidden md:flex space-x-6">
-                <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
-                <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
-                <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+                <a href="index.html#general" class="hover:text-primary transition-colors transition-colors duration-200">通用风格</a>
+                <a href="index.html#landing" class="hover:text-primary transition-colors transition-colors duration-200">着陆页样式</a>
+                <a href="index.html#dashboard" class="hover:text-primary transition-colors transition-colors duration-200">仪表盘样式</a>
             </div>
-            <button class="md:hidden text-dark">
+            <button class="md:hidden text-dark" cursor-pointer>
                 <i class="fa fa-bars text-xl"></i>
             </button>
         </div>
@@ -86,10 +86,10 @@
                 <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">全方位解决方案<br>满足您的业务需求</h1>
                 <p class="text-xl mb-10 opacity-90">我们的SaaS平台集成了多种强大功能，为您提供一站式解决方案，帮助您简化工作流程，提高效率。</p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg">
+                    <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg" cursor-pointer>
                         免费试用
                     </button>
-                    <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10">
+                    <button class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white/10" cursor-pointer>
                         查看演示
                     </button>
                 </div>
@@ -157,11 +157,11 @@
             
             <!-- 选项卡导航 -->
             <div class="flex flex-wrap justify-center mb-10 border-b border-gray-200">
-                <button class="px-6 py-4 font-semibold tab-active">项目管理</button>
-                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">数据分析</button>
-                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">团队协作</button>
-                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">客户管理</button>
-                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors">自动化工作流</button>
+                <button class="px-6 py-4 font-semibold tab-active" cursor-pointer>项目管理</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors" cursor-pointer>数据分析</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors" cursor-pointer>团队协作</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors" cursor-pointer>客户管理</button>
+                <button class="px-6 py-4 font-semibold text-gray-500 hover:text-primary transition-colors" cursor-pointer>自动化工作流</button>
             </div>
             
             <!-- 选项卡内容 -->
@@ -376,7 +376,7 @@
                             <span>邮件支持</span>
                         </li>
                     </ul>
-                    <button class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                    <button class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors" cursor-pointer>
                         选择基础版
                     </button>
                 </div>
@@ -412,7 +412,7 @@
                             <span>自定义报表</span>
                         </li>
                     </ul>
-                    <button class="w-full bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
+                    <button class="w-full bg-white text-primary px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors" cursor-pointer>
                         选择专业版
                     </button>
                 </div>
@@ -449,7 +449,7 @@
                             <span>专属客户经理</span>
                         </li>
                     </ul>
-                    <button class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                    <button class="w-full bg-gray-200 text-gray-800 px-6 py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors" cursor-pointer>
                         联系销售
                     </button>
                 </div>
@@ -462,7 +462,7 @@
         <div class="container mx-auto max-w-4xl text-center">
             <h2 class="text-3xl md:text-4xl font-bold mb-6">准备好开始使用了吗？</h2>
             <p class="text-xl mb-8 opacity-90">立即开始免费试用，体验我们功能丰富的SaaS平台，提升您的业务效率。</p>
-            <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg">
+            <button class="btn-primary bg-white text-primary px-8 py-4 rounded-lg font-semibold text-lg" cursor-pointer>
                 免费试用14天
             </button>
         </div>
@@ -473,16 +473,16 @@
         <div class="container mx-auto max-w-6xl">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="index.html" class="text-xl font-bold flex items-center">
+                    <a href="index.html" class="text-xl font-bold flex items-center transition-colors duration-200">
                         <i class="fa fa-cogs mr-2 text-primary"></i>
                         <span>设计风格导航</span>
                     </a>
                     <p class="mt-2 text-gray-400">探索各种UI/UX设计风格</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="index.html#general" class="hover:text-primary transition-colors">通用风格</a>
-                    <a href="index.html#landing" class="hover:text-primary transition-colors">着陆页样式</a>
-                    <a href="index.html#dashboard" class="hover:text-primary transition-colors">仪表盘样式</a>
+                    <a href="index.html#general" class="hover:text-primary transition-colors transition-colors duration-200">通用风格</a>
+                    <a href="index.html#landing" class="hover:text-primary transition-colors transition-colors duration-200">着陆页样式</a>
+                    <a href="index.html#dashboard" class="hover:text-primary transition-colors transition-colors duration-200">仪表盘样式</a>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">

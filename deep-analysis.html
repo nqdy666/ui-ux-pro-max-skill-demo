@@ -29,13 +29,13 @@
 <body class="font-inter bg-light min-h-screen">
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white border-b border-yellow-200">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html" class="flex items-center space-x-3">
+            <a href="index.html" class="flex items-center space-x-3 transition-colors duration-200">
                 <div class="w-8 h-8 bg-gradient-to-br from-yellow-700 to-yellow-500 rounded flex items-center justify-center">
                     <i class="fa fa-search-plus text-white text-sm"></i>
                 </div>
                 <span class="text-lg font-bold text-dark">Deep Analytics</span>
             </a>
-            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium">导出分析</button>
+            <button class="bg-primary text-white px-4 py-2 rounded text-sm font-medium" cursor-pointer>导出分析</button>
         </div>
     </nav>
 
@@ -61,7 +61,7 @@
                         <option>最近24小时</option>
                     </select>
                     <input type="text" placeholder="搜索..." class="px-3 py-2 border border-gray-300 rounded text-sm flex-1 min-w-[200px]">
-                    <button class="bg-primary text-white px-4 py-2 rounded text-sm"><i class="fa fa-filter"></i> 应用筛选</button>
+                    <button class="bg-primary text-white px-4 py-2 rounded text-sm" cursor-pointer><i class="fa fa-filter"></i> 应用筛选</button>
                 </div>
             </div>
 
@@ -138,8 +138,8 @@
                 <div class="px-4 py-3 border-b border-yellow-100 flex justify-between items-center">
                     <h3 class="font-semibold text-dark">详细数据</h3>
                     <div class="flex space-x-2">
-                        <button class="text-sm text-primary hover:underline">导出CSV</button>
-                        <button class="text-sm text-primary hover:underline">导出Excel</button>
+                        <button class="text-sm text-primary hover:underline" cursor-pointer>导出CSV</button>
+                        <button class="text-sm text-primary hover:underline" cursor-pointer>导出Excel</button>
                     </div>
                 </div>
                 <table class="w-full text-sm">
@@ -182,7 +182,7 @@
 
     <footer class="bg-white border-t border-yellow-100 py-4 px-4">
         <div class="container mx-auto text-center text-sm text-gray-500">
-            <p>&copy; 2024 Deep Analytics. <a href="index.html" class="text-primary hover:underline">返回导航站</a></p>
+            <p>&copy; 2024 Deep Analytics. <a href="index.html" class="text-primary hover:underline transition-colors duration-200">返回导航站</a></p>
         </div>
     </footer>
 </body>

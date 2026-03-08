@@ -72,11 +72,11 @@
                 <h1 class="bento-title">BENTO GRID</h1>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#home" class="font-medium hover:text-primary transition-colors">首页</a>
-                <a href="#dashboard" class="font-medium hover:text-primary transition-colors">仪表盘</a>
-                <a href="#features" class="font-medium hover:text-primary transition-colors">功能</a>
-                <a href="#contact" class="font-medium hover:text-primary transition-colors">联系</a>
-                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
+                <a href="#home" class="font-medium hover:text-primary transition-colors transition-colors duration-200">首页</a>
+                <a href="#dashboard" class="font-medium hover:text-primary transition-colors transition-colors duration-200">仪表盘</a>
+                <a href="#features" class="font-medium hover:text-primary transition-colors transition-colors duration-200">功能</a>
+                <a href="#contact" class="font-medium hover:text-primary transition-colors transition-colors duration-200">联系</a>
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors" cursor-pointer>
                     <i class="fa fa-moon-o dark:hidden text-slate-600"></i>
                     <i class="fa fa-sun-o hidden dark:block text-slate-300"></i>
                 </button>
@@ -91,12 +91,12 @@
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">便当格子设计</h2>
                 <p class="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">通过模块化的网格布局，创造出灵活、美观的界面，适合产品功能展示、仪表盘和个人信息管理</p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <a href="#dashboard" class="bento-btn">查看仪表盘</a>
-                    <a href="#features" class="bento-btn bg-secondary">探索功能</a>
+                    <a href="#dashboard" class="bento-btn transition-colors duration-200">查看仪表盘</a>
+                    <a href="#features" class="bento-btn bg-secondary transition-colors duration-200">探索功能</a>
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div class="bento-card bento-card-lg">
+                <div class="bento-card bento-card-lg cursor-pointer hover:shadow-xl transition-all duration-200">
                     <h3 class="text-xl font-bold mb-4">产品功能展示</h3>
                     <p class="text-slate-600 dark:text-slate-400 mb-6">通过便当格子布局，清晰展示产品的各项功能和特性</p>
                     <div class="grid grid-cols-2 gap-4">
@@ -118,7 +118,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <h3 class="text-xl font-bold mb-4">仪表盘</h3>
                     <p class="text-slate-600 dark:text-slate-400 mb-6">实时监控关键指标和数据</p>
                     <div class="space-y-4">
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <h3 class="text-xl font-bold mb-4">个人信息</h3>
                     <p class="text-slate-600 dark:text-slate-400 mb-6">管理个人资料和设置</p>
                     <div class="flex flex-col items-center">
@@ -160,7 +160,7 @@
                         </div>
                         <h4 class="font-semibold mb-1">用户名</h4>
                         <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">user@example.com</p>
-                        <button class="bento-btn w-full">编辑资料</button>
+                        <button class="bento-btn w-full" cursor-pointer>编辑资料</button>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@
         <div class="container mx-auto max-w-6xl">
             <h3 class="text-3xl font-bold mb-12 text-center">便当格子仪表盘</h3>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <p class="text-sm text-slate-500 dark:text-slate-400">总访问量</p>
@@ -189,7 +189,7 @@
                         <span class="text-xs text-slate-500 dark:text-slate-400 ml-2">较上月</span>
                     </div>
                 </div>
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <p class="text-sm text-slate-500 dark:text-slate-400">转化率</p>
@@ -206,7 +206,7 @@
                         <span class="text-xs text-slate-500 dark:text-slate-400 ml-2">较上月</span>
                     </div>
                 </div>
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <p class="text-sm text-slate-500 dark:text-slate-400">平均停留时间</p>
@@ -223,7 +223,7 @@
                         <span class="text-xs text-slate-500 dark:text-slate-400 ml-2">较上月</span>
                     </div>
                 </div>
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="flex justify-between items-start mb-4">
                         <div>
                             <p class="text-sm text-slate-500 dark:text-slate-400">跳出率</p>
@@ -242,7 +242,7 @@
                 </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <h3 class="text-xl font-bold mb-4">流量来源</h3>
                     <div class="space-y-4">
                         <div>
@@ -283,7 +283,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <h3 class="text-xl font-bold mb-4">用户设备</h3>
                     <div class="space-y-4">
                         <div>
@@ -325,7 +325,7 @@
             <h3 class="text-3xl font-bold mb-12 text-center">产品功能</h3>
             <div class="bento-grid">
                 <!-- Feature 1 -->
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="text-4xl text-primary mb-4">
                         <i class="fa fa-cogs"></i>
                     </div>
@@ -334,7 +334,7 @@
                 </div>
 
                 <!-- Feature 2 -->
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="text-4xl text-primary mb-4">
                         <i class="fa fa-mobile"></i>
                     </div>
@@ -343,7 +343,7 @@
                 </div>
 
                 <!-- Feature 3 -->
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="text-4xl text-primary mb-4">
                         <i class="fa fa-line-chart"></i>
                     </div>
@@ -352,7 +352,7 @@
                 </div>
 
                 <!-- Feature 4 -->
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="text-4xl text-primary mb-4">
                         <i class="fa fa-paint-brush"></i>
                     </div>
@@ -361,7 +361,7 @@
                 </div>
 
                 <!-- Feature 5 -->
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="text-4xl text-primary mb-4">
                         <i class="fa fa-users"></i>
                     </div>
@@ -370,7 +370,7 @@
                 </div>
 
                 <!-- Feature 6 -->
-                <div class="bento-card">
+                <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                     <div class="text-4xl text-primary mb-4">
                         <i class="fa fa-bolt"></i>
                     </div>
@@ -385,7 +385,7 @@
     <section id="contact" class="py-24 px-4 bg-slate-100 dark:bg-slate-800">
         <div class="container mx-auto max-w-4xl">
             <h3 class="text-3xl font-bold mb-12 text-center">联系我们</h3>
-            <div class="bento-card">
+            <div class="bento-card cursor-pointer hover:shadow-xl transition-all duration-200">
                 <form class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -402,7 +402,7 @@
                         <textarea class="bento-input h-32" placeholder="请输入您的消息"></textarea>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="bento-btn">发送消息</button>
+                        <button type="submit" class="bento-btn" cursor-pointer>发送消息</button>
                     </div>
                 </form>
             </div>
@@ -418,16 +418,16 @@
                     <p class="text-slate-500 dark:text-slate-400 mt-2">便当格子设计</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
                         <i class="fa fa-facebook"></i>
                     </a>
-                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
                         <i class="fa fa-instagram"></i>
                     </a>
-                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors">
+                    <a href="#" class="text-slate-500 dark:text-slate-400 hover:text-primary transition-colors transition-colors duration-200">
                         <i class="fa fa-linkedin"></i>
                     </a>
                 </div>
