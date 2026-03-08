@@ -1,0 +1,82 @@
+/*
+ * Local Font Definitions
+ * Using system fonts stack with Inter as preferred
+ */
+
+/* System font stack - provides native performance and no external dependencies */
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'PingFang SC', 'Microsoft YaHei', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* Inter font face declarations - using local system fonts as primary */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Inter Light'),
+       local('Inter-Light'),
+       local('.SFNSText-Light'),
+       local('.HelveticaNeueDeskInterface-Light');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Inter Regular'),
+       local('Inter-Regular'),
+       local('.SFNSText-Regular'),
+       local('.HelveticaNeueDeskInterface-Regular');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('Inter Medium'),
+       local('Inter-Medium'),
+       local('.SFNSText-Medium'),
+       local('.HelveticaNeueDeskInterface-Medium');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('Inter SemiBold'),
+       local('Inter-SemiBold'),
+       local('.SFNSText-Semibold'),
+       local('.HelveticaNeueDeskInterface-Semibold');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Inter Bold'),
+       local('Inter-Bold'),
+       local('.SFNSText-Bold'),
+       local('.HelveticaNeueDeskInterface-Bold');
+}
+
+/* Base styles */
+html {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+}
