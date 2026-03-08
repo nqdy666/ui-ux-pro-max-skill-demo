@@ -6,6 +6,26 @@
 
 本项目是一个用于展示 **ui-ux-pro-max-skill** 设计系统能力的演示站点，汇集了 67+ 种专业 UI/UX 设计风格示例。每个页面都展示了不同的设计语言、视觉风格和交互模式，为开发者和设计师提供全方位的灵感参考。
 
+## 页面预览
+
+### 首页导航
+![首页导航](./screenshots/homepage.png)
+
+### 极简主义与瑞士风格
+![极简主义与瑞士风格](./screenshots/minimal-swiss.png)
+
+### 玻璃拟态金融风格
+![玻璃拟态金融风格](./screenshots/glass-finance.png)
+
+### 赛博朋克风格
+![赛博朋克风格](./screenshots/cyberpunk.png)
+
+### 便当盒网格风格
+![便当盒网格风格](./screenshots/bento-grid.png)
+
+### 暗黑模式 OLED
+![暗黑模式 OLED](./screenshots/dark-oled.png)
+
 ## 技术栈
 
 - **设计系统**: [ui-ux-pro-max-skill](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) - AI 驱动的智能设计系统
