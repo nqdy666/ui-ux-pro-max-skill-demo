@@ -11,20 +11,8 @@
 ### 首页导航
 ![首页导航](./screenshots/homepage.png)
 
-### 极简主义与瑞士风格
-![极简主义与瑞士风格](./screenshots/minimal-swiss.png)
-
-### 玻璃拟态金融风格
-![玻璃拟态金融风格](./screenshots/glass-finance.png)
-
 ### 赛博朋克风格
 ![赛博朋克风格](./screenshots/cyberpunk.png)
-
-### 便当盒网格风格
-![便当盒网格风格](./screenshots/bento-grid.png)
-
-### 暗黑模式 OLED
-![暗黑模式 OLED](./screenshots/dark-oled.png)
 
 ## 技术栈
 
